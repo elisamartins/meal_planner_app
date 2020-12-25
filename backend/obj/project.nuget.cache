@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "huvCaDIVbnVbcwmHp8miEQFM/g+hoDk0IP0ngZzIzJIefNMlu/R2lrsGDWKuFmSStiT5GLpy9VaFX72M6LXHzw==",
+  "dgSpecHash": "B8WXvank2KC4UCnlgmbXu+y/6QyKBQv6EIw27ZUsautLzAzLtnLAVaa1S8dgQTQh5PqFpq8v6atk6vzoDYRuIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Élisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\elisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elisa\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\elisa\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\elisa\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\elisa\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\elisa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\elisa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
   "logs": []
 }
