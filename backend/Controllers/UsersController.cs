@@ -40,6 +40,7 @@ namespace backend.Controllers
         public void Post([FromBody] string username)
         {
             _db.Users.Add(new User(username, "1234"));
+            _db.SaveChanges();
         }
 
         // PUT api/<UsersController>/5
