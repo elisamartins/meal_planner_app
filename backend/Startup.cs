@@ -22,7 +22,7 @@ namespace backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite("Data Source=users.db"));
+                options.UseSqlite("Data Source=meal_planner.db"));
             services.AddControllers();
             services.AddSwaggerGen();
         }

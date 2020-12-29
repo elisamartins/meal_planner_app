@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zR/x6yNODKPcDFa7eIF4jZSqnhqrnru3AAsiuche9A7qPukqDs9IVjysq8n4kisiA2WCsgGGbsZcZ7GcOkbNUg==",
+  "dgSpecHash": "zfw5JrwPVutFj2Sn5SP4SnMHwyBqpDkoTb1gK7GByZDtsCiyYLKcYPnaonqqhkvBolPJ2Gy8SeP4EtzEELpyCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\Élisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Élisa\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Élisa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

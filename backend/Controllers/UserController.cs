@@ -10,17 +10,17 @@ namespace backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
 
         private readonly ApplicationDbContext _db;
 
-        public UsersController(ApplicationDbContext db)
+        public UserController(ApplicationDbContext db)
         {
             _db = db;
         }
         // GET: api/<UsersController>
-        [HttpGet]
+        [HttpGet("user")]
         public async Task<ActionResult<List<User>>> GetUsers()
         {
             List<User> users = await _db.Users.AsNoTracking().ToListAsync();
@@ -28,11 +28,15 @@ namespace backend.Controllers
             return users;
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("user/{username}")]
+        public async Task<ActionResult<User>> GetUser(string username)
         {
-            return "value";
+            User user = await _db.Users.Where(user => user.Username == username).FirstOrDefaultAsync();
+
+            if (user == null)
+                return BadRequest("User does not exist");
+
+            return user;
         }
 
         // POST api/<UsersController>
