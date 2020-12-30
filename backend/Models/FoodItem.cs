@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
@@ -10,42 +11,71 @@ namespace backend.Models
 
         [Required]
         [StringLength(100)]
-        public string FoodName { get; set; }
+        public int FoodGroupID { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string FoodGroup { get; set; }
+        public string Name { get; set; }
+
     }
 
-    public class Nutrient
+    public class FoodGroup
+    {
+        [Required]
+        [Key]
+        public int FoodGroupID { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Name { get; set; }
+    }
+
+    public class NutrientName
     {
         [Required]
         [Key]
         public int NutrientID { get; set; }
 
         [Required]
-        public int FoodID { get; set; }
+        public string Unit { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string NutrientName { get; set; }
-
-        public float NutrientValue { get; set; }
-
-        //public string Unit { get; set; }
+        public string Name { get; set; }
     }
 
-    public class YieldAmount
+    public class NutrientAmount
     {
-        [Required]
-        [Key]
-        public int YieldAmountID { get; set; }
-
         [Required]
         public int FoodID { get; set; }
 
-        public float Amount { get; set; }
+        [Required]
+        public int NutrientID { get; set; }
 
-        //public string Unit { get; set; }
+        [Required]
+        public float Value { get; set; }
+    }
+
+    public class YieldName
+    {
+        [Required]
+        [Key]
+        public int YieldID { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+    }
+
+    [Keyless]
+    public class YieldAmount
+    {
+        [Required]
+        public int FoodID { get; set; }
+
+        [Required]
+        public int YieldID { get; set; }
+
+        [Required]
+        public float Amount { get; set; }
     }
 }

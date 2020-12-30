@@ -11,6 +11,7 @@ namespace backend.Controllers
     public class FoodController : Controller
     {
         private readonly ApplicationDbContext _db;
+        public CsvImporter _csvImporter = new CsvImporter();
 
         public FoodController(ApplicationDbContext db)
         {
@@ -22,7 +23,7 @@ namespace backend.Controllers
         [HttpGet("fooditem")]
         public async Task<ActionResult<List<FoodItem>>> GetFoodItems()
         {
-            return await _db.FoodItems.AsNoTracking().ToListAsync();
+            return _csvImporter.ImportFoodItems();
         }
 
         [HttpGet("fooditem/{id}")]
@@ -39,15 +40,15 @@ namespace backend.Controllers
         // Nutrient:
 
         [HttpGet("nutrient")]
-        public async Task<ActionResult<List<Nutrient>>> GetNutrients()
+        public async Task<ActionResult<List<NutrientName>>> GetNutrients()
         {
-           return await _db.Nutrients.AsNoTracking().ToListAsync();
+           return await _db.NutrientNames.AsNoTracking().ToListAsync();
         }
 
         [HttpGet("nutrient/{id}")]
-        public async Task<ActionResult<Nutrient>> GetNutrient(int id)
+        public async Task<ActionResult<NutrientName>> GetNutrient(int id)
         {
-            Nutrient nutrient = await _db.Nutrients.Where(nutrient => nutrient.NutrientID == id).FirstOrDefaultAsync();
+            NutrientName nutrient = await _db.NutrientNames.Where(nutrient => nutrient.NutrientID == id).FirstOrDefaultAsync();
 
             if (nutrient == null)
                 return BadRequest("Nutrient does not exist");
@@ -64,14 +65,14 @@ namespace backend.Controllers
         }
 
         [HttpGet("yieldamount/{id}")]
-        public async Task<ActionResult<YieldAmount>> GetYieldAmount(int id)
+        public async Task<ActionResult<YieldName>> GetYieldAmount(int id)
         {
-            YieldAmount yieldAmount = await _db.YieldAmounts.Where(y => y.YieldAmountID == id).FirstOrDefaultAsync();
+            YieldName yieldName = await _db.YieldNames.Where(y => y.YieldID == id).FirstOrDefaultAsync();
 
-            if (yieldAmount == null)
+            if (yieldName == null)
                 return BadRequest("Nutrient does not exist");
 
-            return yieldAmount;
+            return yieldName;
         }
     }
 }

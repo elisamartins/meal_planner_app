@@ -19,9 +19,10 @@ namespace backend.Models
         public DbSet<RecipeItem> RecipeItems { get; set; }
         public DbSet<MealPlan> MealPlans { get; set; }
         public DbSet<FoodEntry> FoodEntries { get; set; }
-        public DbSet<Nutrient> Nutrients { get; set; }
+        public DbSet<NutrientName> NutrientNames { get; set; }
+        public DbSet<YieldAmount> NutrientAmount { get; set; }
+        public DbSet<YieldName> YieldNames { get; set; }
         public DbSet<YieldAmount> YieldAmounts { get; set; }
-        
 
     }
 }

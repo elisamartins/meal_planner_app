@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "CsvHelper/19.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/CsvHelper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/CsvHelper.dll": {}
+        }
+      },
       "EntityFramework/6.4.4": {
         "type": "package",
         "dependencies": {
@@ -763,6 +775,26 @@
     }
   },
   "libraries": {
+    "CsvHelper/19.0.0": {
+      "sha512": "vUHF8wPOVvdtUQ4sXQI62jEIGcz5p7MG3Qf4Hazg+3EZQFh+UoTASEG0a1tsGmhNsHZ/Y+qRO+SgLMZO8jNcSg==",
+      "type": "package",
+      "path": "csvhelper/19.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "csvhelper.19.0.0.nupkg.sha512",
+        "csvhelper.nuspec",
+        "lib/net45/CsvHelper.dll",
+        "lib/net45/CsvHelper.xml",
+        "lib/net47/CsvHelper.dll",
+        "lib/net47/CsvHelper.xml",
+        "lib/netstandard2.0/CsvHelper.dll",
+        "lib/netstandard2.0/CsvHelper.xml",
+        "lib/netstandard2.1/CsvHelper.dll",
+        "lib/netstandard2.1/CsvHelper.xml"
+      ]
+    },
     "EntityFramework/6.4.4": {
       "sha512": "yj1+/4tci7Panu3jKDHYizxwVm0Jvm7b7m057b5h4u8NUHGCR8WIWirBTw+8EptRffwftIWPBeIRGNKD1ewEMQ==",
       "type": "package",
@@ -2193,6 +2225,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CsvHelper >= 19.0.0",
       "EntityFramework >= 6.4.4",
       "Microsoft.EntityFrameworkCore >= 5.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.1",
@@ -2210,11 +2243,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Élisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\Élisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\Élisa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\obj\\",
+      "outputPath": "C:\\Users\\Élisa\\Desktop\\Projets\\meal_planner_app\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -2247,6 +2280,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "CsvHelper": {
+            "target": "Package",
+            "version": "[19.0.0, )"
+          },
           "EntityFramework": {
             "target": "Package",
             "version": "[6.4.4, )"
