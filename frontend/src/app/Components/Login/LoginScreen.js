@@ -1,8 +1,11 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
   View,
   Image,
+  FlatList,
+  Text,
   TextInput,
   Button,
   StyleSheet
@@ -21,8 +24,32 @@ const styles = StyleSheet.create({
 });
 
 const LoginScreen = ({ navigation }) => {
+
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('http://192.168.0.170:5000/fooditem')
+      .then((response) => response.json())
+      .then((json) => {setData(json); console.log("yoo")})
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+
+
   return (
     <View style={styles.container}>
+
+{isLoading ? <ActivityIndicator/> : (
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <Text>{item.name}</Text>
+          )}
+        />
+      )}
+
+
       <Image
         style={styles.logo}
         source={require('../../assets/logo.png')}

@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj": {}
+    "C:\\Users\\elisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj": {
+    "C:\\Users\\elisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\elisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\Élisa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Élisa\\Desktop\\PROJETS\\meal_planner_app\\backend\\obj\\",
+        "projectPath": "C:\\Users\\elisa\\Desktop\\Projets\\meal_planner_app\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\elisa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elisa\\Desktop\\Projets\\meal_planner_app\\backend\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Élisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\elisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

@@ -23,6 +23,7 @@ namespace backend.Controllers
         [HttpGet("user")]
         public async Task<ActionResult<List<User>>> GetUsers()
         {
+            Console.WriteLine("getting user");
             List<User> users = await _db.Users.AsNoTracking().ToListAsync();
 
             return users;
