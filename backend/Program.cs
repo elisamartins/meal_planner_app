@@ -24,7 +24,7 @@ namespace backend
                     webBuilder
                         .UseKestrel()
                         .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseUrls("http://localhost:5000", "http://192.168.0.170:5000")
+                        .UseUrls("http://localhost:5000", "http://192.168.0.158:5000")
                         .UseStartup<Startup>()
                         .UseIISIntegration()
                         .UseStartup<Startup>();

@@ -11,7 +11,6 @@ namespace backend.Controllers
     public class FoodController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public CsvImporter _csvImporter = new CsvImporter();
 
         public FoodController(ApplicationDbContext db)
         {
@@ -23,7 +22,7 @@ namespace backend.Controllers
         [HttpGet("fooditem")]
         public async Task<ActionResult<List<FoodItem>>> GetFoodItems()
         {
-            return _csvImporter.ImportFoodItems();
+            return await _db.FoodItems.ToListAsync();
         }
 
         [HttpGet("fooditem/{id}")]

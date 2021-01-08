@@ -1,21 +1,19 @@
 import 'react-native-gesture-handler';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   View,
   Image,
-  FlatList,
-  Text,
   TextInput,
   Button,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    alignItems:'center',
-    justifyContent:'center'
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logo: {
     width: 250,
@@ -23,47 +21,36 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginScreen = ({ navigation }) => {
 
+const LoginScreen = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('http://192.168.0.170:5000/fooditem')
+    fetch('http://192.168.0.158:5000/fooditem')
       .then((response) => response.json())
-      .then((json) => {setData(json); console.log("yoo")})
+      .then((json) => { setData(json); })
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
-
+    .finally(() => setLoading(false));
+}, []);
+  
+  global.foodItems = data;
+  console.log(global.foodItems)
 
   return (
     <View style={styles.container}>
-
-{isLoading ? <ActivityIndicator/> : (
-        <FlatList
-          data={data}
-          renderItem={({ item }) => (
-            <Text>{item.name}</Text>
-          )}
-        />
-      )}
-
-
-      <Image
-        style={styles.logo}
-        source={require('../../assets/logo.png')}
-      />
+      {isLoading ? <ActivityIndicator /> : (
+        <View>
+      <Image style={styles.logo} source={require('../../assets/logo.png')} />
       <TextInput placeholder="Username" />
-      <TextInput placeholder="Password"/>
-       <Button
-      title="Se connecter"
-      onPress={() =>
-        navigation.navigate('Home')
-      }
-    />
+      <TextInput placeholder="Password" />
+      <Button
+        title="Se connecter"
+        onPress={() => navigation.navigate('Home')}
+          />
+          </View>
+      )}
     </View>
-   
   );
 };
 export default LoginScreen;

@@ -20,7 +20,7 @@ namespace backend.Controllers
             _db = db;
         }
         // GET: api/<UsersController>
-        [HttpGet("user")]
+        [HttpGet]
         public async Task<ActionResult<List<User>>> GetUsers()
         {
             Console.WriteLine("getting user");
@@ -29,7 +29,7 @@ namespace backend.Controllers
             return users;
         }
 
-        [HttpGet("user/{username}")]
+        [HttpGet("{username}")]
         public async Task<ActionResult<User>> GetUser(string username)
         {
             User user = await _db.Users.Where(user => user.Username == username).FirstOrDefaultAsync();

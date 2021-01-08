@@ -1,13 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 import 'react-native-gesture-handler';
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, {  } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomIcon from '../../../CustomIcon'
 import RecipeScreen from './Recipe/RecipeScreen'
@@ -33,8 +25,11 @@ export function normalize(size) {
 
 const Tab = createBottomTabNavigator();
 
+
 const HomeScreen: () => React$Node = () => {
+
   return (
+    
       <Tab.Navigator
       
       screenOptions={({ route }) => ({
@@ -47,9 +42,8 @@ const HomeScreen: () => React$Node = () => {
               iconName = "list";
             } else if (route.name === 'Recipe') {
               iconName = "recipe";
-            }
-
-            // You can return any component that you like here!
+          }
+          
           return <CustomIcon name={iconName} size={size} color={color} />;
           },
         })}
@@ -64,8 +58,8 @@ const HomeScreen: () => React$Node = () => {
       >
         <Tab.Screen 
           name="GroceryList"
-          component={GroceryListScreen}
-          options={{ title: 'Épicerie' }}
+        component={GroceryListScreen}
+          options={{ title: 'Épicerie'}}
         />
         <Tab.Screen
           name="Planner"
@@ -78,7 +72,6 @@ const HomeScreen: () => React$Node = () => {
           options={{ title: 'Recettes' }}
         />
       </Tab.Navigator>
-
   );
 };
 

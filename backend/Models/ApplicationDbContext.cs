@@ -1,16 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
+﻿using CsvHelper;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace backend.Models
 {
     public class ApplicationDbContext : DbContext
     {
-
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
 
         }
+
+        public CsvImporter _csvImporter = new CsvImporter();
         public DbSet<User> Users { get; set; }
         public DbSet<FoodItem> FoodItems { get; set; }
         public DbSet<GroceryList> GroceryLists { get; set; }
@@ -24,5 +28,10 @@ namespace backend.Models
         public DbSet<YieldName> YieldNames { get; set; }
         public DbSet<YieldAmount> YieldAmounts { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            List<FoodItem> foodItems = _csvImporter.ImportFoodItems();
+            modelBuilder.Entity<FoodItem>().HasData(foodItems);
+        }
     }
 }
