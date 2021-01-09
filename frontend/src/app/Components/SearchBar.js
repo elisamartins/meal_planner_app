@@ -1,21 +1,19 @@
 import 'react-native-gesture-handler';
-import CheckBox from '@react-native-community/checkbox'
 import React, { useState } from 'react';
 import {
-  ActivityIndicator,
-  Divider,
-  FlatList,
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  SectionList,
-  TextInput,
-  View,
+    FlatList,
+    StyleSheet,
+    Text,
+    SafeAreaView,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 const SearchBar = () => {
     const [query, setQuery] = useState('');
     const [foodItems, setFoodItems] = useState([global.foodItems]);
+    const onPress = () => console.log("pressed");
 
     const handleSearch = text => {
         setFoodItems(
@@ -59,7 +57,10 @@ const SearchBar = () => {
                 }
         
                     data={foodItems}
-                    renderItem={({ item }) => (<Text>{item.name}</Text>)} />
+                    renderItem={({ item }) => (
+                        <TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>
+                        )
+                    } />
       
             </View>
 
@@ -69,7 +70,9 @@ const SearchBar = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    padding: 5,
+    
   },
 });
 

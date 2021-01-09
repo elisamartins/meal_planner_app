@@ -5,12 +5,10 @@ import SearchBar from './SearchBar'
 import {
   ActivityIndicator,
   Divider,
-  FlatList,
   StyleSheet,
   Text,
   SafeAreaView,
   SectionList,
-  TextInput,
   View,
 } from "react-native";
 
@@ -38,9 +36,9 @@ const GroceryListScreen = () => {
     fetch('http://192.168.0.158:5000/groceryList/1')
       .then((response) => response.json())
       .then((json) => {
-        setGroceryList(json); console.log("HI");
+        setGroceryList(json);
       })
-      .catch((error) => console.error(error))
+      .catch((error) => console.error("error"))
       .finally(() => {
         setFormattedGroceryList(groceryList.categories.map((data) => {
           return {
