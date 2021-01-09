@@ -40,29 +40,18 @@ const GroceryListScreen = () => {
       .then((json) => {
         setGroceryList(json); console.log("HI");
       })
-      .then(
+      .catch((error) => console.error(error))
+      .finally(() => {
         setFormattedGroceryList(groceryList.categories.map((data) => {
           return {
             title: data.category,
             data: data.items.map(i => i.foodName),
           }
         })
-      ))
-      .catch((error) => console.error(error))
-    .finally(() => setLoading(false));
+        );
+        setLoading(false);
+  })
   }, []);
-
-  const [query, setQuery] = useState('');
-  const [foodItems, setFoodItems] = useState([global.foodItems]);
-
-  const handleSearch = text => {
-    setFoodItems(global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 5));
-    setQuery(text);
-  };
-  
-  const contains = ({ name }, query) => {
-    return name.toLowerCase().startsWith(query) ? true : false;
-  }
 
   return (
     <View style={styles.container}>
