@@ -39,13 +39,15 @@ const GroceryListScreen = () => {
       .then((response) => response.json())
       .then((json) => {
         setGroceryList(json); console.log("HI");
+      })
+      .then(
         setFormattedGroceryList(groceryList.categories.map((data) => {
           return {
             title: data.category,
             data: data.items.map(i => i.foodName),
           }
-        }));
-      })
+        })
+      ))
       .catch((error) => console.error(error))
     .finally(() => setLoading(false));
   }, []);

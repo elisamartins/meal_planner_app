@@ -18,7 +18,10 @@ const SearchBar = () => {
     const [foodItems, setFoodItems] = useState([global.foodItems]);
 
     const handleSearch = text => {
-        setFoodItems(global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 5));
+        setFoodItems(
+            text == "" ?
+            [] : global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 5)
+        );
         setQuery(text);
     };
   
@@ -67,17 +70,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 5
-  },
-
-  header: {
-    marginTop: 10,
-  },
-  
-  item: {
-    flex: 1,
-    flexDirection: 'row',
-    marginVertical: 2,
-    alignItems: 'center',
   },
 });
 
