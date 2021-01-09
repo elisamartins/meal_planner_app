@@ -28,6 +28,25 @@ namespace backend.Models
             }
         }
 
+        public List<FoodGroup> ImportFoodGroups()
+        {
+            try
+            {
+
+                using (var reader = new StreamReader("../data/cleaned_data/food_group.csv"))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    return csv.GetRecords<FoodGroup>().ToList();
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
 
     }
 }

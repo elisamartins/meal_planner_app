@@ -32,10 +32,6 @@ namespace backend.Models
         [Required]
         public int GroceryListID { get; set; }
 
-        public float Amount { get; set; }
-
-        public string Unit { get; set; }
-
         public bool Checked { get; set; }
     }
 }

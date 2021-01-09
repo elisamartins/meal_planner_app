@@ -24,6 +24,19 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FoodGroups",
+                columns: table => new
+                {
+                    FoodGroupID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodGroups", x => x.FoodGroupID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FoodItems",
                 columns: table => new
                 {
@@ -45,8 +58,6 @@ namespace backend.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FoodID = table.Column<int>(type: "INTEGER", nullable: false),
                     GroceryListID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Amount = table.Column<float>(type: "REAL", nullable: false),
-                    Unit = table.Column<string>(type: "TEXT", nullable: true),
                     Checked = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -163,39 +174,119 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2, 22, "Soufflé au fromage" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 1, "Produits laitiers et d'oeufs\r\n" });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5293, 14, "Boissons gazeuses, chocolat" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 25, "Grignotises" });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5292, 14, "Boisson pour sportifs, saveur de fruits, hypocalorique, prête-à-boire" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 21, "Aliments prêts-à-manger" });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5291, 14, "Thé instantané, sucré, saveur de citron, poudre, décaféiné" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 20, "Céréales, grains et pâtes" });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5290, 14, "Thé instantané, non sucré, poudre, décaféiné" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 19, "Sucreries" });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5288, 14, "Boissons gazeuses, cola" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 18, "Produits de boulangerie" });
 
             migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5287, 14, "Boisson au jus, légumes et fruits" });
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 17, "Ageau, veau et gibier" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 16, "Légumineuses et produits de légumineuses" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 15, "Produits de poissons, mollusques et crustacés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 14, "Boissons" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 13, "Produits de boeuf" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 22, "Mets composés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 11, "Légumes et produits végétaux" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 10, "Produits de porc" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 9, "Fruits et jus de fruits" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 8, "Céréales à déjeuner" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 7, "Saucisses et viandes froides" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 6, "Potages et sauces" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 5, "Produits de volaille" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 4, "Matières grasses et huiles" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 3, "Aliments pour bébés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 2, "Épices et fines herbes" });
+
+            migrationBuilder.InsertData(
+                table: "FoodGroups",
+                columns: new[] { "FoodGroupID", "Name" },
+                values: new object[] { 12, "Noix et graines" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -205,17 +296,47 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5287, 14, "Boisson au jus, légumes et fruits" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5288, 14, "Boissons gazeuses, cola" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5293, 14, "Boissons gazeuses, chocolat" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5291, 14, "Thé instantané, sucré, saveur de citron, poudre, décaféiné" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5292, 14, "Boisson pour sportifs, saveur de fruits, hypocalorique, prête-à-boire" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 5285, 11, "Pomme de terre, blanche, chair et pelure, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5294, 14, "Non alcoolisé, vin" });
+                values: new object[] { 5290, 14, "Thé instantané, non sucré, poudre, décaféiné" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 5284, 11, "Pomme de terre, Russet, chair et pelure, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5277, 11, "Pomme de terre, purée, faite maison, préparée avec lait 2% M.G. et margarine" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -231,11 +352,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 5278, 11, "Pomme de terre, purée, faite maison, préparée avec lait 2% M.G." });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5277, 11, "Pomme de terre, purée, faite maison, préparée avec lait 2% M.G. et margarine" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -260,17 +376,22 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5294, 14, "Non alcoolisé, vin" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 5283, 9, "Rowal, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5269, 14, "Boisson, mélange à saveur, chocolat, poudre, avec lait 2% M.G." });
+                values: new object[] { 5295, 14, "Chocolat chaud, onctueux, mélange sec, préparé avec eau" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5295, 14, "Chocolat chaud, onctueux, mélange sec, préparé avec eau" });
+                values: new object[] { 5316, 4, "Shortening, domestique, composite" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -370,17 +491,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5316, 4, "Shortening, domestique, composite" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5336, 6, "Soupe, consommé ou bouillon, boeuf, faite maison" });
+                values: new object[] { 5269, 14, "Boisson, mélange à saveur, chocolat, poudre, avec lait 2% M.G." });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 5268, 14, "Boisson, mélange à saveur, caroube, poudre, avec lait 2% M.G." });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 5253, 6, "Soupe, NISSIN, OODLES OF NOODLES TOP RAMEN nouilles ramen, saveur orientale, sèches, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -545,7 +666,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5253, 6, "Soupe, NISSIN, OODLES OF NOODLES TOP RAMEN nouilles ramen, saveur orientale, sèches, eau ajoutée" });
+                values: new object[] { 5336, 6, "Soupe, consommé ou bouillon, boeuf, faite maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -600,7 +721,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5338, 6, "Soupe, minestrone, prête-à-servir, réduite en sodium" });
+                values: new object[] { 5355, 6, "Sauce chili, piments forts, chili, verts, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -875,7 +996,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5355, 6, "Sauce chili, piments forts, chili, verts, conserve" });
+                values: new object[] { 5199, 8, "Céréale, chaude, gruau, instantanée: fruits sauvages, préparée, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -1035,7 +1156,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5199, 8, "Céréale, chaude, gruau, instantanée: fruits sauvages, préparée, Quaker" });
+                values: new object[] { 5338, 6, "Soupe, minestrone, prête-à-servir, réduite en sodium" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -1045,7 +1166,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5195, 8, "Céréale, chaude, avoine (gruau), instantanée: Biscuits et Crème, préparée, Quaker" });
+                values: new object[] { 5179, 5, "Dindon, jeune, aile, viande seulement, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -1485,7 +1606,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5458, 4, "Vinaigrette, crémeuse, à base de crème sure et/ou babeurre et/ou huile, réduite en Calories" });
+                values: new object[] { 5195, 8, "Céréale, chaude, avoine (gruau), instantanée: Biscuits et Crème, préparée, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -1700,7 +1821,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5179, 5, "Dindon, jeune, aile, viande seulement, cru" });
+                values: new object[] { 5458, 4, "Vinaigrette, crémeuse, à base de crème sure et/ou babeurre et/ou huile, réduite en Calories" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -1935,7 +2056,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5462, 5, "Bacon, dinde, cuit" });
+                values: new object[] { 5474, 1, "Fromage monterey, faible en gras" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -2820,7 +2941,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4781, 17, "Agneau, canadien, coupes diverses, maigre et gras, 3mm (1/8\") paré, cru" });
+                values: new object[] { 5462, 5, "Bacon, dinde, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -3100,7 +3221,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5474, 1, "Fromage monterey, faible en gras" });
+                values: new object[] { 4781, 17, "Agneau, canadien, coupes diverses, maigre et gras, 3mm (1/8\") paré, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -3710,12 +3831,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5868, 22, "Spaghetti sans viande, conserve" });
+                values: new object[] { 4780, 14, "Boisson à base de plantes, riz, enrichie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4780, 14, "Boisson à base de plantes, riz, enrichie" });
+                values: new object[] { 4733, 6, "Sauce, fromage, mélange sec, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -3930,22 +4051,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4184, 19, "Bonbons, tablettes, Oh Henry!" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4137, 19, "Bonbons, tablettes, Bit-O-Honey candy chews" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4135, 19, "Bonbons, tablettes, Almond Joy" });
+                values: new object[] { 4136, 19, "Bonbons, tablettes, Alpine White avec amandes" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4108, 25, "Grignotises, mélange oriental, base de riz" });
+                values: new object[] { 4135, 19, "Bonbons, tablettes, Almond Joy" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -3985,17 +4101,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4110, 25, "Grignotises, maïs soufflé à l'air" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4089, 25, "Grignotises, base de maïs, extrudé, cornets, nature" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4087, 25, "Grignotises, base de maïs, extrudé, croustilles, nature" });
+                values: new object[] { 4108, 25, "Grignotises, mélange oriental, base de riz" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4088, 25, "Grignotises, base de maïs, extrudé, croustilles, barbecue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4035,12 +4151,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4088, 25, "Grignotises, base de maïs, extrudé, croustilles, barbecue" });
+                values: new object[] { 4078, 18, "Pâté, à la dinde, commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4136, 19, "Bonbons, tablettes, Alpine White avec amandes" });
+                values: new object[] { 4087, 25, "Grignotises, base de maïs, extrudé, croustilles, nature" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4110, 25, "Grignotises, maïs soufflé à l'air" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4050,7 +4171,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4113, 25, "Grignotises, maïs soufflé, enrobage de caramel, avec arachides" });
+                values: new object[] { 4112, 25, "Grignotises, maïs soufflé, galettes" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4095,12 +4216,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4112, 25, "Grignotises, maïs soufflé, galettes" });
+                values: new object[] { 4125, 25, "Grignotises, galettes de riz brun, sarrasin" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4125, 25, "Grignotises, galettes de riz brun, sarrasin" });
+                values: new object[] { 4124, 25, "Grignotises, galettes de riz brun, nature" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4145,17 +4266,22 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4124, 25, "Grignotises, galettes de riz brun, nature" });
+                values: new object[] { 4113, 25, "Grignotises, maïs soufflé, enrobage de caramel, avec arachides" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4184, 19, "Bonbons, tablettes, Oh Henry!" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4077, 18, "Pâté, au poulet, commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4185, 19, "Bonbons, tablettes, Chunky" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4186, 19, "Bonbons, tablettes / grains (pépites), chocolat au lait, nature" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4590,12 +4716,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4078, 18, "Pâté, à la dinde, commercial" });
+                values: new object[] { 4186, 19, "Bonbons, tablettes / grains (pépites), chocolat au lait, nature" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4077, 18, "Pâté, au poulet, commercial" });
+                values: new object[] { 4289, 19, "Dessert, congelé, crème glacée, fraises" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4605,12 +4731,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4075, 18, "Pâté, de boeuf, commercial" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3925, 18, "Muffin, son davoine (sans farine de blé)" });
+                values: new object[] { 4073, 18, "Pain mollet, petit, nature (aussi semi cuit), commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4650,17 +4771,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3926, 18, "Muffin, son de blé, mélange sec, non préparé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3915, 18, "Muffin, nature, fait maison, avec lait 2%" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3913, 18, "Crème glacée, cornet, type gâteau ou gaufrette" });
+                values: new object[] { 3925, 18, "Muffin, son davoine (sans farine de blé)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3914, 18, "Crème glacée, cornet, sucre, type roulé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4700,27 +4821,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3914, 18, "Crème glacée, cornet, sucre, type roulé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3905, 18, "Muffin anglais, raisins secs-cannelle (pommes cannelle), grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3930, 18, "Crêpe, nature, (inclut au babeurre), congelée, prête-à-chauffer" });
+                values: new object[] { 3913, 18, "Crème glacée, cornet, type gâteau ou gaufrette" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3933, 18, "Crêpe, nature (inclut au babeurre), mélange sec incomplet, non préparé" });
+                values: new object[] { 3904, 18, "Muffin anglais, raisins secs-cannelle (pommes cannelle)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3958, 18, "Tarte, citron, meringue, commerciale" });
+                values: new object[] { 3926, 18, "Muffin, son de blé, mélange sec, non préparé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3931, 18, "Crêpe, nature (inclut au babeurre), mélange sec complet, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4760,17 +4881,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3931, 18, "Crêpe, nature (inclut au babeurre), mélange sec complet, non préparé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3947, 18, "Tarte, cerises, faite maison, 2 croûtes" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3944, 18, "Tarte, crème aux bananes, faite maison" });
+                values: new object[] { 3930, 18, "Crêpe, nature, (inclut au babeurre), congelée, prête-à-chauffer" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3945, 18, "Tarte, bleuets, faite maison, 2 croûtes" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4810,12 +4931,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3945, 18, "Tarte, bleuets, faite maison, 2 croûtes" });
+                values: new object[] { 3933, 18, "Crêpe, nature (inclut au babeurre), mélange sec incomplet, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3904, 18, "Muffin anglais, raisins secs-cannelle (pommes cannelle)" });
+                values: new object[] { 3944, 18, "Tarte, crème aux bananes, faite maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4830,7 +4951,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3875, 18, "Craquelin, blé" });
+                values: new object[] { 3901, 18, "Muffin anglais, nature (aussi levain), grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4870,17 +4991,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3876, 18, "Craquelin, blé, sandwich, avec fromage" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3867, 18, "Craquelin, lait" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3865, 18, "Craquelin, toast melba, seigle (inclus pumpernickel)" });
+                values: new object[] { 3875, 18, "Craquelin, blé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3866, 18, "Craquelin,l toast melbe, blé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4920,7 +5041,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3866, 18, "Craquelin,l toast melbe, blé" });
+                values: new object[] { 3857, 18, "Biscuit, gaufrette, vanille, 12 à 17% gras" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3865, 18, "Craquelin, toast melba, seigle (inclus pumpernickel)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3876, 18, "Craquelin, blé, sandwich, avec fromage" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -4931,16 +5062,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3878, 18, "Craquelin, blé entier" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3879, 18, "Craquelin, farine brute" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3901, 18, "Muffin anglais, nature (aussi levain), grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5035,27 +5156,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3879, 18, "Craquelin, farine brute" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3958, 18, "Tarte, citron, meringue, commerciale" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4075, 18, "Pâté, de boeuf, commercial" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3959, 18, "Tarte, au citron, meringue, faite maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4289, 19, "Dessert, congelé, crème glacée, fraises" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3960, 18, "Tarte, mincemeat, faite maison, 2 croûtes" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3962, 18, "Tarte, pacanes, faite maison" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4048, 18, "Tortilla, prêt-à-cuire /frire, maïs, sans sel" });
+                values: new object[] { 3961, 18, "Tarte, pacanes, commerciale" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5095,17 +5216,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4049, 18, "Tortilla, prêt-à-cuire /frire, farine" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4040, 18, "Craquelin, salé, (aussi huîtres, soda, soupe), non saupoudrés de sel" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4038, 18, "Craquelin, toast melba, nature, sans sel" });
+                values: new object[] { 4048, 18, "Tortilla, prêt-à-cuire /frire, maïs, sans sel" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4039, 18, "Craquelin, salé (aussi huîtres, soda, soupe), faible en sodium" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5145,27 +5266,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4039, 18, "Craquelin, salé (aussi huîtres, soda, soupe), faible en sodium" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4028, 18, "Pain mollet, petit, nature, faite maison, avec lait 2%" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4051, 18, "Biscuit, avoine, (avec raisins secs), commercial, moins de 5g gras/portion" });
+                values: new object[] { 4038, 18, "Craquelin, toast melba, nature, sans sel" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4053, 18, "Gâteau café, fourré à la crème, avec glaçage chocolat" });
+                values: new object[] { 4022, 18, "Crêpe, babeurre, faite maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4073, 18, "Pain mollet, petit, nature (aussi semi cuit), commercial" });
+                values: new object[] { 4049, 18, "Tortilla, prêt-à-cuire /frire, farine" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4052, 18, "Craquelin, salé (aussi huîtres, soda, soupe), faible en gras et sodium" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5205,17 +5326,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4052, 18, "Craquelin, salé (aussi huîtres, soda, soupe), faible en gras et sodium" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4065, 18, "Pain, seigle" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4061, 18, "Biscuit, poudre à pâte, nature/babeurre, congelé, cuit" });
+                values: new object[] { 4051, 18, "Biscuit, avoine, (avec raisins secs), commercial, moins de 5g gras/portion" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4063, 18, "Pain, français ou viennois (aussi levain)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5255,12 +5376,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4063, 18, "Pain, français ou viennois (aussi levain)" });
+                values: new object[] { 4053, 18, "Gâteau café, fourré à la crème, avec glaçage chocolat" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4022, 18, "Crêpe, babeurre, faite maison" });
+                values: new object[] { 4061, 18, "Biscuit, poudre à pâte, nature/babeurre, congelé, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5275,7 +5396,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3987, 18, "Pain mollet, hambourgeois / à hot-dog, réduit en Calories" });
+                values: new object[] { 4017, 18, "Pain, germe de blé, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5315,17 +5436,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3988, 18, "Pain mollet, petit pain empereur (kaiser), dur" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3979, 18, "Pain mollet, petit, aux oeufs" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3974, 18, "Phyllo, pâte" });
+                values: new object[] { 3987, 18, "Pain mollet, hambourgeois / à hot-dog, réduit en Calories" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3975, 18, "Popover, mélange sec, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5365,7 +5486,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3975, 18, "Popover, mélange sec, non préparé" });
+                values: new object[] { 3962, 18, "Tarte, pacanes, faite maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3974, 18, "Phyllo, pâte" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3988, 18, "Pain mollet, petit pain empereur (kaiser), dur" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5376,16 +5507,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3990, 18, "Brioche, cannelle avec raisins secs, commerciale" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3991, 18, "Brioche, cannelle, pâte réfrigérée, avec glaçage" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4017, 18, "Pain, germe de blé, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -5480,17 +5601,22 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3961, 18, "Tarte, pacanes, commerciale" });
+                values: new object[] { 3991, 18, "Brioche, cannelle, pâte réfrigérée, avec glaçage" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3960, 18, "Tarte, mincemeat, faite maison, 2 croûtes" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 4779, 14, "Café infusé, espresso, préparation restaurant" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 4290, 19, "Dessert, congelé, glaces à l'eau, lime" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4291, 19, "Dessert, congelé, pop glacé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -6145,7 +6271,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4733, 6, "Sauce, fromage, mélange sec, non préparé" });
+                values: new object[] { 5868, 22, "Spaghetti sans viande, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -6375,7 +6501,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 4779, 14, "Café infusé, espresso, préparation restaurant" });
+                values: new object[] { 4291, 19, "Dessert, congelé, pop glacé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -7270,7 +7396,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5870, 22, "Lasagne avec viande et sauce, congelée" });
+                values: new object[] { 5882, 15, "Poisson, diable de mer (Mante), autochtone, viande" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -12035,7 +12161,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 5882, 15, "Poisson, diable de mer (Mante), autochtone, viande" });
+                values: new object[] { 3856, 18, "Pâte feuilletée, congelée, prête-à-cuire, cuite" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -12600,7 +12726,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3857, 18, "Biscuit, gaufrette, vanille, 12 à 17% gras" });
+                values: new object[] { 5870, 22, "Lasagne avec viande et sauce, congelée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14380,22 +14506,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3856, 18, "Pâte feuilletée, congelée, prête-à-cuire, cuite" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3855, 18, "Biscuit, sandwich à la vanille, fourré à la crème" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3854, 18, "Biscuit, sandwich avec gaufrettes au sucre, fourré à la crème" });
+                values: new object[] { 3840, 18, "Biscuit, beurre d'arachides, pâte réfrigérée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1610, 9, "Mûres blanche, crue" });
+                values: new object[] { 3853, 18, "Biscuit, sucre, fait maison, avec margarine" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14435,17 +14556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1611, 9, "Nectarine, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1599, 9, "Longan, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1597, 9, "Litchi, séché" });
+                values: new object[] { 1610, 9, "Mûres blanche, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1598, 9, "Mûre de logan, congelée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14485,27 +14606,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1598, 9, "Mûre de logan, congelée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1589, 9, "Citron, jus, frais" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1612, 9, "Oheloberry, cru" });
+                values: new object[] { 1597, 9, "Litchi, séché" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1614, 9, "Olive, mûre, conserve, jumbo à super colossale" });
+                values: new object[] { 1587, 9, "Citron, cru, sans pelure" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1634, 9, "Pêche, moitié ou tranchées, conserve, dans du sirop extra léger, solides et liquide" });
+                values: new object[] { 1611, 9, "Nectarine, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1613, 9, "Olive, mûre, conserve, petite à extra large" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14545,17 +14666,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1613, 9, "Olive, mûre, conserve, petite à extra large" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1624, 9, "Tangerine (mandarine), jus, frais" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1622, 9, "Orange et pamplemousse, jus, conserve" });
+                values: new object[] { 1612, 9, "Oheloberry, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1623, 9, "Tangerine (mandarine), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14595,27 +14716,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1623, 9, "Tangerine (mandarine), crue" });
+                values: new object[] { 1614, 9, "Olive, mûre, conserve, jumbo à super colossale" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1635, 9, "Pêche, moitié ou tranchées, conserve, dans du sirop épais, solides et liquide" });
+                values: new object[] { 1622, 9, "Orange et pamplemousse, jus, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1587, 9, "Citron, cru, sans pelure" });
+                values: new object[] { 1634, 9, "Pêche, moitié ou tranchées, conserve, dans du sirop extra léger, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1585, 9, "Kiwi, cru" });
+                values: new object[] { 1586, 9, "Kumquat, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1562, 9, "Pamplemousse, rose ou rouge, toutes régions, cru" });
+                values: new object[] { 1584, 9, "Jujube (datte chinoise), sec" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14655,17 +14776,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1563, 9, "Pamplemousse rose ou rouge, californie ou arizona, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1554, 9, "Fruits, cocktail (pêches, poires, abricots, ananas, cerises, raisins), conserve, dans du sirop léger, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1552, 9, "Fruits, cocktail (pêches, poires, abricots, ananas, cerises, raisins), conserve, dans du jus, solides et liquide" });
+                values: new object[] { 1562, 9, "Pamplemousse, rose ou rouge, toutes régions, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1553, 9, "Fruits, cocktail (pêches, poires, abricots, ananas, cerises, raisins), conserve, dans du sirop extra léger, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14705,27 +14826,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1553, 9, "Fruits, cocktail (pêches, poires, abricots, ananas, cerises, raisins), conserve, dans du sirop extra léger, solides et liquide" });
+                values: new object[] { 1544, 9, "Sureau, baie, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1586, 9, "Kumquat, cru" });
+                values: new object[] { 1552, 9, "Fruits, cocktail (pêches, poires, abricots, ananas, cerises, raisins), conserve, dans du jus, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1564, 9, "Pamplemousse, rose ou rouge, floride, cru" });
+                values: new object[] { 1585, 9, "Kiwi, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1566, 9, "Pamplemousse, blanc, floride, cru" });
+                values: new object[] { 1563, 9, "Pamplemousse rose ou rouge, californie ou arizona, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1584, 9, "Jujube (datte chinoise), sec" });
+                values: new object[] { 1565, 9, "Pamplemousse, blanc, californie, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14765,17 +14886,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1565, 9, "Pamplemousse, blanc, californie, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1576, 9, "Raisin, jus, conserve ou bouteille, sans vitamine C ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1574, 9, "Raisin, thompson, sans pépins, conserve, dans l'eau, solides et liquide" });
+                values: new object[] { 1564, 9, "Pamplemousse, rose ou rouge, floride, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1575, 9, "Raisin, thompson sans pépins, conserve, sirop épais, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14815,7 +14936,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1575, 9, "Raisin, thompson sans pépins, conserve, sirop épais, solides et liquide" });
+                values: new object[] { 1566, 9, "Pamplemousse, blanc, floride, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1574, 9, "Raisin, thompson, sans pépins, conserve, dans l'eau, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1635, 9, "Pêche, moitié ou tranchées, conserve, dans du sirop épais, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14826,16 +14957,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1637, 9, "Pêche, épicée, entière, conserve, dans du sirop épais, solides et liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1638, 9, "Pêche, déshydratée (faible en humidité), sulfurée, non cuite" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1702, 9, "Abricot, déshydraté (faible en humidité), sulfuré, non cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14875,17 +14996,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1703, 9, "Abricot, déshydraté (faible en humidité), sulfuré, cuit" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1693, 9, "Poire, asiatique, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1691, 9, "Melon d'eau (pasteque), cru" });
+                values: new object[] { 1702, 9, "Abricot, déshydraté (faible en humidité), sulfuré, non cuit" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1692, 9, "Feijoa, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14925,27 +15046,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1692, 9, "Feijoa, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1683, 9, "Sapote, mamey, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1704, 9, "Banane, crue" });
+                values: new object[] { 1691, 9, "Melon d'eau (pasteque), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1706, 9, "Bleuet, congelé, non sucré" });
+                values: new object[] { 1682, 9, "Sapotille, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1724, 9, "Orange, jus, concentré, congelé, non dilué" });
+                values: new object[] { 1703, 9, "Abricot, déshydraté (faible en humidité), sulfuré, cuit" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1705, 9, "Bleuet, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -14985,17 +15106,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1705, 9, "Bleuet, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1716, 9, "Pamplemousse, jus, conserve, sans sucre ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1714, 9, "Pamplemousse, rose, rouge ou blanc, toutes régions, cru" });
+                values: new object[] { 1704, 9, "Banane, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1715, 9, "Pamplemousse, blanc, toutes régions, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15035,12 +15156,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1715, 9, "Pamplemousse, blanc, toutes régions, cru" });
+                values: new object[] { 1706, 9, "Bleuet, congelé, non sucré" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1682, 9, "Sapotille, crue" });
+                values: new object[] { 1714, 9, "Pamplemousse, rose, rouge ou blanc, toutes régions, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15055,7 +15176,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1656, 9, "Ananas, en morceaux, congelés, sucrés" });
+                values: new object[] { 1679, 9, "Rhubarbe, congelée, cuite, sucre ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15095,17 +15216,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1657, 9, "Ananas, jus, conserve, vitamine C ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1648, 9, "Poire, moitié, conserve, dans du sirop extra épais, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1646, 9, "Poire, moitié, conserve, dans du sirop extra léger, solides et liquide" });
+                values: new object[] { 1656, 9, "Ananas, en morceaux, congelés, sucrés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1647, 9, "Poire, moitié, conserve, dans du sirop épais, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15145,7 +15266,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1647, 9, "Poire, moitié, conserve, dans du sirop épais, solides et liquide" });
+                values: new object[] { 1638, 9, "Pêche, déshydratée (faible en humidité), sulfurée, non cuite" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1646, 9, "Poire, moitié, conserve, dans du sirop extra léger, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1657, 9, "Ananas, jus, conserve, vitamine C ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15156,16 +15287,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1659, 9, "Ananas, jus, concentré, congelé, dilué" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1660, 9, "Pitanga, (cerise de surinam), crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1679, 9, "Rhubarbe, congelée, cuite, sucre ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15260,7 +15381,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1544, 9, "Sureau, baie, crue" });
+                values: new object[] { 1660, 9, "Pitanga, (cerise de surinam), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15280,7 +15401,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1372, 8, "Céréale, prête-à-manger, Raisin Bran, Kellogg's" });
+                values: new object[] { 1540, 9, "Canneberge et orange, relish, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15320,17 +15441,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1374, 8, "Céréale, prête-à-manger, Plein de raisons secs: son et raisins secs, Choix du Président" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1338, 8, "Céréale, prête-à-manger, Heritage Flakes, Nature's Path" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1336, 8, "Céréale, prête-à-manger, Croque Nature: raisins avec amandes, faible en gras, Quaker" });
+                values: new object[] { 1372, 8, "Céréale, prête-à-manger, Raisin Bran, Kellogg's" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1337, 8, "Céréale, prête-à-manger, Croque Nature: raisins secs et amandes, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15370,27 +15491,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1337, 8, "Céréale, prête-à-manger, Croque Nature: raisins secs et amandes, Quaker" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1326, 8, "Céréale, prête-à-manger, granola: bleuets, légère, Rogers" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1375, 8, "Céréale, prête-à-manger, flax plus: son de raisins, Nature's Path" });
+                values: new object[] { 1336, 8, "Céréale, prête-à-manger, Croque Nature: raisins avec amandes, faible en gras, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1380, 8, "Céréale, prête-à-manger, bouchées de blé filamenté, Barbara' Bakery" });
+                values: new object[] { 1325, 8, "Céréale, prête-à-manger, Flax Plus: baie rouges croustillantes, Nature's Path" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1415, 8, "Céréale, chaude, avoine (gruau), instantanée: pommes et cannelle, sèche, Quaker" });
+                values: new object[] { 1374, 8, "Céréale, prête-à-manger, Plein de raisons secs: son et raisins secs, Choix du Président" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1378, 8, "Céréale, prête-à-manger, Reese Puffs (Beurre d'arachide), General Mills" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15430,17 +15551,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1378, 8, "Céréale, prête-à-manger, Reese Puffs (Beurre d'arachide), General Mills" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1399, 8, "Céréale, chaude, crème de blé, rapide, sèche" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1397, 8, "Céréale, chaude, crème de blé, nature, sèche" });
+                values: new object[] { 1375, 8, "Céréale, prête-à-manger, flax plus: son de raisins, Nature's Path" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1398, 8, "Céréale, chaude, crème de blé, nature, préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15480,12 +15601,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1398, 8, "Céréale, chaude, crème de blé, nature, préparée" });
+                values: new object[] { 1380, 8, "Céréale, prête-à-manger, bouchées de blé filamenté, Barbara' Bakery" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1325, 8, "Céréale, prête-à-manger, Flax Plus: baie rouges croustillantes, Nature's Path" });
+                values: new object[] { 1397, 8, "Céréale, chaude, crème de blé, nature, sèche" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15500,7 +15621,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1260, 8, "Céréale, prête-à-manger, son de blé 100%, Post" });
+                values: new object[] { 1305, 8, "Céréale, prête-à-manger, flocons de maïs au miel, Nature's Path" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15540,17 +15661,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1262, 8, "Céréale, prête-à-manger, Croc-en-cannelle, General Mills" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1248, 8, "Céréale, prête-à-manger, Froot Loops, Kellogg's" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1244, 8, "Céréale, prête-à-manger, Muffets: blé filamenté, Quaker" });
+                values: new object[] { 1260, 8, "Céréale, prête-à-manger, son de blé 100%, Post" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1247, 8, "Céréale, prête-à-manger, Shreddies, Post" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15590,7 +15711,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1247, 8, "Céréale, prête-à-manger, Shreddies, Post" });
+                values: new object[] { 1231, 8, "Céréale, prête-a-manger, Alpha-bits, Post" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1244, 8, "Céréale, prête-à-manger, Muffets: blé filamenté, Quaker" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1262, 8, "Céréale, prête-à-manger, Croc-en-cannelle, General Mills" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15601,16 +15732,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1264, 8, "Céréale, prête-à-manger, Just Right, Kellogg's" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1265, 8, "Céréale, prête-à-manger, Rice Krispies, Kellogg's" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1305, 8, "Céréale, prête-à-manger, flocons de maïs au miel, Nature's Path" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15705,27 +15826,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1265, 8, "Céréale, prête-à-manger, Rice Krispies, Kellogg's" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1415, 8, "Céréale, chaude, avoine (gruau), instantanée: pommes et cannelle, sèche, Quaker" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1724, 9, "Orange, jus, concentré, congelé, non dilué" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1416, 8, "Céréale, chaude, avoine (gruau), instantanée: pommes et cannelle, préparée, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1725, 9, "Orange, jus, concentré, congelé, dilué" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1419, 8, "Céréale, chaude, avoine (gruau), instantanée: cannelle et épices, sèche, Quaker" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1421, 8, "Céréale, chaude, avoine (gruau), instantanée: érable et cassonade, sèche, Quaker" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1518, 9, "Bleuet, conserve, sirop épais, solides et liquide" });
+                values: new object[] { 1420, 8, "Céréale, chaude, avoine (gruau), instantanée: cannelle et épices, préparée, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15765,17 +15886,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1519, 9, "Bleuet, congélé, sucré" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1510, 9, "Abricot, congélé, sucré" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1508, 9, "Abricot, séché, sulfuré, cuit sans sucre" });
+                values: new object[] { 1518, 9, "Bleuet, conserve, sirop épais, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1509, 9, "Abricot, séché, sulfuré, cuit, sucre ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15815,27 +15936,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1509, 9, "Abricot, séché, sulfuré, cuit, sucre ajouté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1500, 9, "Abricot, entier, pelé, conserve, dans l'eau, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1520, 9, "Mûre de boysen, conserve, sirop épais, solides et liquide" });
+                values: new object[] { 1508, 9, "Abricot, séché, sulfuré, cuit sans sucre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1522, 9, "Fruit à pain, cru" });
+                values: new object[] { 1499, 9, "Abricot, moitié avec pelure, conserve, dans l'eau, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1540, 9, "Canneberge et orange, relish, conserve" });
+                values: new object[] { 1519, 9, "Bleuet, congélé, sucré" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1521, 9, "Mûre de boysen, congélée, non sucrée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15875,17 +15996,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1521, 9, "Mûre de boysen, congélée, non sucrée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1532, 9, "Cerise sucrée (guigne), conserve, dans l'eau, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1530, 9, "Cerise sure, rouge, congélée, non sucrée" });
+                values: new object[] { 1520, 9, "Mûre de boysen, conserve, sirop épais, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1531, 9, "Cerise sucrée (guigne), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15925,12 +16046,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1531, 9, "Cerise sucrée (guigne), crue" });
+                values: new object[] { 1522, 9, "Fruit à pain, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1499, 9, "Abricot, moitié avec pelure, conserve, dans l'eau, solides et liquide" });
+                values: new object[] { 1530, 9, "Cerise sure, rouge, congélée, non sucrée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15945,7 +16066,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1466, 8, "Céréale, chaude, crème de blé, instantanée: cassonade et érable, sèche" });
+                values: new object[] { 1496, 9, "Pomme, jus, concentré, congélé, non dilué, sans vitamine C" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -15985,17 +16106,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1467, 8, "Céréale, chaude, crème de blé, instantanée: cassonade et érable, préparée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1439, 8, "Céréale, chaude, avoine (gruau), rapide, sèche, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1437, 8, "Céréale, chaude, avoine (gruau), une minute, sèche, Quaker" });
+                values: new object[] { 1466, 8, "Céréale, chaude, crème de blé, instantanée: cassonade et érable, sèche" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1438, 8, "Céréale, chaude, avoine (gruau), une minute, préparée, Quaker" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16035,7 +16156,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1438, 8, "Céréale, chaude, avoine (gruau), une minute, préparée, Quaker" });
+                values: new object[] { 1421, 8, "Céréale, chaude, avoine (gruau), instantanée: érable et cassonade, sèche, Quaker" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1437, 8, "Céréale, chaude, avoine (gruau), une minute, sèche, Quaker" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1467, 8, "Céréale, chaude, crème de blé, instantanée: cassonade et érable, préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16046,16 +16177,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1471, 8, "Céréale, chaude, crème de blé, instantanée: pomme et cannelle, préparée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1472, 8, "Céréale, prête-à-manger, All Bran Original, Kellogg's" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1496, 9, "Pomme, jus, concentré, congélé, non dilué, sans vitamine C" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16150,7 +16271,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1420, 8, "Céréale, chaude, avoine (gruau), instantanée: cannelle et épices, préparée, Quaker" });
+                values: new object[] { 1472, 8, "Céréale, prête-à-manger, All Bran Original, Kellogg's" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1419, 8, "Céréale, chaude, avoine (gruau), instantanée: cannelle et épices, sèche, Quaker" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1725, 9, "Orange, jus, concentré, congelé, dilué" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16161,16 +16292,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1727, 9, "Tangerine (mandarine), conserve, dans du sirop léger, solides et liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1728, 9, "Pêche, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2019, 11, "Haricots italiens, verts ou jaunes, congelés, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16210,17 +16331,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2020, 11, "Betteraves, conserve, solides et liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2011, 11, "Haricots, petits blancs, secs, germés, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2009, 11, "Haricots, mungo, secs, germés, germes de haricot, bouillis, égouttés" });
+                values: new object[] { 2019, 11, "Haricots italiens, verts ou jaunes, congelés, bouillis, égouttés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2010, 11, "Haricots, mungo, secs, germés, germes de haricot, sautés, sans gras ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16260,27 +16381,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2010, 11, "Haricots, mungo, secs, germés, germes de haricot, sautés, sans gras ajouté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2001, 11, "Haricots communs, secs, germés, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2021, 11, "Betterave, feuilles, crues" });
+                values: new object[] { 2009, 11, "Haricots, mungo, secs, germés, germes de haricot, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2023, 11, "Gourganes (fèves des marais, fava), fraîches, crues" });
+                values: new object[] { 2000, 11, "Bambou, pousses, bouillies, égouttées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2041, 11, "Chou de Chine (pe-tsai), bouilli, égoutté" });
+                values: new object[] { 2020, 11, "Betteraves, conserve, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2022, 11, "Betterave, feuilles, bouillies, égouttées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16320,17 +16441,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2022, 11, "Betterave, feuilles, bouillies, égouttées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2033, 11, "Pétasite commun, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2031, 11, "Pétasite commun, cru" });
+                values: new object[] { 2021, 11, "Betterave, feuilles, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2032, 11, "Pétasite commun, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16370,12 +16491,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2032, 11, "Pétasite commun, bouilli, égoutté" });
+                values: new object[] { 2023, 11, "Gourganes (fèves des marais, fava), fraîches, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2000, 11, "Bambou, pousses, bouillies, égouttées" });
+                values: new object[] { 2031, 11, "Pétasite commun, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16390,7 +16511,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1970, 10, "Porc, longe, milieu, désossé, maigre, grillé" });
+                values: new object[] { 1997, 11, "Margose, fruits, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16430,17 +16551,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1971, 10, "Porc, épaule soc (désossé), maigre et gras, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1962, 10, "Porc, longe, filet, maigre, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1944, 10, "Porc, longe, filet, maigre et gras, rôti" });
+                values: new object[] { 1970, 10, "Porc, longe, milieu, désossé, maigre, grillé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1961, 10, "Porc, longe, filet, maigre et gras, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16480,7 +16601,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1961, 10, "Porc, longe, filet, maigre et gras, grillé" });
+                values: new object[] { 1936, 10, "Porc, salé, bacon, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1944, 10, "Porc, longe, filet, maigre et gras, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1971, 10, "Porc, épaule soc (désossé), maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16491,16 +16622,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1973, 10, "Porc, épaule, soc (désossé), maigre, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1974, 10, "Porc, épaule, soc (désossé), maigre, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1997, 11, "Margose, fruits, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16595,27 +16716,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1974, 10, "Porc, épaule, soc (désossé), maigre, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2041, 11, "Chou de Chine (pe-tsai), bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1935, 10, "Porc, rognon, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2042, 11, "Cardon, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1936, 10, "Porc, salé, bacon, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2043, 11, "Cardon, bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2045, 11, "Manioc, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2108, 11, "Kanpyo (tranches de courge séchées)" });
+                values: new object[] { 2044, 11, "Carotte, conserve, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16655,17 +16776,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2109, 11, "Chou-rave, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2100, 11, "Topinambour, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2098, 11, "Doliques d'Égypte, crus" });
+                values: new object[] { 2108, 11, "Kanpyo (tranches de courge séchées)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2099, 11, "Doliques d'Égypte, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16705,27 +16826,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2099, 11, "Doliques d'Égypte, bouillis, égouttés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2090, 11, "Scarole ou endive (cichorium endivia), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2110, 11, "Chou-rave, bouilli, égoutté" });
+                values: new object[] { 2098, 11, "Doliques d'Égypte, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2112, 11, "Chou gras (chenopode blanc), bouilli, égoutté" });
+                values: new object[] { 2089, 11, "Aubergine, bouillie, égouttée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2133, 11, "Épinards de la Nouvelle-Zélande, bouillis, égouttés" });
+                values: new object[] { 2109, 11, "Chou-rave, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2111, 11, "Chou gras (chenopodes blancs), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16765,17 +16886,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2111, 11, "Chou gras (chenopodes blancs), cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2125, 11, "Champignon shiitake, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2123, 11, "Champignon, bouilli, égoutté" });
+                values: new object[] { 2110, 11, "Chou-rave, bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2124, 11, "Champignon shiitake, séché" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16815,12 +16936,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2124, 11, "Champignon shiitake, séché" });
+                values: new object[] { 2112, 11, "Chou gras (chenopode blanc), bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2089, 11, "Aubergine, bouillie, égouttée" });
+                values: new object[] { 2123, 11, "Champignon, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16835,7 +16956,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2063, 11, "Chou cavalier (collards), cru" });
+                values: new object[] { 2086, 11, "Pissenlit, feuilles, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16875,17 +16996,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2064, 11, "Chou cavalier (collards), bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2055, 11, "Chayotte, fruit, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2053, 11, "Bette à carde, bouillie, égouttée" });
+                values: new object[] { 2063, 11, "Chou cavalier (collards), cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2054, 11, "Chayotte, fruit, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16925,7 +17046,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2054, 11, "Chayotte, fruit, cru" });
+                values: new object[] { 2045, 11, "Manioc, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2053, 11, "Bette à carde, bouillie, égouttée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2064, 11, "Chou cavalier (collards), bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -16936,16 +17067,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2066, 11, "Chou cavalier (collards), congelé, bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2067, 11, "Coriandre (cilantro), crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2086, 11, "Pissenlit, feuilles, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17040,27 +17161,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2044, 11, "Carotte, conserve, solides et liquide" });
+                values: new object[] { 2067, 11, "Coriandre (cilantro), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1231, 8, "Céréale, prête-a-manger, Alpha-bits, Post" });
+                values: new object[] { 2043, 11, "Cardon, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1935, 10, "Porc, rognon, cru" });
+                values: new object[] { 1230, 8, "Céréale, prête-à-manger, alpen (muesli), Weetabix" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1933, 10, "Porc, côtes de flanc, centre (côtes levées), maigre et gras, crues" });
+                values: new object[] { 1934, 10, "Porc, côtes de flanc, centre (côtes levées), maigre et gras, mijotées, rôties" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1792, 10, "Porc, longe, côtelette bout côte, avec os, maigre et gras, rôti" });
+                values: new object[] { 1932, 10, "Porc, longe, filet, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17100,17 +17221,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1793, 10, "Porc, longe, côtelette bout côte, avec os, maigre, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1784, 10, "Porc, longe, milieu (côtelette centre), avec os, maigre et gras, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1782, 10, "Porc, longe, milieu, (côtelette centre), avec os, maigre et gras, braisé" });
+                values: new object[] { 1792, 10, "Porc, longe, côtelette bout côte, avec os, maigre et gras, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1783, 10, "Porc, longe, milieu (côtelette centre), avec os, maigre et gras, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17150,27 +17271,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1783, 10, "Porc, longe, milieu (côtelette centre), avec os, maigre et gras, grillé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1774, 10, "Porc, longe, entière, maigre et gras, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1794, 10, "Porc, longe, côtelette bout côte, avec os, maigre, braisé" });
+                values: new object[] { 1782, 10, "Porc, longe, milieu, (côtelette centre), avec os, maigre et gras, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1796, 10, "Porc, longe, côtelette bout côte, avec os, maigre, rôti" });
+                values: new object[] { 1773, 10, "Porc, longe, entière, maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1820, 10, "Porc, épaule, picnic, maigre, cru" });
+                values: new object[] { 1793, 10, "Porc, longe, côtelette bout côte, avec os, maigre, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1795, 10, "Porc, longe, côtelette bout côte, avec os, maigre, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17210,17 +17331,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1795, 10, "Porc, longe, côtelette bout côte, avec os, maigre, grillé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1812, 10, "Porc, longe, rôti de surlonge, désossé, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1804, 10, "Porc, longe, côtelette surlonge, avec os, maigre, rôti" });
+                values: new object[] { 1794, 10, "Porc, longe, côtelette bout côte, avec os, maigre, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1808, 10, "Porc, longe, rôti de surlonge, désossé, maigre et gras, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17260,12 +17381,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1808, 10, "Porc, longe, rôti de surlonge, désossé, maigre et gras, rôti" });
+                values: new object[] { 1796, 10, "Porc, longe, côtelette bout côte, avec os, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1773, 10, "Porc, longe, entière, maigre et gras, cru" });
+                values: new object[] { 1804, 10, "Porc, longe, côtelette surlonge, avec os, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17280,7 +17401,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1746, 9, "Raisins secs, épépinés" });
+                values: new object[] { 1770, 10, "Porc, fesse, bout jarret, maigre et gras, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17320,17 +17441,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1747, 9, "Framboise, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1738, 9, "Ananas, conserve, dans du sirop épais, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1736, 9, "Ananas, conserve, dans du jus, solides et liquide" });
+                values: new object[] { 1746, 9, "Raisins secs, épépinés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1737, 9, "Ananas, conserve, dans du sirop léger, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17370,7 +17491,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1737, 9, "Ananas, conserve, dans du sirop léger, solides et liquide" });
+                values: new object[] { 1728, 9, "Pêche, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1736, 9, "Ananas, conserve, dans du jus, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1747, 9, "Framboise, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17381,16 +17512,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1749, 9, "Fraise, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1750, 9, "Fraise, congelée, non sucrée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1770, 10, "Porc, fesse, bout jarret, maigre et gras, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17485,27 +17606,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1750, 9, "Fraise, congelée, non sucrée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1820, 10, "Porc, épaule, picnic, maigre, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1933, 10, "Porc, côtes de flanc, centre (côtes levées), maigre et gras, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1821, 10, "Porc, épaule, picnic, maigre, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1934, 10, "Porc, côtes de flanc, centre (côtes levées), maigre et gras, mijotées, rôties" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1822, 10, "Porc, épaule, picnic, maigre, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1824, 10, "Porc, épaule, palette (soc), avec os, maigre et gras, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1900, 10, "Porc, longe, côtelette bout côte, désossé, maigre, crue" });
+                values: new object[] { 1823, 10, "Porc, épaule, palette (soc), avec os, maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17545,17 +17666,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1901, 10, "Porc, longe, côtelette bout côte, désossé, maigre, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1888, 10, "Porc, salé, jambon désossé, maigre et régulier, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1885, 10, "Porc, longe, côtelette bout côte, avec os, maigre et gras, sauté" });
+                values: new object[] { 1900, 10, "Porc, longe, côtelette bout côte, désossé, maigre, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1887, 10, "Porc, salé, jambon désossé, maigre et régulier, non chauffé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17595,27 +17716,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1887, 10, "Porc, salé, jambon désossé, maigre et régulier, non chauffé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1877, 10, "Porc, salé, jambon, épaule, picnic, maigre et gras, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1902, 10, "Porc, longe, côtelette bout côte, désossé, maigre, grillée" });
+                values: new object[] { 1885, 10, "Porc, longe, côtelette bout côte, avec os, maigre et gras, sauté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1904, 10, "Porc, longe, côtelette bout côte, désossé, maigre, rôtie" });
+                values: new object[] { 1876, 10, "Porc, salé, gras (jambon et épaule picnic), rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1932, 10, "Porc, longe, filet, maigre, rôti" });
+                values: new object[] { 1901, 10, "Porc, longe, côtelette bout côte, désossé, maigre, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1903, 10, "Porc, longe, côtelette bout côte, désossé, maigre, sautée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17655,17 +17776,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1903, 10, "Porc, longe, côtelette bout côte, désossé, maigre, sautée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1914, 10, "Porc, longe, côtelette surlonge, désossé, maigre et gras, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1912, 10, "Porc, longe, côtelette surlonge, désossé, maigre et gras, braisée" });
+                values: new object[] { 1902, 10, "Porc, longe, côtelette bout côte, désossé, maigre, grillée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1913, 10, "Porc, longe, côtelette surlonge, désossé, maigre et gras, grillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17705,12 +17826,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1913, 10, "Porc, longe, côtelette surlonge, désossé, maigre et gras, grillée" });
+                values: new object[] { 1904, 10, "Porc, longe, côtelette bout côte, désossé, maigre, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1876, 10, "Porc, salé, gras (jambon et épaule picnic), rôti" });
+                values: new object[] { 1912, 10, "Porc, longe, côtelette surlonge, désossé, maigre et gras, braisée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17725,7 +17846,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1843, 10, "Porc, panne, cru" });
+                values: new object[] { 1873, 10, "Porc, salé, jambon entier, maigre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17765,17 +17886,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1844, 10, "Porc, foie, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1835, 10, "Porc, intestin (andouilles), mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1833, 10, "Porc, cervelle, braisé" });
+                values: new object[] { 1843, 10, "Porc, panne, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1834, 10, "Porc, intestin (andouilles), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17815,7 +17936,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1834, 10, "Porc, intestin (andouilles), cru" });
+                values: new object[] { 1824, 10, "Porc, épaule, palette (soc), avec os, maigre et gras, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1833, 10, "Porc, cervelle, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1844, 10, "Porc, foie, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17826,16 +17957,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1846, 10, "Porc, poumons, crus" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1847, 10, "Porc, poumons, braisés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1873, 10, "Porc, salé, jambon entier, maigre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17930,12 +18051,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1823, 10, "Porc, épaule, palette (soc), avec os, maigre et gras, cru" });
+                values: new object[] { 1847, 10, "Porc, poumons, braisés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1230, 8, "Céréale, prête-à-manger, alpen (muesli), Weetabix" });
+                values: new object[] { 1822, 10, "Porc, épaule, picnic, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17950,7 +18071,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 532, 4, "Vinaigrette, italienne, commerciale, régulière" });
+                values: new object[] { 1225, 8, "Céréale, chaude, crème de riz, cuite" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -17990,17 +18111,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 533, 4, "Vinaigrette, française, commerciale, régulière" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 524, 4, "Vinaigrette, russe, commerciale, régulière" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 464, 4, "Gras animal, saindoux (porc)" });
+                values: new object[] { 532, 4, "Vinaigrette, italienne, commerciale, régulière" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 523, 4, "Shortening, industriel, friture (liquide), soya" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18040,27 +18161,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 523, 4, "Shortening, industriel, friture (liquide), soya" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 456, 4, "Huile végétale, avoine" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 534, 4, "Vinaigrette, fromage bleu ou roquefort, commerciale, régulière" });
+                values: new object[] { 464, 4, "Gras animal, saindoux (porc)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 539, 4, "Shortening, domestique, huiles végétales et animales non précisées" });
+                values: new object[] { 455, 4, "Shortening, usage déterminé, cuisson" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 561, 5, "Poulet à griller, viande et peau, pâte à frire frites" });
+                values: new object[] { 533, 4, "Vinaigrette, française, commerciale, régulière" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 535, 4, "Gras animal,  autochtone, huile de phoque" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18100,17 +18221,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 535, 4, "Gras animal,  autochtone, huile de phoque" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 550, 4, "Tartinade, mélange, 20% beurre / 80% canola oil" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 547, 4, "Shortening, industriel, tout usage, soya et palme" });
+                values: new object[] { 534, 4, "Vinaigrette, fromage bleu ou roquefort, commerciale, régulière" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 548, 4, "Shortening, industriel, tout usage, canola et palme" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18150,12 +18271,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 548, 4, "Shortening, industriel, tout usage, canola et palme" });
+                values: new object[] { 539, 4, "Shortening, domestique, huiles végétales et animales non précisées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 455, 4, "Shortening, usage déterminé, cuisson" });
+                values: new object[] { 547, 4, "Shortening, industriel, tout usage, soya et palme" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18170,7 +18291,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 428, 4, "Vinaigrette, huile et vinaigre, faite maison" });
+                values: new object[] { 452, 4, "Huile végétale, moutarde" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18210,17 +18331,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 429, 4, "Huile végétale, beurre de cacao" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 417, 4, "Huile végétale, germe de blé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 415, 4, "Tartinade pour sandwich, avec cornichons hachés, ordinaire, huile non spécifiée" });
+                values: new object[] { 428, 4, "Vinaigrette, huile et vinaigre, faite maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 416, 4, "Huile végétale, son de riz" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18260,7 +18381,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 416, 4, "Huile végétale, son de riz" });
+                values: new object[] { 283, 3, "Bébé, céréale, orge, avec poudre de lait, sèche" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 415, 4, "Tartinade pour sandwich, avec cornichons hachés, ordinaire, huile non spécifiée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 429, 4, "Huile végétale, beurre de cacao" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18271,16 +18402,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 432, 4, "Huile végétale, carthame, acide linoléique (70% et plus)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 433, 4, "Huile végétale, carthame, acide oléique (70% et plus)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 452, 4, "Huile végétale, moutarde" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18375,27 +18496,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 433, 4, "Huile végétale, carthame, acide oléique (70% et plus)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 561, 5, "Poulet à griller, viande et peau, pâte à frire frites" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 232, 3, "Aliments pour bébé, grignotises, biscuit, mélange de grains" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 562, 5, "Poulet à griller, viande et peau, enfarinées, frites" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 283, 3, "Bébé, céréale, orge, avec poudre de lait, sèche" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 563, 5, "Poulet à griller, viande et peau, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 565, 5, "Poulet à griller, viande seulement, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 628, 5, "Poulet à griller, aile, viande et peau, enfariné, frit" });
+                values: new object[] { 564, 5, "Poulet à griller, viande et peau, à l'étuvée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18435,17 +18556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 629, 5, "Poulet à griller, aile, viande et peau, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 620, 5, "Poulet à griller, cou, viande, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 618, 5, "Poulet à griller, neck, viande et peau, enfariné, frit" });
+                values: new object[] { 628, 5, "Poulet à griller, aile, viande et peau, enfariné, frit" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 619, 5, "Poulet à griller, neck, viande et peau, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18485,27 +18606,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 619, 5, "Poulet à griller, neck, viande et peau, mijoté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 610, 5, "Poulet à griller, cuisse, viande et peau, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 630, 5, "Poulet à griller, aile, viande et peau, à l'étuvée" });
+                values: new object[] { 618, 5, "Poulet à griller, neck, viande et peau, enfariné, frit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 632, 5, "Poulet à griller, aile, viande, frit" });
+                values: new object[] { 609, 5, "Poulet à griller, cuisse, viande et peau, enfariné, frit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 650, 5, "Poulet à bouillir, abats, cru" });
+                values: new object[] { 629, 5, "Poulet à griller, aile, viande et peau, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 631, 5, "Poulet à griller, aile, viande, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18545,17 +18666,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 631, 5, "Poulet à griller, aile, viande, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 642, 5, "Poulet à rôtir, abats, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 640, 5, "Poulet à rôtir, viande seulement, rôtie" });
+                values: new object[] { 630, 5, "Poulet à griller, aile, viande et peau, à l'étuvée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 641, 5, "Poulet à rôtir, abats, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18595,12 +18716,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 641, 5, "Poulet à rôtir, abats, cru" });
+                values: new object[] { 632, 5, "Poulet à griller, aile, viande, frit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 609, 5, "Poulet à griller, cuisse, viande et peau, enfariné, frit" });
+                values: new object[] { 640, 5, "Poulet à rôtir, viande seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18615,7 +18736,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 583, 5, "Poulet à griller, viande blanche et peau, rôti" });
+                values: new object[] { 606, 5, "Poulet à griller, pilon, viande, frit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18655,17 +18776,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 584, 5, "Poulet à griller, viande blanche et peau,  à l'étuvée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 575, 5, "Poulet à griller, gésier, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 573, 5, "Poulet à griller, abats, mijoté" });
+                values: new object[] { 583, 5, "Poulet à griller, viande blanche et peau, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 574, 5, "Poulet à griller, gésier, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18705,7 +18826,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 574, 5, "Poulet à griller, gésier, cru" });
+                values: new object[] { 565, 5, "Poulet à griller, viande seulement, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 573, 5, "Poulet à griller, abats, mijoté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 584, 5, "Poulet à griller, viande blanche et peau,  à l'étuvée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18716,16 +18847,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 586, 5, "Poulet à griller, viande brune et peau, pâte à frire, frit" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 587, 5, "Poulet à griller, viande brune et peau, enfarinées, frit" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 606, 5, "Poulet à griller, pilon, viande, frit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18820,27 +18941,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 564, 5, "Poulet à griller, viande et peau, à l'étuvée" });
+                values: new object[] { 587, 5, "Poulet à griller, viande brune et peau, enfarinées, frit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 651, 5, "Poulet à bouillir, abats, mijoté" });
+                values: new object[] { 563, 5, "Poulet à griller, viande et peau, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 232, 3, "Aliments pour bébé, grignotises, biscuit, mélange de grains" });
+                values: new object[] { 650, 5, "Poulet à bouillir, abats, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 218, 2, "Vanille, extrait, imitation, sans alcool" });
+                values: new object[] { 219, 20, "Grains céréaliers, orge, malt, extrait, déshydraté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 76, 14, "Lait frappé, vanille, épais" });
+                values: new object[] { 217, 2, "Vanille, extrait, imitation, avec alcool" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18880,17 +19001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 77, 1, "Lactoserum, acide, liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 68, 1, "Lait, concentré, sucré, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 66, 1, "Lait, poudre, entier" });
+                values: new object[] { 76, 14, "Lait frappé, vanille, épais" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 67, 1, "Babeurre, poudre, crème douce" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18930,27 +19051,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 67, 1, "Babeurre, poudre, crème douce" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 55, 1, "Lait de poule, 7% M.G., produit canadien, 4% à 8% M.G." });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 78, 1, "Lactoserum, acide, poudre" });
+                values: new object[] { 66, 1, "Lait, poudre, entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 80, 1, "Lactoserum, sucré, poudre" });
+                values: new object[] { 54, 1, "Crème, garniture fouettée, sous pression (bombe)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 103, 1, "Fromage mexicain, queso asadero" });
+                values: new object[] { 77, 1, "Lactoserum, acide, liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 79, 1, "Lactoserum, sucré, liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -18990,17 +19111,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 79, 1, "Lactoserum, sucré, liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 92, 1, "Beurre, sans sel" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 90, 1, "Oeuf, caille, entier, frais, cru" });
+                values: new object[] { 78, 1, "Lactoserum, acide, poudre" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 91, 1, "Oeuf, dinde, entier, frais, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19040,12 +19161,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 91, 1, "Oeuf, dinde, entier, frais, cru" });
+                values: new object[] { 80, 1, "Lactoserum, sucré, poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 54, 1, "Crème, garniture fouettée, sous pression (bombe)" });
+                values: new object[] { 90, 1, "Oeuf, caille, entier, frais, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19060,7 +19181,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 24, 1, "Fromage colby" });
+                values: new object[] { 48, 1, "Fromage tilsit, avec lait entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19100,17 +19221,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 25, 1, "Fromage cottage en crème (4,5% M.G.)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 16, 1, "Beurre fouetté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 13, 2, "Vinaigre, cidre" });
+                values: new object[] { 24, 1, "Fromage colby" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 14, 2, "Vinaigre, distillé (blanc)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19150,7 +19271,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 14, 2, "Vinaigre, distillé (blanc)" });
+                values: new object[] { 2, 22, "Soufflé au fromage" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 13, 2, "Vinaigre, cidre" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 25, 1, "Fromage cottage en crème (4,5% M.G.)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19161,16 +19292,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 27, 1, "Fromage cottage sec pressé (0,4% M.G.)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 28, 1, "Fromage à la crème" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 48, 1, "Fromage tilsit, avec lait entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19265,27 +19386,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 28, 1, "Fromage à la crème" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 103, 1, "Fromage mexicain, queso asadero" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 218, 2, "Vanille, extrait, imitation, sans alcool" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 104, 1, "Fromage Mexicain, queso chihuahua" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 219, 20, "Grains céréaliers, orge, malt, extrait, déshydraté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 105, 1, "Fromage, type cheddar ou colby, faible en gras (7% M.G.)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 107, 1, "Fromage cottage, (1% M.G.)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 194, 2, "Épices, oignon, poudre" });
+                values: new object[] { 106, 1, "Fromage, type cheddar ou colby, faible en sodium" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19325,17 +19446,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 195, 2, "Épices, origan, moulu" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 186, 2, "Épices, fenouil, graines" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 184, 2, "Épices, aneth, graines" });
+                values: new object[] { 194, 2, "Épices, oignon, poudre" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 185, 2, "Épices, aneth, déshydraté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19375,27 +19496,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 185, 2, "Épices, aneth, déshydraté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 176, 2, "Épices, cerfeuil, déshydraté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 196, 2, "Épices, paprika" });
+                values: new object[] { 184, 2, "Épices, aneth, graines" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 198, 2, "Épices, poivre, noir" });
+                values: new object[] { 175, 2, "Épices, céleri, graines" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 217, 2, "Vanille, extrait, imitation, avec alcool" });
+                values: new object[] { 195, 2, "Épices, origan, moulu" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 197, 2, "Épices, persil, déshydraté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19435,17 +19556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 197, 2, "Épices, persil, déshydraté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 209, 2, "Épices, estragon, déshydraté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 206, 2, "Épices, sauge, moulue" });
+                values: new object[] { 196, 2, "Épices, paprika" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 207, 2, "Épices, sarriette, moulue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19485,12 +19606,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 207, 2, "Épices, sarriette, moulue" });
+                values: new object[] { 198, 2, "Épices, poivre, noir" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 175, 2, "Épices, céleri, graines" });
+                values: new object[] { 206, 2, "Épices, sauge, moulue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19505,7 +19626,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 126, 1, "Oeuf, poule, blanc, frais ou congelé, cru" });
+                values: new object[] { 172, 2, "Épices, laurier, feuilles" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19545,17 +19666,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 127, 1, "Oeuf, poule, jaune, frais ou congelé, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 117, 1, "Oeuf, succédané, congelé (jaune remplacé)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 115, 1, "Lait, poudre, écrémé, instant" });
+                values: new object[] { 126, 1, "Oeuf, poule, blanc, frais ou congelé, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 116, 14, "Chocolat chaud, cacao, fait maison, préparé avec lait entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19595,7 +19716,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 116, 14, "Chocolat chaud, cacao, fait maison, préparé avec lait entier" });
+                values: new object[] { 107, 1, "Fromage cottage, (1% M.G.)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 115, 1, "Lait, poudre, écrémé, instant" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 127, 1, "Oeuf, poule, jaune, frais ou congelé, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19606,16 +19737,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 130, 1, "Oeuf, poule, entier, cuit, bouilli à la coque, dur" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 132, 1, "Oeuf, poule, entier, cuit, poché" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 172, 2, "Épices, laurier, feuilles" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19710,27 +19831,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 106, 1, "Fromage, type cheddar ou colby, faible en sodium" });
+                values: new object[] { 132, 1, "Oeuf, poule, entier, cuit, poché" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2134, 11, "Okra (gombo), cru" });
+                values: new object[] { 105, 1, "Fromage, type cheddar ou colby, faible en gras (7% M.G.)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 652, 5, "Poulet à bouillir, viande blanche seulement, cru" });
+                values: new object[] { 2133, 11, "Épinards de la Nouvelle-Zélande, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 654, 5, "Poulet à bouillir, viande brune seulement, cru" });
+                values: new object[] { 651, 5, "Poulet à bouillir, abats, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1017, 6, "Sauce, barbecue, prête-à-servir" });
+                values: new object[] { 653, 5, "Poulet à bouillir, viande blanche seulement, à l'étuvée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19770,17 +19891,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1025, 6, "Sauce, salsa, prête-à-servir" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1005, 6, "Sauce, champignons, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1003, 6, "Sauce, poulet, conserve" });
+                values: new object[] { 1017, 6, "Sauce, barbecue, prête-à-servir" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1004, 6, "Sauce, poulet, déshydratée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19820,27 +19941,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1004, 6, "Sauce, poulet, déshydratée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 987, 6, "Soupe, légumes et boeuf, déshydratée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1026, 6, "Sauce, blanche, consistance claire, lait 2%, faite maison" });
+                values: new object[] { 1003, 6, "Sauce, poulet, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1028, 6, "Sauce, blanche, consistance épaisse, faite maison" });
+                values: new object[] { 986, 6, "Soupe, tomates et légumes, déshydratée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1064, 6, "Soupe, oignon, conserve, condensée, eau ajoutée" });
+                values: new object[] { 1025, 6, "Sauce, salsa, prête-à-servir" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1027, 6, "Sauce, blanche, consistance moyenne, lait 2%, faite maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19880,17 +20001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1027, 6, "Sauce, blanche, consistance moyenne, lait 2%, faite maison" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1054, 6, "Soupe, poulet et gombo (okra), conserve, condensée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1052, 6, "Soupe, bouillon, poulet, conserve, condensée, eau ajoutée" });
+                values: new object[] { 1026, 6, "Sauce, blanche, consistance claire, lait 2%, faite maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1053, 6, "Soupe, crème, poulet, conserve, condensée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19930,12 +20051,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1053, 6, "Soupe, crème, poulet, conserve, condensée, eau ajoutée" });
+                values: new object[] { 1028, 6, "Sauce, blanche, consistance épaisse, faite maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 986, 6, "Soupe, tomates et légumes, déshydratée" });
+                values: new object[] { 1052, 6, "Soupe, bouillon, poulet, conserve, condensée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19950,7 +20071,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 953, 6, "Soupe, crème, pommes de terre, conserve, condensée" });
+                values: new object[] { 983, 6, "Soupe, queue de boeuf, déshydratée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -19990,17 +20111,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 954, 6, "Soupe, potage écossais, conserve, condensée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 944, 6, "Soupe, bouillon ou consommé, boeuf, conserve, condensé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 939, 6, "Soupe, poulet et légumes (inclus gumbo), prête-à-servir" });
+                values: new object[] { 953, 6, "Soupe, crème, pommes de terre, conserve, condensée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 940, 6, "Soupe, poulet et légumes, conserve, condensée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20040,7 +20161,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 940, 6, "Soupe, poulet et légumes, conserve, condensée" });
+                values: new object[] { 931, 6, "Soupe, bouillon, poulet, conserve, condensée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 939, 6, "Soupe, poulet et légumes (inclus gumbo), prête-à-servir" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 954, 6, "Soupe, potage écossais, conserve, condensée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20051,16 +20182,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 958, 6, "Soupe, dinde, prête-à-servir" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 961, 6, "Soupe, légumes mélangés (avec pâtes), prête-à-servir" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 983, 6, "Soupe, queue de boeuf, déshydratée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20155,27 +20276,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 961, 6, "Soupe, légumes mélangés (avec pâtes), prête-à-servir" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1064, 6, "Soupe, oignon, conserve, condensée, eau ajoutée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 930, 6, "Soupe, fromage cheddar, conserve, condensée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1065, 6, "Soupe, crème, oignon, conserve, condensée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 931, 6, "Soupe, bouillon, poulet, conserve, condensée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1067, 6, "Soupe, crème, pommes de terre, conserve, condensée, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1071, 6, "Soupe, tomates et riz, conserve, condensée, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1178, 7, "Saucisse, boudin, cru" });
+                values: new object[] { 1068, 6, "Soupe, potage écossais, conserve, condensée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20215,17 +20336,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1179, 7, "Charcuterie, bologne, boeuf" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1161, 7, "Pâté de foie, non spécifié, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1159, 7, "Pâté de foie de poulet, conserve" });
+                values: new object[] { 1178, 7, "Saucisse, boudin, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1160, 7, "Pâté de foie gras, foie d'oie, fumé, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20265,27 +20386,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1160, 7, "Pâté de foie gras, foie d'oie, fumé, conserve" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1147, 7, "Saucisse fumée, dinde" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1182, 7, "Saucisse Bratwurst, porc, cuite" });
+                values: new object[] { 1159, 7, "Pâté de foie de poulet, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1184, 7, "Pain de viande hollandais, à l'ancienne, porc et boeuf" });
+                values: new object[] { 1144, 7, "Poulet, tartinade à sandwich, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1225, 8, "Céréale, chaude, crème de riz, cuite" });
+                values: new object[] { 1179, 7, "Charcuterie, bologne, boeuf" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1183, 7, "Saucisse, saucisson Braunschweiger (saucisson de foie avec bacon), porc" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20325,17 +20446,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1183, 7, "Saucisse, saucisson Braunschweiger (saucisson de foie avec bacon), porc" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1207, 7, "Charcuterie, poulet, cuit, tranché" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1200, 7, "Charcuterie, salami, cuit, boeuf" });
+                values: new object[] { 1182, 7, "Saucisse Bratwurst, porc, cuite" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1202, 7, "Charcuterie, salami, cuit, dinde" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20375,12 +20496,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1202, 7, "Charcuterie, salami, cuit, dinde" });
+                values: new object[] { 1184, 7, "Pain de viande hollandais, à l'ancienne, porc et boeuf" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1144, 7, "Poulet, tartinade à sandwich, conserve" });
+                values: new object[] { 1200, 7, "Charcuterie, salami, cuit, boeuf" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20395,7 +20516,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1092, 6, "Soupe, queue de boeuf, déshydratée, eau ajoutée" });
+                values: new object[] { 1140, 7, "Saucisse, Bockwurst, porc/veau, lait/oeufs, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20435,17 +20556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1093, 6, "Soupe, pois verts ou cassés, déshydratée, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1084, 6, "Soupe, bouillon, poulet, cube, déshydratée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1082, 6, "Soupe, crème, céleri, déshydratée, eau ajoutée" });
+                values: new object[] { 1092, 6, "Soupe, queue de boeuf, déshydratée, eau ajoutée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1083, 6, "Soupe, bouillon, poulet, déshydratée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20485,7 +20606,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1083, 6, "Soupe, bouillon, poulet, déshydratée, eau ajoutée" });
+                values: new object[] { 1071, 6, "Soupe, tomates et riz, conserve, condensée, eau ajoutée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1082, 6, "Soupe, crème, céleri, déshydratée, eau ajoutée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 1093, 6, "Soupe, pois verts ou cassés, déshydratée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20496,16 +20627,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 1095, 6, "Soupe, tomates et légumes, déshydratée, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1096, 6, "Soupe, légumes et boeuf, déshydratée, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1140, 7, "Saucisse, Bockwurst, porc/veau, lait/oeufs, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20600,27 +20721,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 1068, 6, "Soupe, potage écossais, conserve, condensée, eau ajoutée" });
+                values: new object[] { 1096, 6, "Soupe, légumes et boeuf, déshydratée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 653, 5, "Poulet à bouillir, viande blanche seulement, à l'étuvée" });
+                values: new object[] { 1067, 6, "Soupe, crème, pommes de terre, conserve, condensée, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 930, 6, "Soupe, fromage cheddar, conserve, condensée" });
+                values: new object[] { 652, 5, "Poulet à bouillir, viande blanche seulement, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 928, 6, "Soupe, boeuf et nouilles, conserve, condensée" });
+                values: new object[] { 929, 6, "Soupe, crème, céleri, conserve, condensée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 719, 5, "Dinde, toutes catégories, aile, viande et peau, rôtie" });
+                values: new object[] { 927, 6, "Soupe, bouillon, boeuf, prête-à-servir" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20660,17 +20781,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 722, 5, "Dinde à griller, viande et peau, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 711, 5, "Dinde, toutes catégories, viande brune seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 709, 5, "Dinde, toutes catégories, viande blanche seulement, rôtie" });
+                values: new object[] { 719, 5, "Dinde, toutes catégories, aile, viande et peau, rôtie" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 710, 5, "Dinde, toutes catégories, viande brune seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20710,27 +20831,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 710, 5, "Dinde, toutes catégories, viande brune seulement, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 701, 5, "Dinde, toutes catégories, foie, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 723, 5, "Dinde à griller, viande et peau, rôtie" });
+                values: new object[] { 709, 5, "Dinde, toutes catégories, viande blanche seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 725, 5, "Dinde à griller, viande seulement, rôtie" });
+                values: new object[] { 700, 5, "Dinde, toutes catégories, foie, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 749, 5, "Dinde à griller, aile, viande et peau, rôtie" });
+                values: new object[] { 722, 5, "Dinde à griller, viande et peau, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 724, 5, "Dinde à griller, viande seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20770,17 +20891,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 724, 5, "Dinde à griller, viande seulement, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 741, 5, "Dinde à griller, poitrine, viande et peau, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 735, 5, "Dinde à griller, viande brune seulement, rôtie" });
+                values: new object[] { 723, 5, "Dinde à griller, viande et peau, rôtie" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 740, 5, "Dinde à griller, poitrine, viande et peau, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20820,12 +20941,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 740, 5, "Dinde à griller, poitrine, viande et peau, crue" });
+                values: new object[] { 725, 5, "Dinde à griller, viande seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 700, 5, "Dinde, toutes catégories, foie, cru" });
+                values: new object[] { 735, 5, "Dinde à griller, viande brune seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20840,7 +20961,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 672, 5, "Oie domestiquée, viande seulement, rôtie" });
+                values: new object[] { 697, 5, "Dinde, toutes catégories, gésier, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20880,17 +21001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 673, 5, "Oie domestiquée, foie, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 664, 5, "Canard domestiqué, viande seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 662, 5, "Canard domestiqué, viande et peau, crues" });
+                values: new object[] { 672, 5, "Oie domestiquée, viande seulement, rôtie" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 663, 5, "Canard domestiqué, viande et peau, rôties" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20930,7 +21051,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 663, 5, "Canard domestiqué, viande et peau, rôties" });
+                values: new object[] { 654, 5, "Poulet à bouillir, viande brune seulement, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 662, 5, "Canard domestiqué, viande et peau, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 673, 5, "Oie domestiquée, foie, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -20941,16 +21072,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 675, 5, "Pintade, viande seulement, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 676, 5, "Faisant, viande et peau, crues" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 697, 5, "Dinde, toutes catégories, gésier, mijoté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21045,27 +21166,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 676, 5, "Faisant, viande et peau, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 749, 5, "Dinde à griller, aile, viande et peau, rôtie" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 928, 6, "Soupe, boeuf et nouilles, conserve, condensée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 750, 5, "Dinde à griller, aile, viande seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 929, 6, "Soupe, crème, céleri, conserve, condensée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 751, 5, "Dinde à griller, aile, viande seulement, rôtie" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 755, 5, "Dinde, jeune, viande et peau, rôtie" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 841, 5, "Poulet à griller, poitrine, sans la peau, désossée, viande, crue" });
+                values: new object[] { 754, 5, "Dinde, jeune, viande et peau, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21105,17 +21226,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 842, 5, "Poulet à griller, poitrine, viande, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 833, 5, "Poulet à griller, dos, viande et peau, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 831, 5, "Poulet à griller, gras détachable, cru" });
+                values: new object[] { 841, 5, "Poulet à griller, poitrine, sans la peau, désossée, viande, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 832, 5, "Poulet à griller, dos, viande et peau, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21155,27 +21276,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 832, 5, "Poulet à griller, dos, viande et peau, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 817, 5, "Poulet, poulet de courouailles, viande et peau, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 843, 5, "Poulet à griller, poitrine, viande, à l'étuvée" });
+                values: new object[] { 831, 5, "Poulet à griller, gras détachable, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 845, 5, "Poulet à griller, pilon, viande et peau, rôti" });
+                values: new object[] { 816, 5, "Dinde, toutes catégories, hachée, cuite" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 927, 6, "Soupe, bouillon, boeuf, prête-à-servir" });
+                values: new object[] { 842, 5, "Poulet à griller, poitrine, viande, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 844, 5, "Poulet à griller, pilon, viande et peau, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21215,17 +21336,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 844, 5, "Poulet à griller, pilon, viande et peau, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 855, 5, "Poulet à griller, haut de cuisse, viande, à l'étuvée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 853, 5, "Poulet à griller, haut de cuisse, viande, cru" });
+                values: new object[] { 843, 5, "Poulet à griller, poitrine, viande, à l'étuvée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 854, 5, "Poulet à griller, haut de cuisse, viande, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21265,12 +21386,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 854, 5, "Poulet à griller, haut de cuisse, viande, rôti" });
+                values: new object[] { 845, 5, "Poulet à griller, pilon, viande et peau, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 816, 5, "Dinde, toutes catégories, hachée, cuite" });
+                values: new object[] { 853, 5, "Poulet à griller, haut de cuisse, viande, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21285,7 +21406,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 779, 5, "Dindon, jeune, viande et peau, rôti" });
+                values: new object[] { 812, 5, "Volaille désossée mécaniquement, provenant de dos et cous seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21325,17 +21446,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 780, 5, "Dindon, jeune, viande seulement, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 767, 5, "Dinde, jeune, viande brune seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 765, 5, "Dinde, jeune, viande blanche seulement, rôtie" });
+                values: new object[] { 779, 5, "Dindon, jeune, viande et peau, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 766, 5, "Dinde, jeune, viande brune seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21375,7 +21496,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 766, 5, "Dinde, jeune, viande brune seulement, crue" });
+                values: new object[] { 755, 5, "Dinde, jeune, viande et peau, rôtie" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 765, 5, "Dinde, jeune, viande blanche seulement, rôtie" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 780, 5, "Dindon, jeune, viande seulement, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21386,16 +21517,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 784, 5, "Dindon, jeune, viande blanche et peau, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 785, 5, "Dindon, jeune, viande blanche et peau, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 812, 5, "Volaille désossée mécaniquement, provenant de dos et cous seulement, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21490,27 +21611,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 754, 5, "Dinde, jeune, viande et peau, crue" });
+                values: new object[] { 785, 5, "Dindon, jeune, viande blanche et peau, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 503379, 14, "Chocolat, sirop, consistance claire, moins de sucre, vitamines et minéraux ajoutés" });
+                values: new object[] { 751, 5, "Dinde à griller, aile, viande seulement, rôtie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2135, 11, "Okra (gombo), bouilli, égoutté" });
+                values: new object[] { 3854, 18, "Biscuit, sandwich avec gaufrettes au sucre, fourré à la crème" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2137, 11, "Okra (gombo), congelé, bouilli, égoutté" });
+                values: new object[] { 2134, 11, "Okra (gombo), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3270, 16, "Haricots, pinto, bouillis" });
+                values: new object[] { 2136, 11, "Okra (gombo), congelé, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21550,17 +21671,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3271, 16, "Haricots, pinto, conserve, solides et liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3260, 16, "Haricots, \"great northern\", bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3258, 16, "Haricots verts, grains mûrs, bouillis" });
+                values: new object[] { 3270, 16, "Haricots, pinto, bouillis" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3259, 16, "Haricots, \"great northern\", crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21600,27 +21721,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3259, 16, "Haricots, \"great northern\", crus" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3250, 16, "Haricots au four (''fèves au lard''), conserve, avec saucisses" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3272, 16, "Haricots, blancs, petits, crus" });
+                values: new object[] { 3258, 16, "Haricots verts, grains mûrs, bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3274, 16, "Haricots, jaunes (fève), crus" });
+                values: new object[] { 3249, 16, "Haricots au four (''fèves au lard''), conserve, avec boeuf" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3292, 16, "Haricots, lima, secs, petits grains (de sieva), bouillis" });
+                values: new object[] { 3271, 16, "Haricots, pinto, conserve, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3273, 16, "Haricots, blancs, petits, bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21660,17 +21781,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3273, 16, "Haricots, blancs, petits, bouillis" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3284, 16, "Haricots à oeil noir (dolique), communs, grains mûrs, conserve, nature, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3282, 16, "Haricots à oeil noir (dolique), communs, grains mûrs, crus" });
+                values: new object[] { 3272, 16, "Haricots, blancs, petits, crus" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3283, 16, "Haricots à oeil noir (dolique), communs, grains mûrs, bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21710,27 +21831,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3283, 16, "Haricots à oeil noir (dolique), communs, grains mûrs, bouillis" });
+                values: new object[] { 3274, 16, "Haricots, jaunes (fève), crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3293, 16, "Lupins, crus" });
+                values: new object[] { 3282, 16, "Haricots à oeil noir (dolique), communs, grains mûrs, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3249, 16, "Haricots au four (''fèves au lard''), conserve, avec boeuf" });
+                values: new object[] { 3292, 16, "Haricots, lima, secs, petits grains (de sieva), bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3247, 16, "Haricots au four (''fèves au lard''), faits maison" });
+                values: new object[] { 3248, 16, "Haricots au four (''fèves au lard''), conserve, nature ou végétarien" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3222, 15, "Poisson, saumon, rose, conserve, avec chair et arêts et liquide, salé" });
+                values: new object[] { 3246, 16, "Haricots, adzuki, yokan (gelée de fèves)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21770,17 +21891,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3223, 15, "Poisson, saumon, rouge (sockeye), conserve, égoutté, salé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3214, 15, "Poisson, thon, chair pale, conserve, dans l'huile, égoutté, sans sel" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3212, 15, "Crustacés, crevette, espèces diverses, à vapeur ou bouillies" });
+                values: new object[] { 3222, 15, "Poisson, saumon, rose, conserve, avec chair et arêts et liquide, salé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3213, 15, "Mollusques, pétoncle (coquille St Jacques), espèces diverses, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21820,27 +21941,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3213, 15, "Mollusques, pétoncle (coquille St Jacques), espèces diverses, cru" });
+                values: new object[] { 3204, 15, "Poisson, truite, espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3248, 16, "Haricots au four (''fèves au lard''), conserve, nature ou végétarien" });
+                values: new object[] { 3212, 15, "Crustacés, crevette, espèces diverses, à vapeur ou bouillies" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3224, 15, "Crustacés, crevette, espèces diverses, conserve" });
+                values: new object[] { 3247, 16, "Haricots au four (''fèves au lard''), faits maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3226, 15, "Poisson, saumon, rouge (sockeye), conserve, égoutté avec arêtes, sans sel" });
+                values: new object[] { 3223, 15, "Poisson, saumon, rouge (sockeye), conserve, égoutté, salé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3246, 16, "Haricots, adzuki, yokan (gelée de fèves)" });
+                values: new object[] { 3225, 15, "Poisson, saumon, rose, conserve, chair avec arêtes et liquide, sans sel" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21880,17 +22001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3225, 15, "Poisson, saumon, rose, conserve, chair avec arêtes et liquide, sans sel" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3238, 15, "Crustacés, crabe, rouge, à vapeur" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3235, 15, "Poisson, doré noir, cru" });
+                values: new object[] { 3224, 15, "Crustacés, crevette, espèces diverses, conserve" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3237, 15, "Crustacés, crabe, tourteau, à vapeur" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21930,7 +22051,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3237, 15, "Crustacés, crabe, tourteau, à vapeur" });
+                values: new object[] { 3226, 15, "Poisson, saumon, rouge (sockeye), conserve, égoutté avec arêtes, sans sel" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3235, 15, "Poisson, doré noir, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3293, 16, "Lupins, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21941,16 +22072,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3295, 16, "Haricots, mat (papillon), crus" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3296, 16, "Haricots, mat (papillon), bouillis" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3360, 16, "Légumineuses, ambériques, bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -21990,17 +22111,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3361, 16, "Haricots, mungo, bouillis, salés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3352, 16, "Gourganes (fèves des marais, fava), déshydratées, bouillies, sel ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3350, 16, "Haricots, blancs, fins, bouillis, salés" });
+                values: new object[] { 3360, 16, "Légumineuses, ambériques, bouillis, salés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3351, 16, "Haricots, jaunes (fève), bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22040,27 +22161,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3351, 16, "Haricots, jaunes (fève), bouillis, salés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3341, 16, "Haricots, noirs, grains mûrs, bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3362, 16, "Arachides, tous les types, rôties à sec" });
+                values: new object[] { 3350, 16, "Haricots, blancs, fins, bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3364, 16, "Arachides, Balencia, rôties à l'huile" });
+                values: new object[] { 3340, 16, "Haricots, adzuki, bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3382, 16, "Haricots, rouge foncé, bouillis" });
+                values: new object[] { 3361, 16, "Haricots, mungo, bouillis, salés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3363, 16, "Arachides, Espagnole, rôties à l'huile" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22100,17 +22221,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3363, 16, "Arachides, Espagnole, rôties à l'huile" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3374, 16, "Haricots au four (fèves au lard), conserve, avec lard" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3372, 16, "Doliques asperge, grains mûrs, bouillis, salés" });
+                values: new object[] { 3362, 16, "Arachides, tous les types, rôties à sec" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3373, 16, "Pois, carrés, secs, bouillis, sel ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22150,12 +22271,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3373, 16, "Pois, carrés, secs, bouillis, sel ajouté" });
+                values: new object[] { 3364, 16, "Arachides, Balencia, rôties à l'huile" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3340, 16, "Haricots, adzuki, bouillis, salés" });
+                values: new object[] { 3372, 16, "Doliques asperge, grains mûrs, bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22170,7 +22291,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3314, 16, "Haricots, sautés (frigoles refrits), conserve" });
+                values: new object[] { 3337, 16, "Pois, carrés, secs, bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22210,17 +22331,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3315, 16, "Viande, simili, bacon" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3306, 16, "Arachides, Valencia, rôties à l'huile, salées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3304, 16, "Arachides, Espagnoles, rôties à l'huile, salées" });
+                values: new object[] { 3314, 16, "Haricots, sautés (frigoles refrits), conserve" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3305, 16, "Arachides, Valencia, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22260,7 +22381,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3305, 16, "Arachides, Valencia, crues" });
+                values: new object[] { 3296, 16, "Haricots, mat (papillon), bouillis" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3304, 16, "Arachides, Espagnoles, rôties à l'huile, salées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3315, 16, "Viande, simili, bacon" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22271,16 +22402,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3317, 16, "Haricots, soya, rôtis avec sel" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3318, 16, "Haricots, soya, rôtis à sec" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3337, 16, "Pois, carrés, secs, bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22375,7 +22496,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3204, 15, "Poisson, truite, espèces diverses, crues" });
+                values: new object[] { 3318, 16, "Haricots, soya, rôtis à sec" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22395,7 +22516,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3089, 15, "Poisson, merlu (colllin), espèces diverses, crues" });
+                values: new object[] { 3200, 15, "Poisson, flétan, Atlantique ou Pacifique, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22435,17 +22556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3090, 15, "Poisson, merlu (collin), espèces diverses, cuites au four ou grillées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3081, 15, "Poisson, thon, chair pale, conserve, dans l'eau, égoutté, salé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3079, 15, "Poisson, thon rouge, frais, cru" });
+                values: new object[] { 3089, 15, "Poisson, merlu (colllin), espèces diverses, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3080, 15, "Poisson, thon rouge, frais, cuit au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22485,27 +22606,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3080, 15, "Poisson, thon rouge, frais, cuit au four ou grillé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3071, 15, "Poisson, esturgeon, espèces diverses, fumées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3091, 15, "Poisson, loup de l'atlantique (loup de mer), cru" });
+                values: new object[] { 3079, 15, "Poisson, thon rouge, frais, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3093, 15, "Crustacés, crabe royal d'alaska, cru" });
+                values: new object[] { 3070, 15, "Poisson, esturgeon, espèces diverses, cuites au four ou grillées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3111, 15, "Mollusques, mye (palourde), espèces diverses, à vapeur ou bouillies" });
+                values: new object[] { 3090, 15, "Poisson, merlu (collin), espèces diverses, cuites au four ou grillées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3092, 15, "Poisson, sériole, espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22545,17 +22666,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3092, 15, "Poisson, sériole, espèces diverses, crues" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3103, 15, "Crustacés, écrevisse, espèces diverses, sauvage, à vapeur ou bouillies" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3101, 15, "Crustacés, crabe des neiges (crabe-araignée), cru" });
+                values: new object[] { 3091, 15, "Poisson, loup de l'atlantique (loup de mer), cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3102, 15, "Crustacés, écrevisse, espèces diverses, sauvage, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22595,12 +22716,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3102, 15, "Crustacés, écrevisse, espèces diverses, sauvage, crues" });
+                values: new object[] { 3093, 15, "Crustacés, crabe royal d'alaska, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3070, 15, "Poisson, esturgeon, espèces diverses, cuites au four ou grillées" });
+                values: new object[] { 3101, 15, "Crustacés, crabe des neiges (crabe-araignée), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22615,7 +22736,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3044, 15, "Poisson, sébaste, pacifique, espèces diverses, cuites au four ou grillées" });
+                values: new object[] { 3067, 15, "Poisson, vivaneau, espèces diverses, cuites au four ou grillées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22655,17 +22776,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3045, 15, "Poisson, rogue (oeufs de poisson), espèces diverses, crues" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3036, 15, "Poisson, grand brochet, autochtone, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3034, 15, "Poisson, perchaude, espèces diverses, crues" });
+                values: new object[] { 3044, 15, "Poisson, sébaste, pacifique, espèces diverses, cuites au four ou grillées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3035, 15, "Poisson, perchude, espéces diverses, cuites au four ou grillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22705,7 +22826,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3035, 15, "Poisson, perchude, espéces diverses, cuites au four ou grillée" });
+                values: new object[] { 3026, 15, "Poisson, thazard tacheté (atlantique), cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3034, 15, "Poisson, perchaude, espèces diverses, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3045, 15, "Poisson, rogue (oeufs de poisson), espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22716,16 +22847,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3047, 15, "Poisson, morue charbonnière, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3048, 15, "Poisson, morue charbonnière, fumée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3067, 15, "Poisson, vivaneau, espèces diverses, cuites au four ou grillées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22820,27 +22941,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3048, 15, "Poisson, morue charbonnière, fumée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3111, 15, "Mollusques, mye (palourde), espèces diverses, à vapeur ou bouillies" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3382, 16, "Haricots, rouge foncé, bouillis" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3112, 15, "Mollusques, mye (palourde), espèces diverses, conserve, égouttées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3383, 16, "Haricots, petits blancs, crus" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3113, 15, "Mollusques, mye (palourde), espèces diverses, conserve, liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3115, 15, "Mollusques, moule, bleue, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3178, 15, "Poisson, hoplostete orange (\"orange roughy\"), au four ou grillé" });
+                values: new object[] { 3114, 15, "Mollusques, seiche (seche, sépiole), espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22880,17 +23001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3179, 15, "Poisson, barbue de rivière, sauvage, au four ou grillée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3170, 15, "Poisson, loup atlantique (loup de mer), au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3168, 15, "Poisson, turbot, européen, au four ou grillé" });
+                values: new object[] { 3178, 15, "Poisson, hoplostete orange (\"orange roughy\"), au four ou grillé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3169, 15, "Poisson, corégone de lac, autochtone, au four" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22930,27 +23051,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3169, 15, "Poisson, corégone de lac, autochtone, au four" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3160, 15, "Poisson, spare doré, au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3180, 15, "Poisson, barbue de rivière, élevage, crue" });
+                values: new object[] { 3168, 15, "Poisson, turbot, européen, au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3182, 15, "Poisson, saumon, atlantique, élevage, cru" });
+                values: new object[] { 3159, 15, "Poisson, saumon, rose, au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3200, 15, "Poisson, flétan, Atlantique ou Pacifique, cru" });
+                values: new object[] { 3179, 15, "Poisson, barbue de rivière, sauvage, au four ou grillée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3181, 15, "Poisson, barbue de rivière, élevage, au four ou grillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -22990,17 +23111,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3181, 15, "Poisson, barbue de rivière, élevage, au four ou grillée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3192, 15, "Mollusques, huître, américaine (de l'est), élevage, au four ou grillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3190, 15, "Mollusques, huître américaine (huître de l'est), sauvage, cuite au four ou grillée" });
+                values: new object[] { 3180, 15, "Poisson, barbue de rivière, élevage, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3191, 15, "Mollusques, huître, américaine (de l'est), élevage, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23040,12 +23161,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3191, 15, "Mollusques, huître, américaine (de l'est), élevage, crue" });
+                values: new object[] { 3182, 15, "Poisson, saumon, atlantique, élevage, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3159, 15, "Poisson, saumon, rose, au four ou grillé" });
+                values: new object[] { 3190, 15, "Mollusques, huître américaine (huître de l'est), sauvage, cuite au four ou grillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23060,7 +23181,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3133, 15, "Poisson, thon, chair blanche, conserve, dans l'eau, égoutté, sans sel" });
+                values: new object[] { 3156, 15, "Poisson, saumon, atlantique, sauvage, au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23100,17 +23221,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3134, 15, "Poisson, bar d'eau douce (achigan), espèces diverses, au four ou grillées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3125, 15, "Mollusques, calmar, espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3123, 15, "Mollusques, pétoncle, espèces diverses, pannées et frites" });
+                values: new object[] { 3133, 15, "Poisson, thon, chair blanche, conserve, dans l'eau, égoutté, sans sel" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3124, 15, "Mollusques, pétoncle, espèces diverses, imitation (surimi)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23150,7 +23271,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3124, 15, "Mollusques, pétoncle, espèces diverses, imitation (surimi)" });
+                values: new object[] { 3115, 15, "Mollusques, moule, bleue, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3123, 15, "Mollusques, pétoncle, espèces diverses, pannées et frites" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3134, 15, "Poisson, bar d'eau douce (achigan), espèces diverses, au four ou grillées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23161,16 +23292,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3136, 15, "Poisson, tassergal, au four ou grillé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3137, 15, "Poisson, lotte (loche), autochtone, cuite au four ou grillée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3156, 15, "Poisson, saumon, atlantique, sauvage, au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23265,7 +23386,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3114, 15, "Mollusques, seiche (seche, sépiole), espèces diverses, crues" });
+                values: new object[] { 3137, 15, "Poisson, lotte (loche), autochtone, cuite au four ou grillée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3113, 15, "Mollusques, mye (palourde), espèces diverses, conserve, liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3383, 16, "Haricots, petits blancs, crus" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23276,16 +23407,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3385, 16, "Haricots, blancs, crus" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3386, 16, "Haricots, blancs, bouillis" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3684, 18, "Biscuit, poudre à pâte, nature/babeurre, pâte réfrigérée, élevé en gras, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23325,17 +23446,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3685, 18, "Biscuit, poudre à pâte, nature/babeurre, fait maison" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3673, 18, "Bagel, oeufs" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3671, 18, "Bagel, nature (avec oignon, graines de pavot et/ou graines de sesame)" });
+                values: new object[] { 3684, 18, "Biscuit, poudre à pâte, nature/babeurre, pâte réfrigérée, élevé en gras, cuit" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3672, 18, "Bagel, nature (avec oignon, graines de pavot et/ou graines de sesame, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23375,27 +23496,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3672, 18, "Bagel, nature (avec oignon, graines de pavot et/ou graines de sesame, grillé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3660, 17, "Veau de grain, rôti d'épaule, entier, maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3686, 18, "Biscuit, poudre à pâte, multigrains, pâte réfrigérée" });
+                values: new object[] { 3671, 18, "Bagel, nature (avec oignon, graines de pavot et/ou graines de sesame)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3690, 18, "Pain, \"Boston brown\", conserve" });
+                values: new object[] { 3659, 17, "Veau de grain, côtelette, maigre, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3731, 18, "Pain, germe de blé" });
+                values: new object[] { 3685, 18, "Biscuit, poudre à pâte, nature/babeurre, fait maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3688, 18, "Pain, bananes, fait maison, avec margarine" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23435,17 +23556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3688, 18, "Pain, bananes, fait maison, avec margarine" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3709, 18, "Pain, pita, blé entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3703, 18, "Pain, multigrains, grillé" });
+                values: new object[] { 3686, 18, "Biscuit, poudre à pâte, multigrains, pâte réfrigérée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3708, 18, "Pain, pita, blanc" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23485,12 +23606,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3708, 18, "Pain, pita, blanc" });
+                values: new object[] { 3690, 18, "Pain, \"Boston brown\", conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3659, 17, "Veau de grain, côtelette, maigre, grillé" });
+                values: new object[] { 3703, 18, "Pain, multigrains, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23505,7 +23626,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3631, 17, "Veau, rate, cru" });
+                values: new object[] { 3656, 17, "Veau de grain, côtelette, maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23545,17 +23666,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3632, 17, "Veau, rate, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3623, 17, "Veau, poumons, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3621, 17, "Agneau, poumons, braisés" });
+                values: new object[] { 3631, 17, "Veau, rate, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3622, 17, "Veau, poumons, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23595,7 +23716,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3622, 17, "Veau, poumons, cru" });
+                values: new object[] { 3613, 17, "Veau, rognon, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3621, 17, "Agneau, poumons, braisés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3632, 17, "Veau, rate, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23606,16 +23737,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3634, 17, "Veau, thymus, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3635, 17, "Agneau, langue, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3656, 17, "Veau de grain, côtelette, maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23710,27 +23831,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3635, 17, "Agneau, langue, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3731, 18, "Pain, germe de blé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3612, 17, "Veau, rognon, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3732, 18, "Pain, blanc, commercial, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3613, 17, "Veau, rognon, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3733, 18, "Pain, blanc, fait maison, avec lait écrémé en poudre" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3737, 18, "Pain, blé entier, fait maison (2/3 de blé entier)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3825, 18, "Biscuit, gingembre" });
+                values: new object[] { 3735, 18, "Pain, blanc, fait maison, avec lait 2%" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23770,17 +23891,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3826, 18, "Biscuit graham, nature ou miel (inclus cannelle)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3816, 18, "Biscuit, grains de chocolat, pâte réfrigérée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3813, 18, "Biscuit, grains de chocolat, type moelleux, commercial" });
+                values: new object[] { 3825, 18, "Biscuit, gingembre" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3814, 18, "Biscuits, grains de chocolat, mélange sec, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23820,27 +23941,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3814, 18, "Biscuits, grains de chocolat, mélange sec, non préparé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3804, 18, "Biscuit, carré au chocolat, commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3827, 18, "Biscuit graham, enrobage de chocolat" });
+                values: new object[] { 3813, 18, "Biscuit, grains de chocolat, type moelleux, commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3829, 18, "Biscuit, guimauve (inclus tartes), enrobage de chocolat" });
+                values: new object[] { 3803, 18, "Biscuit, à la ménagerie (arrowroot, thé social)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3853, 18, "Biscuit, sucre, fait maison, avec margarine" });
+                values: new object[] { 3826, 18, "Biscuit graham, nature ou miel (inclus cannelle)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3828, 18, "Biscuit, doigt de dame (avec jus et zeste de citron)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23880,17 +24001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3828, 18, "Biscuit, doigt de dame (avec jus et zeste de citron)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3842, 18, "Biscuit, beurre d'arachides, fait maison, avec margarine" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3839, 18, "Biscuit, beurre d'arachides, commercial, moelleux" });
+                values: new object[] { 3827, 18, "Biscuit graham, enrobage de chocolat" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 503379, 14, "Chocolat, sirop, consistance claire, moins de sucre, vitamines et minéraux ajoutés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23930,12 +24051,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3840, 18, "Biscuit, beurre d'arachides, pâte réfrigérée" });
+                values: new object[] { 3829, 18, "Biscuit, guimauve (inclus tartes), enrobage de chocolat" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3803, 18, "Biscuit, à la ménagerie (arrowroot, thé social)" });
+                values: new object[] { 3839, 18, "Biscuit, beurre d'arachides, commercial, moelleux" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23950,7 +24071,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3762, 18, "Gâteau café, cannelle avec garniture de miettes, commercial" });
+                values: new object[] { 3799, 18, "Gâteau, jaune, fait maison, sans glaçage" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -23990,17 +24111,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3763, 18, "Gâteau café, fruits" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3750, 18, "Mélange à gâteau, carottes, type pouding, sec, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3746, 18, "Gâteau des anges, mélange sec, préparé" });
+                values: new object[] { 3762, 18, "Gâteau café, cannelle avec garniture de miettes, commercial" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3748, 18, "Gâteau Boston, commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24040,7 +24161,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3748, 18, "Gâteau Boston, commercial" });
+                values: new object[] { 3737, 18, "Pain, blé entier, fait maison (2/3 de blé entier)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3746, 18, "Gâteau des anges, mélange sec, préparé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3763, 18, "Gâteau café, fruits" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24051,16 +24182,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3765, 18, "Gâteau café, cannelle, garniture de miettes, mélange sec, préparé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3767, 18, "Gâteau, fruits, commercial" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3799, 18, "Gâteau, jaune, fait maison, sans glaçage" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24155,27 +24276,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3735, 18, "Pain, blanc, fait maison, avec lait 2%" });
+                values: new object[] { 3767, 18, "Gâteau, fruits, commercial" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3026, 15, "Poisson, thazard tacheté (atlantique), cru" });
+                values: new object[] { 3733, 18, "Pain, blanc, fait maison, avec lait écrémé en poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3612, 17, "Veau, rognon, cru" });
+                values: new object[] { 3025, 15, "Poisson, maquereau espagnol et chinchard, espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3610, 17, "Agneau, rognon, cru" });
+                values: new object[] { 3611, 17, "Agneau, rognon, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3498, 17, "Agneau, Nouvelle-Zélande, congelé, longe, maigre, grillé" });
+                values: new object[] { 3609, 17, "Veau, coeur, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24215,17 +24336,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3499, 17, "Agneau, Nouvelle-Zélande, carré, côtes partiellement exposées, maigre et gras, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3490, 17, "Agneau, Nouvelle-Zélande, jarret, maigre, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3488, 17, "Agneau, Nouvelle-Zélande, jarret, maigre et gras, 6mm (1/4\") paré" });
+                values: new object[] { 3498, 17, "Agneau, Nouvelle-Zélande, congelé, longe, maigre, grillé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3489, 17, "Agneau, Nouvelle-Zélande, jarret, maigre, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24265,27 +24386,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3489, 17, "Agneau, Nouvelle-Zélande, jarret, maigre, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3480, 17, "Agneau, cubes à ragout ou brochette, maigre, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3500, 17, "Agneau, Nouvelle-Zélande, carré, côtes partiellement exposées, maigre et gras, rôti" });
+                values: new object[] { 3488, 17, "Agneau, Nouvelle-Zélande, jarret, maigre et gras, 6mm (1/4\") paré" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3502, 17, "Agneau, Nouvelle-Zélande, côte, maigre, rôti" });
+                values: new object[] { 3479, 17, "Agneau, cubes à ragout ou brochette, maigre, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3520, 17, "Veau, cuisse (ronde), maigre, sauté, pané" });
+                values: new object[] { 3499, 17, "Agneau, Nouvelle-Zélande, carré, côtes partiellement exposées, maigre et gras, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3501, 17, "Agneau, Nouvelle-Zélande, côte, maigre, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24325,17 +24446,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3501, 17, "Agneau, Nouvelle-Zélande, côte, maigre, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3512, 17, "Veau, coupes diverses, gras, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3510, 17, "Veau, coupes diverses, maigre, cuit" });
+                values: new object[] { 3500, 17, "Agneau, Nouvelle-Zélande, carré, côtes partiellement exposées, maigre et gras, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3511, 17, "Veau, coupes diverses, gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24375,12 +24496,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3511, 17, "Veau, coupes diverses, gras, cru" });
+                values: new object[] { 3502, 17, "Agneau, Nouvelle-Zélande, côte, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3479, 17, "Agneau, cubes à ragout ou brochette, maigre, braisé" });
+                values: new object[] { 3510, 17, "Veau, coupes diverses, maigre, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24395,7 +24516,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3407, 16, "Haricots, rouge foncé, bouillis, salés" });
+                values: new object[] { 3458, 17, "Agneau, canadien, épaule, entier, maigre, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24435,17 +24556,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3408, 16, "Haricots, petits blancs, bouillis, salés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3396, 16, "Arachides, tous les types, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3394, 16, "Pois, cassés, crus" });
+                values: new object[] { 3407, 16, "Haricots, rouge foncé, bouillis, salés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3395, 16, "Pois cassés, bouillis" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24485,7 +24606,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3395, 16, "Pois cassés, bouillis" });
+                values: new object[] { 3386, 16, "Haricots, blancs, bouillis" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3394, 16, "Pois, cassés, crus" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3408, 16, "Haricots, petits blancs, bouillis, salés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24496,16 +24627,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3410, 16, "Pois chiches, (garbanzo), bouillis, salés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3411, 16, "Lentilles, bouillies, salées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3458, 17, "Agneau, canadien, épaule, entier, maigre, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24600,27 +24721,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3411, 16, "Lentilles, bouillies, salées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3520, 17, "Veau, cuisse (ronde), maigre, sauté, pané" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3610, 17, "Agneau, rognon, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3521, 17, "Veau de lait, escalopes (ronde d'intérieur), sauté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3611, 17, "Agneau, rognon, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3522, 17, "Veau, cuisse (ronde), maigre, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3524, 17, "Veau, longe, maigre et gras, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3587, 17, "Gibier, viande, autochtone, orignal, cru" });
+                values: new object[] { 3523, 17, "Veau, longe, maigre et gras, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24660,17 +24781,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3588, 17, "Gibier, viande, autochtone, orignal, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3579, 17, "Gibier, viande, chevreuil (venaison), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3577, 17, "Gibier, viande, autochtone, caribou, (renne), viande, crue" });
+                values: new object[] { 3587, 17, "Gibier, viande, autochtone, orignal, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3578, 17, "Gibier, viande, autochtone, caribou, (renne), viande, cuite" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24710,27 +24831,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3578, 17, "Gibier, viande, autochtone, caribou, (renne), viande, cuite" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3569, 17, "Gibier, viande, \"beefalo\", coupes diverses, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3589, 17, "Gibier, viande, autochtone, rat musqué, cru" });
+                values: new object[] { 3577, 17, "Gibier, viande, autochtone, caribou, (renne), viande, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3591, 17, "Gibier, viande, sarigue (opossum), rôti" });
+                values: new object[] { 3568, 17, "Gibier, viande, autochtone, castor, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3609, 17, "Veau, coeur, braisé" });
+                values: new object[] { 3588, 17, "Gibier, viande, autochtone, orignal, rôti" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3590, 17, "Gibier, viande, rat musqué, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24770,17 +24891,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3590, 17, "Gibier, viande, rat musqué, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3601, 17, "Agneau, cervelle, braisée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3599, 17, "Gibier, viande, écureuill, rôti" });
+                values: new object[] { 3589, 17, "Gibier, viande, autochtone, rat musqué, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3600, 17, "Agneau, cervelle, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24820,12 +24941,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3600, 17, "Agneau, cervelle, crue" });
+                values: new object[] { 3591, 17, "Gibier, viande, sarigue (opossum), rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3568, 17, "Gibier, viande, autochtone, castor, rôti" });
+                values: new object[] { 3599, 17, "Gibier, viande, écureuill, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24840,7 +24961,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3542, 17, "Veau, épaule, jarret, maigre et gras, braisé" });
+                values: new object[] { 3565, 17, "Gibier, viande, autochtone, ours, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24880,17 +25001,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3543, 17, "Veau, épaule, jarret, maigre et gras, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3534, 17, "Veau, côte, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3532, 17, "Veau de lait, côtelette, maigre, cru" });
+                values: new object[] { 3542, 17, "Veau, épaule, jarret, maigre et gras, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3533, 17, "Veau, côte, maigre, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24930,7 +25051,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3533, 17, "Veau, côte, maigre, braisé" });
+                values: new object[] { 3524, 17, "Veau, longe, maigre et gras, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3532, 17, "Veau de lait, côtelette, maigre, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3543, 17, "Veau, épaule, jarret, maigre et gras, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -24941,16 +25072,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3545, 17, "Veau, épaule, jarret, maigre, braisé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3546, 17, "Veau, épaule, jarret, maigre, rôti" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3565, 17, "Gibier, viande, autochtone, ours, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25045,12 +25166,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3523, 17, "Veau, longe, maigre et gras, cru" });
+                values: new object[] { 3546, 17, "Veau, épaule, jarret, maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3025, 15, "Poisson, maquereau espagnol et chinchard, espèces diverses, crues" });
+                values: new object[] { 3522, 17, "Veau, cuisse (ronde), maigre, rôti" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25065,7 +25186,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2381, 11, "Carotte, bouillie, égouttée" });
+                values: new object[] { 3022, 15, "Poisson, maquereau bleu, cuit au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25105,17 +25226,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2382, 11, "Carotte, conserve, solides égouttés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2373, 11, "Betteraves, conserve, solides égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2371, 11, "Haricots italiens, jaunes ou verts, bouillis, égouttés" });
+                values: new object[] { 2381, 11, "Carotte, bouillie, égouttée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2372, 11, "Haricots italiens, jaunes ou verts, conserve, solides égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25155,27 +25276,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2372, 11, "Haricots italiens, jaunes ou verts, conserve, solides égouttés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2363, 11, "Concombre, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2383, 11, "Carotte, congelée, non préparée" });
+                values: new object[] { 2371, 11, "Haricots italiens, jaunes ou verts, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2385, 11, "Chou-fleur, cru" });
+                values: new object[] { 2362, 11, "Chou, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2403, 11, "Oignons en rondelles, panés, pré-frits, congelés, non préparés" });
+                values: new object[] { 2382, 11, "Carotte, conserve, solides égouttés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2384, 11, "Carotte, congelée, bouillie, égouttée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25215,17 +25336,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2384, 11, "Carotte, congelée, bouillie, égouttée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2395, 11, "Chou vert frisé, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2393, 11, "Maïs sucré, congelé, en épi, non préparé" });
+                values: new object[] { 2383, 11, "Carotte, congelée, non préparée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2394, 11, "Ail, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25265,12 +25386,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2394, 11, "Ail, cru" });
+                values: new object[] { 2385, 11, "Chou-fleur, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2362, 11, "Chou, bouilli, égoutté" });
+                values: new object[] { 2393, 11, "Maïs sucré, congelé, en épi, non préparé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25285,7 +25406,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2336, 11, "Pomme de terre, purée, faite maison, préparée avec lait entier et beurre" });
+                values: new object[] { 2359, 11, "Chou-fleur, vert, bouilli" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25325,17 +25446,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2337, 11, "Marinades, cornichons sucrés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2326, 11, "Échalote, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2324, 11, "Pommes de terre, crêpe, faite maison" });
+                values: new object[] { 2336, 11, "Pomme de terre, purée, faite maison, préparée avec lait entier et beurre" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2325, 11, "Radis, graines, germées, avec graines, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25375,7 +25496,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2325, 11, "Radis, graines, germées, avec graines, crues" });
+                values: new object[] { 2316, 11, "Patate douce, cuite, confite, faite maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2324, 11, "Pommes de terre, crêpe, faite maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2337, 11, "Marinades, cornichons sucrés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25386,16 +25517,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2339, 11, "Marinades, relish, chien chaud (hot-dog)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2340, 11, "Marinades, relish, sucrée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2359, 11, "Chou-fleur, vert, bouilli" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25490,27 +25611,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2340, 11, "Marinades, relish, sucrée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2403, 11, "Oignons en rondelles, panés, pré-frits, congelés, non préparés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2315, 11, "Épinard, soufflé, fait maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2404, 11, "Oignons en rondelles, panés, pré-frits, congelés, chauffés au four" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2316, 11, "Patate douce, cuite, confite, faite maison" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2405, 11, "Persil, frais" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2407, 11, "Panais, bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2471, 11, "Navet, congelé, non préparé" });
+                values: new object[] { 2406, 11, "Panais, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25550,17 +25671,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2472, 11, "Navet, congelé, bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2463, 11, "Tomate, rouge, mûre, conserve, étuvée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2461, 11, "Tomate, rouge, mûre, bouillie" });
+                values: new object[] { 2471, 11, "Navet, congelé, non préparé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2462, 11, "Tomate, rouge, mûre, conserve, entière" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25600,27 +25721,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2462, 11, "Tomate, rouge, mûre, conserve, entière" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2453, 11, "Courge d'hiver, courge musquée, congelée, non préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2473, 11, "Légumes, jus, cocktail, conserve" });
+                values: new object[] { 2461, 11, "Tomate, rouge, mûre, bouillie" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2475, 11, "Betteraves harvard, conserve, solides et liquide" });
+                values: new object[] { 2452, 11, "Courge d'hiver, courge musquée, cuite au four" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2495, 11, "Marinades, cornichons à l'aneth (inclus Cacher et Polonais)" });
+                values: new object[] { 2472, 11, "Navet, congelé, bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2474, 11, "Légumes, macédoine, conserve, solides égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25660,17 +25781,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2474, 11, "Légumes, macédoine, conserve, solides égouttés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2485, 11, "Poivron vert, bouilli, égoutté, sel ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2483, 11, "Oignon, bouilli, égoutté, sel ajouté" });
+                values: new object[] { 2473, 11, "Légumes, jus, cocktail, conserve" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2484, 11, "Poivron rouge, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25710,12 +25831,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2484, 11, "Poivron rouge, cru" });
+                values: new object[] { 2475, 11, "Betteraves harvard, conserve, solides et liquide" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2452, 11, "Courge d'hiver, courge musquée, cuite au four" });
+                values: new object[] { 2483, 11, "Oignon, bouilli, égoutté, sel ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25730,7 +25851,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2425, 11, "Pomme de terre, conserve, solides égouttés" });
+                values: new object[] { 2449, 11, "Courge d'hiver, courge poivrée (courgeon), cuite au four" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25770,17 +25891,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2426, 11, "Pomme de terre, purée, flocons sans lait, sec" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2417, 11, "Pomme de terre, chair, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2415, 11, "Poivron vert, congelé, haché, non préparé" });
+                values: new object[] { 2425, 11, "Pomme de terre, conserve, solides égouttés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2416, 11, "Poivron vert, congelé, haché, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25820,7 +25941,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2416, 11, "Poivron vert, congelé, haché, bouilli, égoutté" });
+                values: new object[] { 2407, 11, "Panais, bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2415, 11, "Poivron vert, congelé, haché, non préparé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2426, 11, "Pomme de terre, purée, flocons sans lait, sec" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25831,16 +25962,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2428, 11, "Pomme de terre, en escalopes, mélange sec, non préparé" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2429, 11, "Pomme de terre, en escalopes, mélange sec, préparé avec eau, lait entier et beurre" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2449, 11, "Courge d'hiver, courge poivrée (courgeon), cuite au four" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25935,27 +26056,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2406, 11, "Panais, cru" });
+                values: new object[] { 2429, 11, "Pomme de terre, en escalopes, mélange sec, préparé avec eau, lait entier et beurre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2496, 11, "Piments de la Jamaïque, conserve" });
+                values: new object[] { 2405, 11, "Persil, frais" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2315, 11, "Épinard, soufflé, fait maison" });
+                values: new object[] { 2495, 11, "Marinades, cornichons à l'aneth (inclus Cacher et Polonais)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2313, 11, "Maïs, pouding, fait maison" });
+                values: new object[] { 2314, 11, "Pomme de terre, purée, faite maison, préparée avec lait entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2200, 11, "Salsifis, bouilli, égoutté" });
+                values: new object[] { 2312, 11, "Carotte, jus, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -25995,17 +26116,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2201, 11, "Choucroute, conserve, solides et liquide" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2192, 11, "Citrouille, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2190, 11, "Citrouille, feuilles, crues" });
+                values: new object[] { 2200, 11, "Salsifis, bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2191, 11, "Citrouille, feuilles, bouillies, égouttées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26045,27 +26166,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2191, 11, "Citrouille, feuilles, bouillies, égouttées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2182, 11, "Pomme de terre, O'brien, congelée, préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2202, 11, "Algue, agar, crue" });
+                values: new object[] { 2190, 11, "Citrouille, feuilles, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2204, 11, "Algue, varech (kelp, kombu, tangle), crue" });
+                values: new object[] { 2181, 11, "Pomme de terre, O'brien, congelée, non préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2222, 11, "Courge d'été, musquée, congelée, bouillie, égouttée" });
+                values: new object[] { 2201, 11, "Choucroute, conserve, solides et liquide" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2203, 11, "Algue, mousse d'Irlande, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26105,17 +26226,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2203, 11, "Algue, mousse d'Irlande, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2214, 11, "Épinard, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2212, 11, "Fèves, soya, sèches, germées, germes de haricot, sautées, sans gras ajouté" });
+                values: new object[] { 2202, 11, "Algue, agar, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2213, 11, "Épinard, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26155,12 +26276,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2213, 11, "Épinard, cru" });
+                values: new object[] { 2204, 11, "Algue, varech (kelp, kombu, tangle), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2181, 11, "Pomme de terre, O'brien, congelée, non préparée" });
+                values: new object[] { 2212, 11, "Fèves, soya, sèches, germées, germes de haricot, sautées, sans gras ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26175,7 +26296,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2155, 11, "Pois et carottes, congelés, non préparés" });
+                values: new object[] { 2178, 11, "Pomme de terre, au gratin, mélange sec, préparé avec eau, lait entier et beurre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26215,17 +26336,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2156, 11, "Pois et carottes, congelés, bouillis, égouttés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2147, 11, "Pois mange-tout, congelés, non préparés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2145, 11, "Oignon vert (ciboule), cru" });
+                values: new object[] { 2155, 11, "Pois et carottes, congelés, non préparés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2146, 11, "Pois mange-tout, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26265,7 +26386,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2146, 11, "Pois mange-tout, bouillis, égouttés" });
+                values: new object[] { 2137, 11, "Okra (gombo), congelé, bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2145, 11, "Oignon vert (ciboule), cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2156, 11, "Pois et carottes, congelés, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26276,16 +26407,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2158, 11, "Pois et oignons, congelés, non préparés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2159, 11, "Pois et oignons, congelés, bouillis, égouttés" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2178, 11, "Pomme de terre, au gratin, mélange sec, préparé avec eau, lait entier et beurre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26380,27 +26501,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2159, 11, "Pois et oignons, congelés, bouillis, égouttés" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2222, 11, "Courge d'été, musquée, congelée, bouillie, égouttée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2313, 11, "Maïs, pouding, fait maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2223, 11, "Courge d'été, pâtisson, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2314, 11, "Pomme de terre, purée, faite maison, préparée avec lait entier" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2224, 11, "Courge d'été, pâtisson, bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2226, 11, "Courge d'été, courgette (zucchini), bouillie, égouttée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2290, 11, "Oseille, cru" });
+                values: new object[] { 2225, 11, "Courge d'été, courgette (zucchini), crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26440,17 +26561,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2291, 11, "Oseille, bouilli, égoutté" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2282, 11, "Pois carrés, tubercule, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2280, 11, "Pois carrés, verts, bouillis, égouttés" });
+                values: new object[] { 2290, 11, "Oseille, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2281, 11, "Pois carrés, feuilles, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26490,27 +26611,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2281, 11, "Pois carrés, feuilles, crues" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2272, 11, "Légumes, macédoine, congelée, bouillie, égouttée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2292, 11, "Eppaw de l'Oregon, cru" });
+                values: new object[] { 2280, 11, "Pois carrés, verts, bouillis, égouttés" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2294, 11, "Cassier (ben oléifère), gousses, bouillies, égouttées" });
+                values: new object[] { 2271, 11, "Légumes, macédoine, congelée, non préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2312, 11, "Carotte, jus, conserve" });
+                values: new object[] { 2291, 11, "Oseille, bouilli, égoutté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2293, 11, "Cassier (ben oléifère), gousses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26550,17 +26671,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2293, 11, "Cassier (ben oléifère), gousses, crues" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2304, 11, "Courge d'été, toutes variétés, bouillies, égouttées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2302, 11, "Échalote, lyophilisée" });
+                values: new object[] { 2292, 11, "Eppaw de l'Oregon, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2303, 11, "Courge d'été, toutes variétés, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26600,12 +26721,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2303, 11, "Courge d'été, toutes variétés, crues" });
+                values: new object[] { 2294, 11, "Cassier (ben oléifère), gousses, bouillies, égouttées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2271, 11, "Légumes, macédoine, congelée, non préparée" });
+                values: new object[] { 2302, 11, "Échalote, lyophilisée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26620,7 +26741,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2244, 11, "Patate douce, conserve, purée" });
+                values: new object[] { 2268, 11, "Navet, feuilles et racines, congelées, non préparées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26660,17 +26781,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2245, 11, "Patate douce, congelée, non préparée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2236, 11, "Patate aquatique, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2234, 11, "Succotash, congelé, non préparé" });
+                values: new object[] { 2244, 11, "Patate douce, conserve, purée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2235, 11, "Succotash, congelé, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26710,7 +26831,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2235, 11, "Succotash, congelé, bouilli, égoutté" });
+                values: new object[] { 2226, 11, "Courge d'été, courgette (zucchini), bouillie, égouttée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2234, 11, "Succotash, congelé, non préparé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2245, 11, "Patate douce, congelée, non préparée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26721,16 +26852,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2247, 11, "Taro, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2248, 11, "Taro, cuit" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2268, 11, "Navet, feuilles et racines, congelées, non préparées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26825,27 +26946,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2225, 11, "Courge d'été, courgette (zucchini), crue" });
+                values: new object[] { 2248, 11, "Taro, cuit" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2136, 11, "Okra (gombo), congelé, non préparé" });
+                values: new object[] { 2224, 11, "Courge d'été, pâtisson, bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2497, 11, "Marinades, cornichons à l'aneth, faible en sodium" });
+                values: new object[] { 2135, 11, "Okra (gombo), bouilli, égoutté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2499, 11, "Algue, dulse (rhodymemie palme, porphyre, nori), séchée" });
+                values: new object[] { 2496, 11, "Piments de la Jamaïque, conserve" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2902, 14, "Lait malté, saveur chocolat, poudre" });
+                values: new object[] { 2498, 11, "Tomates, ketchup (catsup), faible en sodium" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26885,17 +27006,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2903, 14, "Lait malté, saveur de chocolat, poudre, avec lait entier" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2892, 14, "Limonade, blanche, concentré congelé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2888, 14, "Boisson au jus, agrumes, concentré congelé" });
+                values: new object[] { 2902, 14, "Lait malté, saveur chocolat, poudre" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2889, 14, "Boisson au jus, agrumes, concentré congelé, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26935,27 +27056,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2889, 14, "Boisson au jus, agrumes, concentré congelé, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2878, 14, "Café instantané avec chicorée, poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2904, 14, "Boisson au jus, orange et abricots, conserve" });
+                values: new object[] { 2888, 14, "Boisson au jus, agrumes, concentré congelé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2906, 14, "Lait frappé (restauration-minute), vanille" });
+                values: new object[] { 2877, 14, "Café instantané, décaféiné, poudre, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2928, 14, "Café instantané, sucré, saveur cappucino, poudre, eau ajoutée" });
+                values: new object[] { 2903, 14, "Lait malté, saveur de chocolat, poudre, avec lait entier" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2905, 14, "Lait frappé (restauration-minute), chocolat" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -26995,17 +27116,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2905, 14, "Lait frappé (restauration-minute), chocolat" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2918, 14, "Eau minérale, gazéifiée, bouteille" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2915, 14, "Thé instantané, sucré, saveur de citron, poudre, eau ajoutée" });
+                values: new object[] { 2904, 14, "Boisson au jus, orange et abricots, conserve" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2916, 14, "Tisane infusée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27045,12 +27166,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2916, 14, "Tisane infusée" });
+                values: new object[] { 2906, 14, "Lait frappé (restauration-minute), vanille" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2877, 14, "Café instantané, décaféiné, poudre, eau ajoutée" });
+                values: new object[] { 2915, 14, "Thé instantané, sucré, saveur de citron, poudre, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27065,7 +27186,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2849, 14, "Alcoolisé, vin de table, tous (11,5% alcool par volume)" });
+                values: new object[] { 2874, 14, "Café instantané, régulier, poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27105,17 +27226,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2850, 14, "Alcoolisé, vin de table, rouge (11,5% alcool par volume)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2841, 14, "Alcoolisé, cocktail, whisky sour, mélange, poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2837, 14, "Alcoolisé, cocktail, daiquiri (rhum), fait maison" });
+                values: new object[] { 2849, 14, "Alcoolisé, vin de table, tous (11,5% alcool par volume)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2838, 14, "Alcoolisé, cocktail, pina colada (rhum), fait maison" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27155,7 +27276,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2838, 14, "Alcoolisé, cocktail, pina colada (rhum), fait maison" });
+                values: new object[] { 2789, 13, "Boeuf, salé, \"corned beef\", pointe de poitrine, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2837, 14, "Alcoolisé, cocktail, daiquiri (rhum), fait maison" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2850, 14, "Alcoolisé, vin de table, rouge (11,5% alcool par volume)" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27166,16 +27297,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2852, 14, "Alcoolisé, vin de table, blanc (11,5% alcool par volume)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2853, 14, "Boissons gazeuses, soda nature (club soda)" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2874, 14, "Café instantané, régulier, poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27270,27 +27391,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2853, 14, "Boissons gazeuses, soda nature (club soda)" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2928, 14, "Café instantané, sucré, saveur cappucino, poudre, eau ajoutée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2788, 13, "Boeuf, foie de, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2929, 14, "Café instantané, sucré, saveur française, poudre, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2789, 13, "Boeuf, salé, \"corned beef\", pointe de poitrine, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2930, 14, "Café instantané, sucré, saveur moka, poudre, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2932, 14, "Lait frappé (restauration-minute), fraise" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3000, 15, "Poisson, tambour brésilien, cru" });
+                values: new object[] { 2931, 14, "Café, succédané, boisson de céréales, poudre, avec lait entier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27330,17 +27451,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3001, 15, "Poisson, tambour brésilien, pané et frit" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2992, 15, "Poisson, carpe, cuite ar four ou grillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2990, 15, "Poisson, stromatée à fossettes, crue" });
+                values: new object[] { 3000, 15, "Poisson, tambour brésilien, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2991, 15, "Poisson, carpe, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27380,27 +27501,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2991, 15, "Poisson, carpe, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2982, 14, "Boisson, saveur limonade, poudre" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3002, 15, "Poisson, coryphène commune, crue" });
+                values: new object[] { 2990, 15, "Poisson, stromatée à fossettes, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3004, 15, "Poisson, anguille, espèces diverses, crues" });
+                values: new object[] { 2981, 14, "Boisson, saveur punch aux fruits, poudre, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3022, 15, "Poisson, maquereau bleu, cuit au four ou grillé" });
+                values: new object[] { 3001, 15, "Poisson, tambour brésilien, pané et frit" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3003, 15, "Poisson, malachigan d'eau douce (drum), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27440,17 +27561,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3003, 15, "Poisson, malachigan d'eau douce (drum), cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 3014, 15, "Poisson, hareng, atlantique, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3012, 15, "Poisson, flétan, Atlantique ou Pacifique, au four ou grillé" });
+                values: new object[] { 3002, 15, "Poisson, coryphène commune, crue" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 3013, 15, "Poisson, flétan, Groenland (flétan noir), cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27490,12 +27611,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 3013, 15, "Poisson, flétan, Groenland (flétan noir), cru" });
+                values: new object[] { 3004, 15, "Poisson, anguille, espèces diverses, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2981, 14, "Boisson, saveur punch aux fruits, poudre, eau ajoutée" });
+                values: new object[] { 3012, 15, "Poisson, flétan, Atlantique ou Pacifique, au four ou grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27510,7 +27631,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2955, 14, "Boisson au jus, canneberges et raisins, vitamine C ajoutée, bouteille" });
+                values: new object[] { 2978, 14, "Alcoolisé, boisson au vin" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27550,17 +27671,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2956, 14, "Jus, cocktail, canneberges, vitamine C ajoutée, bouteille" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2942, 14, "Thé infusé, chamomile" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2940, 14, "Limonade rose, concentré congelé, eau ajoutée" });
+                values: new object[] { 2955, 14, "Boisson au jus, canneberges et raisins, vitamine C ajoutée, bouteille" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2941, 14, "Thé infusé avec eau distillée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27600,7 +27721,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2941, 14, "Thé infusé avec eau distillée" });
+                values: new object[] { 2932, 14, "Lait frappé (restauration-minute), fraise" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2940, 14, "Limonade rose, concentré congelé, eau ajoutée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2956, 14, "Jus, cocktail, canneberges, vitamine C ajoutée, bouteille" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27611,16 +27742,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2958, 14, "Boisson, punch aux fruits, vitamine C ajoutée, poudre, eau ajoutée" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2959, 14, "Boisson, punch aux fruits, vitamine C ajoutée, prête à boire" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2978, 14, "Alcoolisé, boisson au vin" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27715,27 +27836,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2931, 14, "Café, succédané, boisson de céréales, poudre, avec lait entier" });
+                values: new object[] { 2959, 14, "Boisson, punch aux fruits, vitamine C ajoutée, prête à boire" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2498, 11, "Tomates, ketchup (catsup), faible en sodium" });
+                values: new object[] { 2930, 14, "Café instantané, sucré, saveur moka, poudre, eau ajoutée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2788, 13, "Boeuf, foie de, cru" });
+                values: new object[] { 2497, 11, "Marinades, cornichons à l'aneth, faible en sodium" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2786, 13, "Boeuf, haché, régulier, cru" });
+                values: new object[] { 2787, 13, "Boeuf, rognon de, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2567, 12, "Noix, noisettes, avelines ou coudres, séchées" });
+                values: new object[] { 2713, 13, "Boeuf, pointe de poitrine, maigre, 0mm (0\") paré, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27775,17 +27896,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2568, 12, "Noix, noisettes, avelines ou coudres, séchées, blanchies" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2559, 12, "Noix, noix de coco, désséchée, non sucrée" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2557, 12, "Noix, châtaignes d'Europe (marrons), bouillies et cuites à la vapeur" });
+                values: new object[] { 2567, 12, "Noix, noisettes, avelines ou coudres, séchées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2558, 12, "Noix, noix de coco, crue" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27825,27 +27946,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2558, 12, "Noix, noix de coco, crue" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2549, 12, "Noix, châtaignes chinoises, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2569, 12, "Noix, noisettes, avelines ou coudres, rôties à sec, non blanchies" });
+                values: new object[] { 2557, 12, "Noix, châtaignes d'Europe (marrons), bouillies et cuites à la vapeur" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2572, 12, "Noix, fruits de ginkgo, séchées" });
+                values: new object[] { 2548, 12, "Noix, beurre d'acajou (cajous, anacardes), nature" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2590, 12, "Noix, Grenoble, séchées" });
+                values: new object[] { 2568, 12, "Noix, noisettes, avelines ou coudres, séchées, blanchies" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2571, 12, "Noix, fruits de ginkgo, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27885,17 +28006,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2571, 12, "Noix, fruits de ginkgo, crues" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2582, 12, "Noix, pacanes, séchées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2580, 16, "Soya, graines, rôties, sans sel" });
+                values: new object[] { 2569, 12, "Noix, noisettes, avelines ou coudres, rôties à sec, non blanchies" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2581, 12, "Noix, simili produit, base de blé, nature, sel ajouté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27935,12 +28056,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2581, 12, "Noix, simili produit, base de blé, nature, sel ajouté" });
+                values: new object[] { 2572, 12, "Noix, fruits de ginkgo, séchées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2548, 12, "Noix, beurre d'acajou (cajous, anacardes), nature" });
+                values: new object[] { 2580, 16, "Soya, graines, rôties, sans sel" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27955,7 +28076,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2519, 12, "Graines,  semoule de graines de carthame, partiellement dégraissée" });
+                values: new object[] { 2545, 12, "Noix, noix longues (noix cendres), séchées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -27995,17 +28116,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2521, 12, "Graines, sésame, graines, entières, rôties et grillées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2511, 12, "Graines de chia, déshydratées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2509, 12, "Graines, noix-pain (brosimum dicastrum), graines, crues" });
+                values: new object[] { 2519, 12, "Graines,  semoule de graines de carthame, partiellement dégraissée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2510, 12, "Graines, noix-pain (brosimum alicastrum), graines, déshydratées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28045,7 +28166,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2510, 12, "Graines, noix-pain (brosimum alicastrum), graines, déshydratées" });
+                values: new object[] { 2499, 11, "Algue, dulse (rhodymemie palme, porphyre, nori), séchée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2509, 12, "Graines, noix-pain (brosimum dicastrum), graines, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2521, 12, "Graines, sésame, graines, entières, rôties et grillées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28056,16 +28187,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2523, 12, "Graines, farine de sésame, partiellement dégraissées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2524, 12, "Graines, farine de sésame, faible en gras" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2545, 12, "Noix, noix longues (noix cendres), séchées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28160,27 +28281,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2524, 12, "Graines, farine de sésame, faible en gras" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2590, 12, "Noix, Grenoble, séchées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2786, 13, "Boeuf, haché, régulier, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2591, 12, "Graines, graines de fruits à pain, rôties" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2787, 13, "Boeuf, rognon de, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2592, 12, "Graines, coton, graines, rôties" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2594, 12, "Noix, châtaignes d'Europe (marrons), rôties" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2667, 13, "Boeuf, thymus, braisé" });
+                values: new object[] { 2593, 12, "Graines, beurre de sésame, tahini, graines rôties et grillées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28220,17 +28341,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2668, 13, "Boeuf, langue, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2659, 13, "Boeuf, poumons, braisé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2657, 13, "Boeuf, foie, sauté" });
+                values: new object[] { 2667, 13, "Boeuf, thymus, braisé" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2658, 13, "Boeuf, poumon, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28270,27 +28391,27 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2658, 13, "Boeuf, poumon, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2645, 12, "Graines, citrouille et courge, graines, entières, rôties" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2669, 13, "Boeuf, langue, mijoté" });
+                values: new object[] { 2657, 13, "Boeuf, foie, sauté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2676, 13, "Boeuf, pointe de poitrine, maigre, 0mm (0\") paré, cru" });
+                values: new object[] { 2644, 12, "Noix, pistaches, crues" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2713, 13, "Boeuf, pointe de poitrine, maigre, 0mm (0\") paré, braisé" });
+                values: new object[] { 2668, 13, "Boeuf, langue, cru" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2670, 13, "Boeuf, tripe, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28330,17 +28451,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2670, 13, "Boeuf, tripe, cru" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2700, 13, "Boeuf, haché, régulier, grillé" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2696, 13, "Boeuf, haché, mi-maigre, galette, sauté" });
+                values: new object[] { 2669, 13, "Boeuf, langue, mijoté" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2698, 13, "Boeuf, haché, régulier" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28380,12 +28501,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2698, 13, "Boeuf, haché, régulier" });
+                values: new object[] { 2676, 13, "Boeuf, pointe de poitrine, maigre, 0mm (0\") paré, cru" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2644, 12, "Noix, pistaches, crues" });
+                values: new object[] { 2696, 13, "Boeuf, haché, mi-maigre, galette, sauté" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28400,7 +28521,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2615, 12, "Graines, lotus, graines, crues" });
+                values: new object[] { 2641, 12, "Noix, semoule d'amandes, partiellement dégraissées, salées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28440,17 +28561,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2616, 12, "Noix, amandes, rôties au miel, non blanchies" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2605, 12, "Noix, beurre d'amandes, nature" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2603, 12, "Noix, noix de coco, désséchée, sucrée, filamentée" });
+                values: new object[] { 2615, 12, "Graines, lotus, graines, crues" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2604, 12, "Graines, sisymbrium sp., graines, entières, déshydratées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28490,7 +28611,17 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2604, 12, "Graines, sisymbrium sp., graines, entières, déshydratées" });
+                values: new object[] { 2594, 12, "Noix, châtaignes d'Europe (marrons), rôties" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2603, 12, "Noix, noix de coco, désséchée, sucrée, filamentée" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2616, 12, "Noix, amandes, rôties au miel, non blanchies" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28501,16 +28632,6 @@ namespace backend.Migrations
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
                 values: new object[] { 2618, 12, "Noix, noix mélangées, rôties dans l'huile avec arachides, salées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2619, 12, "Graines, citrouille et courge, graines, rôties, salées" });
-
-            migrationBuilder.InsertData(
-                table: "FoodItems",
-                columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2641, 12, "Noix, semoule d'amandes, partiellement dégraissées, salées" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28605,7 +28726,12 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodItems",
                 columns: new[] { "FoodID", "FoodGroupID", "Name" },
-                values: new object[] { 2593, 12, "Graines, beurre de sésame, tahini, graines rôties et grillées" });
+                values: new object[] { 2619, 12, "Graines, citrouille et courge, graines, rôties, salées" });
+
+            migrationBuilder.InsertData(
+                table: "FoodItems",
+                columns: new[] { "FoodID", "FoodGroupID", "Name" },
+                values: new object[] { 2592, 12, "Graines, coton, graines, rôties" });
 
             migrationBuilder.InsertData(
                 table: "FoodItems",
@@ -28617,6 +28743,9 @@ namespace backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "FoodEntries");
+
+            migrationBuilder.DropTable(
+                name: "FoodGroups");
 
             migrationBuilder.DropTable(
                 name: "FoodItems");

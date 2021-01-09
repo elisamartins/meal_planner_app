@@ -17,6 +17,7 @@ namespace backend.Models
         public CsvImporter _csvImporter = new CsvImporter();
         public DbSet<User> Users { get; set; }
         public DbSet<FoodItem> FoodItems { get; set; }
+        public DbSet<FoodGroup> FoodGroups { get; set; }
         public DbSet<GroceryList> GroceryLists { get; set; }
         public DbSet<GroceryItem> GroceryItems { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
@@ -31,7 +32,10 @@ namespace backend.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             List<FoodItem> foodItems = _csvImporter.ImportFoodItems();
+            List<FoodGroup> foodGroups = _csvImporter.ImportFoodGroups();
+
             modelBuilder.Entity<FoodItem>().HasData(foodItems);
+            modelBuilder.Entity<FoodGroup>().HasData(foodGroups);
         }
     }
 }

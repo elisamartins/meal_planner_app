@@ -35,13 +35,12 @@ const LoginScreen = ({ navigation }) => {
 }, []);
   
   global.foodItems = data;
-  console.log(global.foodItems)
 
   return (
     <View style={styles.container}>
       {isLoading ? <ActivityIndicator /> : (
         <View>
-      <Image style={styles.logo} source={require('../../assets/logo.png')} />
+      <Image style={styles.logo} source={require('../assets/logo.png')} />
       <TextInput placeholder="Username" />
       <TextInput placeholder="Password" />
       <Button

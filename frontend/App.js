@@ -10,7 +10,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/app/Components/HomeScreen'
-import LoginScreen from './src/app/Components/Login/LoginScreen'
+import LoginScreen from './src/app/Components/LoginScreen'
 import {
   Dimensions,
   PixelRatio,

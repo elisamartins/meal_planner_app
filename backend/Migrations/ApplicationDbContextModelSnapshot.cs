@@ -55,6 +55,139 @@ namespace backend.Migrations
                     b.ToTable("FoodEntries");
                 });
 
+            modelBuilder.Entity("backend.Models.FoodGroup", b =>
+                {
+                    b.Property<int>("FoodGroupID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("FoodGroupID");
+
+                    b.ToTable("FoodGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            FoodGroupID = 1,
+                            Name = "Produits laitiers et d'oeufs\r\n"
+                        },
+                        new
+                        {
+                            FoodGroupID = 2,
+                            Name = "Épices et fines herbes"
+                        },
+                        new
+                        {
+                            FoodGroupID = 3,
+                            Name = "Aliments pour bébés"
+                        },
+                        new
+                        {
+                            FoodGroupID = 4,
+                            Name = "Matières grasses et huiles"
+                        },
+                        new
+                        {
+                            FoodGroupID = 5,
+                            Name = "Produits de volaille"
+                        },
+                        new
+                        {
+                            FoodGroupID = 6,
+                            Name = "Potages et sauces"
+                        },
+                        new
+                        {
+                            FoodGroupID = 7,
+                            Name = "Saucisses et viandes froides"
+                        },
+                        new
+                        {
+                            FoodGroupID = 8,
+                            Name = "Céréales à déjeuner"
+                        },
+                        new
+                        {
+                            FoodGroupID = 9,
+                            Name = "Fruits et jus de fruits"
+                        },
+                        new
+                        {
+                            FoodGroupID = 10,
+                            Name = "Produits de porc"
+                        },
+                        new
+                        {
+                            FoodGroupID = 11,
+                            Name = "Légumes et produits végétaux"
+                        },
+                        new
+                        {
+                            FoodGroupID = 12,
+                            Name = "Noix et graines"
+                        },
+                        new
+                        {
+                            FoodGroupID = 13,
+                            Name = "Produits de boeuf"
+                        },
+                        new
+                        {
+                            FoodGroupID = 14,
+                            Name = "Boissons"
+                        },
+                        new
+                        {
+                            FoodGroupID = 15,
+                            Name = "Produits de poissons, mollusques et crustacés"
+                        },
+                        new
+                        {
+                            FoodGroupID = 16,
+                            Name = "Légumineuses et produits de légumineuses"
+                        },
+                        new
+                        {
+                            FoodGroupID = 17,
+                            Name = "Ageau, veau et gibier"
+                        },
+                        new
+                        {
+                            FoodGroupID = 18,
+                            Name = "Produits de boulangerie"
+                        },
+                        new
+                        {
+                            FoodGroupID = 19,
+                            Name = "Sucreries"
+                        },
+                        new
+                        {
+                            FoodGroupID = 20,
+                            Name = "Céréales, grains et pâtes"
+                        },
+                        new
+                        {
+                            FoodGroupID = 21,
+                            Name = "Aliments prêts-à-manger"
+                        },
+                        new
+                        {
+                            FoodGroupID = 22,
+                            Name = "Mets composés"
+                        },
+                        new
+                        {
+                            FoodGroupID = 25,
+                            Name = "Grignotises"
+                        });
+                });
+
             modelBuilder.Entity("backend.Models.FoodItem", b =>
                 {
                     b.Property<int>("FoodID")
@@ -34223,9 +34356,6 @@ namespace backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("Amount")
-                        .HasColumnType("REAL");
-
                     b.Property<bool>("Checked")
                         .HasColumnType("INTEGER");
 
@@ -34234,9 +34364,6 @@ namespace backend.Migrations
 
                     b.Property<int>("GroceryListID")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Unit")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("GroceryItemID");
 

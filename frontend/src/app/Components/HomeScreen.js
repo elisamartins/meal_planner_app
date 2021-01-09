@@ -2,9 +2,9 @@ import 'react-native-gesture-handler';
 import React, {  } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomIcon from '../../../CustomIcon'
-import RecipeScreen from './Recipe/RecipeScreen'
-import PlannerScreen from './Planner/PlannerScreen'
-import GroceryListScreen from './GroceryList/GroceryListScreen'
+import RecipeScreen from './RecipeScreen'
+import PlannerScreen from './PlannerScreen'
+import GroceryListScreen from './GroceryListScreen'
 import {
   Dimensions,
   PixelRatio,

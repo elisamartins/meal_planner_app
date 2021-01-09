@@ -39,39 +39,59 @@ namespace backend.Controllers
             if (groceryList == null)
                 return BadRequest("Grocery list does not exist");
 
-
             List<GroceryItem> groceryItems = await _db.GroceryItems.Where(g => g.GroceryListID == groceryListId).ToListAsync();
+            List<GroceryCategoryDTO> groceryCategoriesDTO = new List<GroceryCategoryDTO>();
 
-            List<GroceryItemDTO> groceryItemsDTO = new List<GroceryItemDTO>();
 
             foreach (var item in groceryItems)
             {
-
-                var foodi = await _db.FoodItems.Where(f => f.FoodID == item.FoodID).FirstOrDefaultAsync();
-                groceryItemsDTO.Add(new GroceryItemDTO()
+                Console.WriteLine(item.FoodID);
+                FoodItem foodItem = await _db.FoodItems.Where(f => f.FoodID == item.FoodID).FirstOrDefaultAsync();
+                FoodGroup foodGroup = await _db.FoodGroups.Where(group => group.FoodGroupID == foodItem.FoodGroupID).FirstOrDefaultAsync();
+                Console.WriteLine(foodGroup);
+                GroceryItemDTO groceryItemDTO = new GroceryItemDTO()
                 {
-                    ID = item.GroceryItemID,
+                    GroceryItemID = item.GroceryItemID,
                     FoodID = item.FoodID,
-                    FoodName = foodi.Name,
-                    Amount = item.Amount,
-                    Unit = "g",
+                    FoodName = foodItem.Name,
                     Checked = item.Checked
-                });
+                };
+
+                bool isAdded = false;
+                for (int i = 0; i < groceryCategoriesDTO.Count(); i++)
+                {
+                    if (groceryCategoriesDTO[i].Category == foodGroup.Name)
+                    {
+                        groceryCategoriesDTO[i].Items.Add(groceryItemDTO);
+                        isAdded = true;
+                    }
+                }
+
+                if (!isAdded)
+                {
+                    groceryCategoriesDTO.Add(new GroceryCategoryDTO() {
+                        Category = foodGroup.Name,
+                        Items = new List<GroceryItemDTO>(){ groceryItemDTO }
+                    });
+                }
+             
             }
             Console.WriteLine(groceryItems.ToString());
 
+
             GroceryListDTO groceryListDTO = new GroceryListDTO()
             {
-                ID = groceryList.GroceryListID,
+                GroceryListID = groceryList.GroceryListID,
                 Name = groceryList.Name,
-                Items = groceryItemsDTO,
+                Categories = groceryCategoriesDTO,
             };
+
 
             return groceryListDTO;
         }
 
         [HttpPost("groceryList/{username}")]
-        public async Task<ActionResult> AddGroceryList(string username, [FromBody] GroceryListDTO groceryListDTO)
+        public async Task<ActionResult> AddGroceryList(string username, [FromBody] string groceryListName)
         {
             if (username == null)
                 return BadRequest("Invalid client request");
@@ -79,7 +99,7 @@ namespace backend.Controllers
             _db.GroceryLists.Add(new GroceryList
             {
                 Username = username,
-                Name = groceryListDTO.Name,
+                Name = groceryListName,
             });
 
             await _db.SaveChangesAsync();
@@ -94,10 +114,8 @@ namespace backend.Controllers
 
             _db.GroceryItems.Add(new GroceryItem()
             {
-                FoodID = 1,
+                FoodID = groceryItemDTO.FoodID,
                 GroceryListID = groceryListId,
-                Amount = groceryItemDTO.Amount,
-                Unit = groceryItemDTO.Unit,
                 Checked = groceryItemDTO.Checked,
             });
 
