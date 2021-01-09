@@ -36,7 +36,7 @@ const GroceryListScreen = () => {
     fetch('http://192.168.0.158:5000/groceryList/1')
       .then((response) => response.json())
       .then((json) => {
-        setGroceryList(json);
+        setGroceryList(json); 
       })
       .catch((error) => console.error("error"))
       .finally(() => {

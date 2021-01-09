@@ -10,10 +10,14 @@ import {
     View,
 } from "react-native";
 
+const Itema = ({ item }) => {
+    const onPress = () => console.log(item.foodID);
+    return (<TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>)
+}
+
 const SearchBar = () => {
     const [query, setQuery] = useState('');
     const [foodItems, setFoodItems] = useState([global.foodItems]);
-    const onPress = () => console.log("pressed");
 
     const handleSearch = text => {
         setFoodItems(
@@ -30,7 +34,6 @@ const SearchBar = () => {
     return (
         <SafeAreaView style={styles.container}>
       
-            <View>
                 <FlatList ListHeaderComponent={
 
                     <View
@@ -55,15 +58,11 @@ const SearchBar = () => {
                     </View>
           
                 }
-        
+                    keyExtractor={item => item.FoodID}
                     data={foodItems}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>
-                        )
+                    renderItem={({ item }) => <Itema  item={item}/>
                     } />
       
-            </View>
-
                   
         </SafeAreaView>)
 }

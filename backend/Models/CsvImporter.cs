@@ -36,6 +36,7 @@ namespace backend.Models
                 using (var reader = new StreamReader("../data/cleaned_data/food_group.csv"))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
+
                     return csv.GetRecords<FoodGroup>().ToList();
 
                 }
