@@ -28,28 +28,37 @@ const Item = ({ itemName }) => {
 
 const GroceryListScreen = () => {
 
-  const [isLoading, setLoading] = useState(true);
-  const [groceryList, setGroceryList] = useState([]);
-  const [formattedGroceryList, setFormattedGroceryList] = useState([]);
-
+  const [groceryList, setGroceryList] = useState({
+    groceryListID: 0,
+    name: "",
+    categories: [],
+  });
+  
   useEffect(() => {
     fetch('http://192.168.0.158:5000/groceryList/1')
-      .then((response) => response.json())
-      .then((json) => {
-        setGroceryList(json); 
-      })
-      .catch((error) => console.error("error"))
-      .finally(() => {
-        setFormattedGroceryList(groceryList.categories.map((data) => {
-          return {
-            title: data.category,
-            data: data.items.map(i => i.foodName),
-          }
-        })
-        );
-        setLoading(false);
-  })
+    .then(console.log("Fetching grocery list ..."))
+    .then((response) => { return response.json(); })
+    .then((json) => {
+      setGroceryList(json);
+      console.log("Done fetching.")
+    })
+    .catch((error) => console.error(error))
   }, []);
+  
+  const [formattedGroceryList, setFormattedGroceryList] = useState();
+  const [isLoading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    console.log("Formatting groceryList");
+    setFormattedGroceryList(groceryList.categories.map((data) => {
+      return {
+        title: data.category,
+        data: data.items.map(i => i.foodName),
+      }
+    }));
+    setLoading(false);
+  }, [groceryList]);
+
 
   return (
     <View style={styles.container}>
