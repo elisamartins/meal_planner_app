@@ -7,6 +7,7 @@ import PlannerScreen from './PlannerScreen'
 import GroceryListScreen from './GroceryListScreen'
 import {
   Dimensions,
+  findNodeHandle,
   PixelRatio,
   StyleSheet,
 } from 'react-native';
@@ -31,7 +32,6 @@ const HomeScreen: () => React$Node = () => {
   return (
     
       <Tab.Navigator
-      
       screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName;
@@ -43,9 +43,10 @@ const HomeScreen: () => React$Node = () => {
             } else if (route.name === 'Recipe') {
               iconName = "recipe";
           }
+
           
           return <CustomIcon name={iconName} size={size} color={color} />;
-          },
+        },
         })}
         tabBarOptions={{
           activeTintColor: 'turquoise',

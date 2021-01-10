@@ -42,7 +42,7 @@ const FoodItemSearchBar = ({selectItem}) => {
 
     return (
         <SafeAreaView style={styles.container}>
-        <SearchBar
+        <SearchBar lightTheme={true}
                 placeholder="Ajouter un article... "
                 onChangeText={queryText => handleSearch(queryText)}
                 value={query}

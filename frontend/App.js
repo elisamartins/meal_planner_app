@@ -40,12 +40,12 @@ const App: () => React$Node = () => {
         <Stack.Screen 
           name="Login"
           component={LoginScreen}
-          options={{ title: 'Login' }}
+          options={{ title: 'Login',  headerShown: false }}
         />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Home' }}
+          options={{ title: 'Home',  headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
