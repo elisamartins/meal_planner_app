@@ -58,14 +58,18 @@ const GroceryListScreen = () => {
     }));
     setLoading(false);
   }, [groceryList]);
-
-
+ 
+  const addItem = (foodID) => { // the callback. Use a better name
+    console.log("Adding item: " + foodID);
+    };
+  
+  
   return (
     <View style={styles.container}>
       {isLoading ? <ActivityIndicator /> : (
         <SafeAreaView style={styles.container}>
       
-          <SearchBar/>
+          <SearchBar selectItem={addItem}/>
     
           <SectionList
             sections={formattedGroceryList}

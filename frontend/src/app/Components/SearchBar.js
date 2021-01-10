@@ -10,12 +10,15 @@ import {
     View,
 } from "react-native";
 
-const Itema = ({ item }) => {
-    const onPress = () => console.log(item.foodID);
+const Item = ({ item, sendItem }) => {
+    const onPress = () => {
+        console.log(item.foodID);
+        sendItem(item.foodID);
+    };
     return (<TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>)
 }
 
-const SearchBar = () => {
+const SearchBar = ({selectItem}) => {
     const [query, setQuery] = useState('');
     const [foodItems, setFoodItems] = useState([global.foodItems]);
 
@@ -30,6 +33,11 @@ const SearchBar = () => {
     const contains = ({ name }, query) => {
         return name.toLowerCase().startsWith(query) ? true : false;
     }
+
+    const sendItem = (foodID) => {
+        selectItem(foodID);
+    };
+    
 
     return (
         <SafeAreaView style={styles.container}>
@@ -60,7 +68,7 @@ const SearchBar = () => {
                 }
                     keyExtractor={item => item.FoodID}
                     data={foodItems}
-                    renderItem={({ item }) => <Itema  item={item}/>
+                    renderItem={({ item }) => <Item sendItem={sendItem} item={item}/>
                     } />
       
                   
