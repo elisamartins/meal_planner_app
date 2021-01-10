@@ -12,16 +12,34 @@ import {
   View,
 } from "react-native";
 
-const Item = ({ itemName }) => {
-  const [isSelected, setSelection] = useState(false);
+const Item = ({ item }) => {
+  const [isSelected, setSelection] = useState(item.checked);
+  
+  const checkItem = () => {
+    console.log(item.groceryItemID);
+    setSelection(!isSelected);
+
+    fetch('http://192.168.0.158:5000/checkGroceryItem/14', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(!isSelected)
+    })
+      .then(console.log("Putting..."))
+      .catch((error) => console.error("error"));
+
+    };
+
   return (
     <View style={styles.item}>
         <CheckBox
           value={isSelected}
-          onValueChange={setSelection}
+          onValueChange={checkItem}
           tintColors={{ true: 'turquoise', false: 'black' }}
         />
-      <Text>{itemName}</Text>
+      <Text>{item.foodName}</Text>
     </View>
   )
 };
@@ -53,7 +71,7 @@ const GroceryListScreen = () => {
     setFormattedGroceryList(groceryList.categories.map((data) => {
       return {
         title: data.category,
-        data: data.items.map(i => i.foodName),
+        data: data.items.map(i => { return {foodName: i.foodName, foodID: i.foodID, checked: i.checked, groceryItemID: i.groceryItemID} }),
       }
     }));
     setLoading(false);
@@ -86,7 +104,7 @@ const GroceryListScreen = () => {
           <SectionList
             sections={formattedGroceryList}
             keyExtractor={(item, index) => item + index}
-            renderItem={({ item }) => <Item itemName={item} />}
+            renderItem={({ item }) => <Item item={item} />}
             renderSectionHeader={({ section: { title } }) => (<Text style={styles.header}> {title.toUpperCase()} </Text>)}
             SectionSeparatorComponent = {Divider}
 

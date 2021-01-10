@@ -128,7 +128,6 @@ namespace backend.Controllers
         [HttpPut("checkGroceryItem/{groceryItemId}")]
         public async Task<ActionResult> CheckGroceryItem(int groceryItemId, [FromBody] bool isChecked)
         {
-
             GroceryItem groceryItem = await _db.GroceryItems.Where(f => f.GroceryItemID == groceryItemId).FirstOrDefaultAsync();
             if (groceryItem == null)
                 return BadRequest("GroceryItemID does not correspond to any item.");
