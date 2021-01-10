@@ -19,7 +19,7 @@ const Item = ({ item }) => {
     console.log(item.groceryItemID);
     setSelection(!isSelected);
 
-    fetch('http://192.168.0.158:5000/checkGroceryItem/14', {
+    fetch('http://192.168.0.158:5000/checkGroceryItem/' + item.groceryItemID, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -37,7 +37,7 @@ const Item = ({ item }) => {
         <CheckBox
           value={isSelected}
           onValueChange={checkItem}
-          tintColors={{ true: 'turquoise', false: 'black' }}
+          tintColors={{ true: '#BFE3F7', false: 'black' }}
         />
       <Text>{item.foodName}</Text>
     </View>

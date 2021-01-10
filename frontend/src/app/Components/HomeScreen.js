@@ -49,7 +49,7 @@ const HomeScreen: () => React$Node = () => {
         },
         })}
         tabBarOptions={{
-          activeTintColor: 'turquoise',
+          activeTintColor: '#BFE3F7',
           inactiveTintColor: 'gray',
           tabStyle: {
             fontSize: normalize(15),

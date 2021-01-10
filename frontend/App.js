@@ -36,7 +36,12 @@ const App: () => React$Node = () => {
   return (
     
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+      
+      screenOptions={{
+        headerStyle: { elevation: 0 },
+        cardStyle: { backgroundColor: '#BFE3F7' }
+    }}>
         <Stack.Screen 
           name="Login"
           component={LoginScreen}
