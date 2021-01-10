@@ -107,16 +107,18 @@ namespace backend.Controllers
         }
 
         [HttpPost("groceryItem/{groceryListId}")]
-        public async Task<ActionResult> AddGroceryItem(int groceryListId, [FromBody] GroceryItemDTO groceryItemDTO)
+        public async Task<ActionResult> AddGroceryItem(int groceryListId, [FromBody] int FoodID)
         {
-            if (groceryItemDTO == null)
-                return BadRequest("Invalid client request");
+
+            FoodItem foodItem = await _db.FoodItems.Where(f => f.FoodID == FoodID).FirstOrDefaultAsync();
+            if (foodItem == null)
+                return BadRequest("FoodID does not correspond to any food item.");
 
             _db.GroceryItems.Add(new GroceryItem()
             {
-                FoodID = groceryItemDTO.FoodID,
+                FoodID = foodItem.FoodID,
                 GroceryListID = groceryListId,
-                Checked = groceryItemDTO.Checked,
+                Checked = false,
             });
 
             await _db.SaveChangesAsync();

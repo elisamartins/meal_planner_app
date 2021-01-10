@@ -35,7 +35,7 @@ const GroceryListScreen = () => {
   });
   
   useEffect(() => {
-    fetch('http://192.168.0.158:5000/groceryList/1')
+    fetch('http://192.168.0.158:5000/groceryList/2')
     .then(console.log("Fetching grocery list ..."))
     .then((response) => { return response.json(); })
     .then((json) => {
@@ -59,10 +59,21 @@ const GroceryListScreen = () => {
     setLoading(false);
   }, [groceryList]);
  
-  const addItem = (foodID) => { // the callback. Use a better name
+  const addItem = (foodID) => {
     console.log("Adding item: " + foodID);
+
+    fetch('http://192.168.0.158:5000/groceryItem/2', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(foodID)
+    })
+      .then(console.log("Posting..."))
+      .catch((error) => console.error("error"));
+
     };
-  
   
   return (
     <View style={styles.container}>
