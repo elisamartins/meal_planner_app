@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
+import { SearchBar } from 'react-native-elements'
 import {
     FlatList,
     StyleSheet,
@@ -18,7 +19,7 @@ const Item = ({ item, sendItem }) => {
     return (<TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>)
 }
 
-const SearchBar = ({selectItem}) => {
+const FoodItemSearchBar = ({selectItem}) => {
     const [query, setQuery] = useState('');
     const [foodItems, setFoodItems] = useState([global.foodItems]);
 
@@ -41,46 +42,26 @@ const SearchBar = ({selectItem}) => {
 
     return (
         <SafeAreaView style={styles.container}>
-      
-                <FlatList ListHeaderComponent={
-
-                    <View
-                        style={{
-                            backgroundColor: 'white',
-                            padding: 10,
-                            marginVertical: 10,
-                            borderRadius: 20
-                        }}
-                    >
-            
-                        <TextInput
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            clearButtonMode="always"
-                            value={query}
-                            onChangeText={queryText => handleSearch(queryText)}
-                            placeholder="Ajouter un article"
-                            style={{ backgroundColor: '#fff', paddingHorizontal: 20 }}
-                        />
-        
-                    </View>
-          
-                }
+        <SearchBar
+                placeholder="Ajouter un article... "
+                onChangeText={queryText => handleSearch(queryText)}
+                value={query}
+            />
+            <FlatList
                     keyExtractor={item => item.FoodID}
                     data={foodItems}
                     renderItem={({ item }) => <Item sendItem={sendItem} item={item}/>
                     } />
       
-                  
-        </SafeAreaView>)
+            </SafeAreaView>
+
+    )
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 5,
-    padding: 5,
     
   },
 });
 
-export default SearchBar;
+export default FoodItemSearchBar;

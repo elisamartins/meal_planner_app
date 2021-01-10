@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import CheckBox from '@react-native-community/checkbox'
 import React, { useState, useEffect } from 'react';
-import SearchBar from './SearchBar'
+import FoodItemSearchBar from './SearchBar'
 import {
   ActivityIndicator,
   Divider,
@@ -35,7 +35,7 @@ const GroceryListScreen = () => {
   });
   
   useEffect(() => {
-    fetch('http://192.168.0.158:5000/groceryList/2')
+    fetch('http://192.168.0.158:5000/groceryList/3')
     .then(console.log("Fetching grocery list ..."))
     .then((response) => { return response.json(); })
     .then((json) => {
@@ -43,7 +43,7 @@ const GroceryListScreen = () => {
       console.log("Done fetching.")
     })
     .catch((error) => console.error(error))
-  }, []);
+  }, [addItem]);
   
   const [formattedGroceryList, setFormattedGroceryList] = useState();
   const [isLoading, setLoading] = useState(true);
@@ -59,10 +59,11 @@ const GroceryListScreen = () => {
     setLoading(false);
   }, [groceryList]);
  
+
   const addItem = (foodID) => {
     console.log("Adding item: " + foodID);
 
-    fetch('http://192.168.0.158:5000/groceryItem/2', {
+    fetch('http://192.168.0.158:5000/groceryItem/3', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -80,7 +81,7 @@ const GroceryListScreen = () => {
       {isLoading ? <ActivityIndicator /> : (
         <SafeAreaView style={styles.container}>
       
-          <SearchBar selectItem={addItem}/>
+          <FoodItemSearchBar selectItem={addItem}/>
     
           <SectionList
             sections={formattedGroceryList}
@@ -99,7 +100,6 @@ const GroceryListScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 5
   },
 
   header: {
