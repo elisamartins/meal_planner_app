@@ -45,32 +45,39 @@ const HomeScreen: () => React$Node = () => {
           }
 
           
-          return <CustomIcon name={iconName} size={size} color={color} />;
+          return <CustomIcon name={iconName} size={size} color={color} style={{fontSize: 40}}/>;
         },
         })}
-        tabBarOptions={{
-          activeTintColor: '#BFE3F7',
+      tabBarOptions={{
+        style: {
+          height: 70,
+        },
+        tabStyle: {
+            height: 70,
+          },
+          activeTintColor: '#000',
           inactiveTintColor: 'gray',
-          tabStyle: {
-            fontSize: normalize(15),
+          labelStyle: {
             fontFamily: 'Open sans',
+            fontSize: 12,
+            fontWeight: 'bold',
           },
         }}
       >
         <Tab.Screen 
           name="GroceryList"
         component={GroceryListScreen}
-          options={{ title: 'Épicerie'}}
+          options={{ title: 'ÉPICERIE'}}
         />
         <Tab.Screen
           name="Planner"
           component={PlannerScreen}
-          options={{ title: 'Plan' }}
+        options={{ title: 'PLAN' }}
         />
         <Tab.Screen
           name="Recipe"
           component={RecipeScreen}
-          options={{ title: 'Recettes' }}
+          options={{ title: 'RECETTES' }}
         />
       </Tab.Navigator>
   );

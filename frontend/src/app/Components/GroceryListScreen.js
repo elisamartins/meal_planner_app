@@ -2,15 +2,20 @@ import 'react-native-gesture-handler';
 import CheckBox from '@react-native-community/checkbox'
 import React, { useState, useEffect } from 'react';
 import FoodItemSearchBar from './SearchBar'
+import { Divider } from 'react-native-elements';
 import {
   ActivityIndicator,
-  Divider,
+  Dimensions,
   StyleSheet,
   Text,
   SafeAreaView,
   SectionList,
   View,
 } from "react-native";
+
+// Calculate window size
+const width = Dimensions.get('window').width
+const height = Dimensions.get('window').height
 
 const Item = ({ item }) => {
   const [isSelected, setSelection] = useState(item.checked);
@@ -39,7 +44,7 @@ const Item = ({ item }) => {
           onValueChange={checkItem}
           tintColors={{ true: '#BFE3F7', false: 'black' }}
         />
-      <Text>{item.foodName}</Text>
+      <Text style={{fontSize: 16}}>{item.foodName}</Text>
     </View>
   )
 };
@@ -95,40 +100,52 @@ const GroceryListScreen = () => {
     };
   
   return (
-    <View style={styles.container}>
-      {isLoading ? <ActivityIndicator /> : (
-        <SafeAreaView style={styles.container}>
+  <>
+    {isLoading ? <ActivityIndicator /> : (
+      <SafeAreaView style={styles.container}>
       
-          <FoodItemSearchBar selectItem={addItem} style={{zindex:1}}/>
+          <FoodItemSearchBar selectItem={addItem} style={{zindex:1, height:height}}/>
+        <View style={styles.listContainer}>
     
           <SectionList
             sections={formattedGroceryList}
             keyExtractor={(item, index) => item + index}
             renderItem={({ item }) => <Item item={item} />}
-            renderSectionHeader={({ section: { title } }) => (<Text style={styles.header}> {title.toUpperCase()} </Text>)}
-            SectionSeparatorComponent = {Divider}
-
+              renderSectionHeader={({ section: { title } }) => (<View>
+                <Text style={styles.header}> {title.toUpperCase()}</Text>
+                <Divider style={{ backgroundColor: '#ABC' }} />
+              </View>)}
+          
           />
+        
       
-        </SafeAreaView>)}
         </View>
-  
+        </SafeAreaView>)}
+  </>
   )};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFF'
   },
 
   header: {
-    marginTop: 10,
+    marginTop: 20,
+    fontSize: 20
   },
   
   item: {
     flex: 1,
     flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
     marginVertical: 2,
     alignItems: 'center',
+  },
+  listContainer: {
+    flex: 1,
+    marginHorizontal: 5,
   },
 });
 

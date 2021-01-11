@@ -1,11 +1,10 @@
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
-import { SocialIcon } from 'react-native-elements'
+import { SocialIcon, Input } from 'react-native-elements'
 import {
   ActivityIndicator,
   View,
   Image,
-  TextInput,
   Button,
   StyleSheet,
   Text
@@ -20,6 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center'
   },
   logo: {
     width: 175,
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignSelf: 'center'
   },
+  form: {
+    flex: 1,
+    flexDirection: 'column',
+    alignSelf: 'center'
+  }
 });
 
 
@@ -49,10 +54,14 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.container}>
       {isLoading ? <ActivityIndicator /> : (
         
-        <View>
+        <View style={styles.form}>
           <Image style={styles.logo} source={require('../assets/logo.png')} />
-          <TextInput placeholder="Username" />
-          <TextInput placeholder="Password" />
+          <View>
+
+          <Input placeholder="Username"/>
+          <Input placeholder="Password" />
+          </View>
+          
           <View style={styles.buttonContainer}>
 
 
