@@ -54,16 +54,12 @@ const FoodItemSearchBar = ({selectItem}) => {
     
 
     return (
-        <>
-            <SafeAreaView style={styles.container}>
-        <SearchBar lightTheme={true} 
+        <SafeAreaView style={listIsOpened ? styles.openedList : {}}>
+            <SearchBar lightTheme={true} style={styles.searchBar}
                 placeholder="Ajouter un article... "
                 onChangeText={queryText => handleSearch(queryText)}
                 value={query}
             />  
-        </SafeAreaView>
-
-        <SafeAreaView style={listIsOpened? styles.openedList : styles.closedList}>
         {
             query === ""
                 ?
@@ -87,25 +83,16 @@ const FoodItemSearchBar = ({selectItem}) => {
 
         
         </SafeAreaView>
-        </>
     )
 }
 const styles = StyleSheet.create({
-    container: {
-        zIndex: 2,
-        height: height,
-    },
     openedList: {
-        flex:1,
-        width: width,
+        position: 'relative',
         height: height,
         left: 0,
         bottom: 0,
-        zIndex: 1,
+        zIndex: 1000,
         backgroundColor: '#FFF'
-    },
-    closedList: {
-        height: 0,
     },
     searchImage: {
         width: 150,

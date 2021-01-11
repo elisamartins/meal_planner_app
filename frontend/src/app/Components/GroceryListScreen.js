@@ -104,7 +104,7 @@ const GroceryListScreen = () => {
     {isLoading ? <ActivityIndicator /> : (
       <SafeAreaView style={styles.container}>
       
-          <FoodItemSearchBar selectItem={addItem} style={{zindex:1, height:height}}/>
+      <FoodItemSearchBar selectItem={addItem} style={{zindex:1}}/>
         <View style={styles.listContainer}>
     
           <SectionList
