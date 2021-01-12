@@ -3,7 +3,7 @@ import React, {  } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomIcon from '../../../CustomIcon'
 import RecipeScreen from './RecipeScreen'
-import PlannerScreen from './PlannerScreen'
+import PlannerScreen from './Planner/PlannerStackScreen'
 import GroceryStackScreen from './Grocery/GroceryStackScreen'
 import {
   Dimensions,

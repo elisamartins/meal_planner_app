@@ -112,7 +112,7 @@ namespace backend.Controllers
             GroceryList groceryList = new GroceryList()
             {
                 Username = username,
-                Name = "test",
+                Name = "",
             };
             _db.GroceryLists.Add(groceryList);
 
