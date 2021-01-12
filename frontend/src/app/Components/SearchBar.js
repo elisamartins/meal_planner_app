@@ -9,7 +9,6 @@ import {
     StyleSheet,
     Text,
     SafeAreaView,
-    TextInput,
     TouchableOpacity,
     View,
 } from "react-native";
@@ -41,7 +40,8 @@ const FoodItemSearchBar = ({selectItem}) => {
             [] : global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 5)
         );
         setQuery(text);
-        setlistIsOpened(text == "" ? false: true);
+        setlistIsOpened(text == "" ? false : true);
+        
     };
   
     const contains = ({ name }, query) => {
@@ -50,18 +50,25 @@ const FoodItemSearchBar = ({selectItem}) => {
 
     const sendItem = (foodID) => {
         selectItem(foodID);
+        setFoodItems([]);
+        setlistIsOpened(false);
     };
     
 
     return (
         <SafeAreaView style={listIsOpened ? styles.openedList : {}}>
+            <View>
+                <Icon name="chevron-left" size={30} color="#000" />
+                <Text>Liste d'épicerie test</Text>
+            </View>
+           
             <SearchBar lightTheme={true} style={styles.searchBar}
                 placeholder="Ajouter un article... "
                 onChangeText={queryText => handleSearch(queryText)}
                 value={query}
             />  
-        {
-            query === ""
+            {
+                query === ""
                 ?
                   <View style={styles.image_placeholder_container}>
                     {/* <Image  
@@ -93,6 +100,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         zIndex: 1000,
         backgroundColor: '#FFF'
+    },
+    closedList: {
+
+    },
+    groceryName: {
+
     },
     searchImage: {
         width: 150,

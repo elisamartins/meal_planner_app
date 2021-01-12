@@ -7,7 +7,8 @@ import {
   Image,
   Button,
   StyleSheet,
-  Text
+  Text,
+  SafeAreaView
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -28,8 +29,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   form: {
-    flex: 1,
-    flexDirection: 'column',
     alignSelf: 'center'
   }
 });
@@ -51,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
 
   //https://stackoverflow.com/questions/43380260/draw-horizontal-rule-in-react-native
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {isLoading ? <ActivityIndicator /> : (
         
         <View style={styles.form}>
@@ -75,11 +74,11 @@ const LoginScreen = ({ navigation }) => {
           </View>
           
           <SocialIcon title='Se connecter avec Facebook' button type='facebook' style={ {padding: 10}}/>
-
+          <SocialIcon title='Se connecter avec Google' button type='google' style={ {padding: 10}}/>
         </View>
         
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 export default LoginScreen;

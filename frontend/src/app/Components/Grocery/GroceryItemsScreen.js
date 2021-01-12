@@ -1,8 +1,6 @@
 import 'react-native-gesture-handler';
-import CheckBox from '@react-native-community/checkbox'
 import React, { useState, useEffect } from 'react';
-import FoodItemSearchBar from './SearchBar'
-import { Divider } from 'react-native-elements';
+import FoodItemSearchBar from '../SearchBar'
 import {
   ActivityIndicator,
   Dimensions,
@@ -10,46 +8,38 @@ import {
   Text,
   SafeAreaView,
   SectionList,
+  TouchableOpacity,
   View,
 } from "react-native";
 
-// Calculate window size
-const width = Dimensions.get('window').width
-const height = Dimensions.get('window').height
-
-const Item = ({ item }) => {
-  const [isSelected, setSelection] = useState(item.checked);
-  
+const Item = ({ item}) => {
+  const [isChecked, setChecked] = useState(item.checked);
   const checkItem = () => {
-    console.log(item.groceryItemID);
-    setSelection(!isSelected);
-
     fetch('http://192.168.0.158:5000/checkGroceryItem/' + item.groceryItemID, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
         },
-      body: JSON.stringify(!isSelected)
+      body: JSON.stringify(!item.checked)
     })
       .then(console.log("Putting..."))
+      .then(setChecked(!isChecked))
       .catch((error) => console.error("error"));
-
+    
     };
 
   return (
     <View style={styles.item}>
-        <CheckBox
-          value={isSelected}
-          onValueChange={checkItem}
-          tintColors={{ true: '#BFE3F7', false: 'black' }}
-        />
-      <Text style={{fontSize: 16}}>{item.foodName}</Text>
+      <TouchableOpacity onPress={checkItem}>
+        <Text style={isChecked ? styles.checkedItem : styles.uncheckedItem}>{item.foodName}</Text>
+      </TouchableOpacity>
+      
     </View>
   )
 };
 
-const GroceryListScreen = () => {
+const GroceryItemsScreen = ({ route }) => {
 
   const [groceryList, setGroceryList] = useState({
     groceryListID: 0,
@@ -58,11 +48,11 @@ const GroceryListScreen = () => {
   });
   
   useEffect(() => {
-    fetch('http://192.168.0.158:5000/groceryList/3')
-    .then(console.log("Fetching grocery list ..."))
+    fetch('http://192.168.0.158:5000/groceryList/' + route.params.ID)
+    .then(console.log("Fetching grocery list items ..."))
     .then((response) => { return response.json(); })
     .then((json) => {
-      setGroceryList(json);
+        setGroceryList(json);
       console.log("Done fetching.")
     })
     .catch((error) => console.error(error))
@@ -80,7 +70,7 @@ const GroceryListScreen = () => {
       }
     }));
     setLoading(false);
-  }, [groceryList]);
+  }, [groceryList, isLoading]);
  
 
   const addItem = (foodID) => {
@@ -98,7 +88,7 @@ const GroceryListScreen = () => {
       .catch((error) => console.error("error"));
 
     };
-  
+
   return (
   <>
     {isLoading ? <ActivityIndicator /> : (
@@ -110,10 +100,9 @@ const GroceryListScreen = () => {
           <SectionList
             sections={formattedGroceryList}
             keyExtractor={(item, index) => item + index}
-            renderItem={({ item }) => <Item item={item} />}
-              renderSectionHeader={({ section: { title } }) => (<View>
+              renderItem={({ item }) => <Item item={item}/>}
+              renderSectionHeader={({ section: { title } }) => (<View style={styles.category}>
                 <Text style={styles.header}> {title.toUpperCase()}</Text>
-                <Divider style={{ backgroundColor: '#ABC' }} />
               </View>)}
           
           />
@@ -124,15 +113,70 @@ const GroceryListScreen = () => {
   </>
   )};
 
+const getColor = (category) => {
+  switch (category) {
+    case 'FRUITS ET LÉGUMES':
+      return "#ADD932"
+    
+    case 'VIANDES ET POISSONS':
+      return "#FF5E71"
+    
+    case 'PRODUITS LAITIERS ET OEUFS':
+      return "#82DFFC"
+    
+    case 'ÉPICES ET FINES HERBES':
+      return "#FF5E71"
+    
+    case 'CÉRÉALES, GRAINS ET PÂTES':
+      return "#FD5618"
+    
+    case 'BOULANGERIE':
+      return "#E7D681"
+    
+    case 'JUS ET BOISSONS':
+      return "#FF3DD4"
+    
+    case 'PRÊTS-À-MANGER':
+      return "#75A1CA"
+    
+    case 'NOIX ET GRAINES':
+      return "#D3AA93"
+    
+    case 'GRIGNOTISES ET SUCRERIES':
+      return "#32D9C5"
+    
+    case 'PRODUITS POUR BÉBÉ':
+      return "#D1A9F0"
+    
+    case 'AUTRES':
+        return "#C2D6D8"
+
+  }
+}
+
 const styles = StyleSheet.create({
+  category: {
+    backgroundColor: "#D1A9F0",
+    paddingHorizontal: 5,
+    paddingVertical: 5,
+    marginTop: 10
+  },
   container: {
     flex: 1,
     backgroundColor: '#FFF'
   },
-
+  checkedItem: {
+    fontSize: 16,
+    fontFamily: 'sans-serif',
+  },
+  uncheckedItem: {
+    fontSize: 16,
+    fontFamily: 'sans-serif-thin',
+    textDecorationLine: 'line-through'
+  },
   header: {
-    marginTop: 20,
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: 'sans-serif-light',
   },
   
   item: {
@@ -142,6 +186,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginVertical: 2,
     alignItems: 'center',
+    
   },
   listContainer: {
     flex: 1,
@@ -149,4 +194,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GroceryListScreen;
+export default GroceryItemsScreen;

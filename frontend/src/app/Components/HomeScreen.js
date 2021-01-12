@@ -4,12 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomIcon from '../../../CustomIcon'
 import RecipeScreen from './RecipeScreen'
 import PlannerScreen from './PlannerScreen'
-import GroceryListScreen from './GroceryListScreen'
+import GroceryStackScreen from './Grocery/GroceryStackScreen'
 import {
   Dimensions,
-  findNodeHandle,
   PixelRatio,
-  StyleSheet,
 } from 'react-native';
 
 // https://stackoverflow.com/questions/33628677/react-native-responsive-font-size
@@ -27,7 +25,7 @@ export function normalize(size) {
 const Tab = createBottomTabNavigator();
 
 
-const HomeScreen: () => React$Node = () => {
+const HomeScreen = () => {
 
   return (
     
@@ -56,7 +54,7 @@ const HomeScreen: () => React$Node = () => {
             height: 70,
           },
           activeTintColor: '#000',
-          inactiveTintColor: 'gray',
+          inactiveTintColor: '#D3D3D3',
           labelStyle: {
             fontFamily: 'Open sans',
             fontSize: 12,
@@ -66,7 +64,7 @@ const HomeScreen: () => React$Node = () => {
       >
         <Tab.Screen 
           name="GroceryList"
-        component={GroceryListScreen}
+        component={GroceryStackScreen}
           options={{ title: 'ÉPICERIE'}}
         />
         <Tab.Screen

@@ -11,35 +11,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/app/Components/HomeScreen'
 import LoginScreen from './src/app/Components/LoginScreen'
-import {
-  Dimensions,
-  PixelRatio,
-  StyleSheet,
-} from 'react-native';
-
-// https://stackoverflow.com/questions/33628677/react-native-responsive-font-size
-const {
-  width: SCREEN_WIDTH,
-} = Dimensions.get('window');
-
-const scale = SCREEN_WIDTH / 320;
-
-export function normalize(size) {
-  const newSize = size * scale 
-  return Math.round(PixelRatio.roundToNearestPixel(newSize))
-}
-
 
 const Stack = createStackNavigator();
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     
     <NavigationContainer>
       <Stack.Navigator
       
       screenOptions={{
-        headerStyle: { elevation: 0 },
         cardStyle: { backgroundColor: '#BFE3F7' }
     }}>
         <Stack.Screen 
