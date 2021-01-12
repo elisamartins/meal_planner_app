@@ -9,7 +9,7 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210108230745_Initial")]
+    [Migration("20210112042948_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace backend.Migrations
                         new
                         {
                             FoodGroupID = 1,
-                            Name = "Produits laitiers et d'oeufs\r\n"
+                            Name = "Produits laitiers et oeufs\n"
                         },
                         new
                         {

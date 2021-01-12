@@ -176,7 +176,7 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "FoodGroups",
                 columns: new[] { "FoodGroupID", "Name" },
-                values: new object[] { 1, "Produits laitiers et d'oeufs\r\n" });
+                values: new object[] { 1, "Produits laitiers et oeufs\n" });
 
             migrationBuilder.InsertData(
                 table: "FoodGroups",

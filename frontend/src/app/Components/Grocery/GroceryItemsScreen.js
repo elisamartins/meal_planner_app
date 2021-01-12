@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import FoodItemSearchBar from '../SearchBar'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import { useNavigation } from '@react-navigation/native';
 import {
   ActivityIndicator,
-  Dimensions,
   StyleSheet,
   Text,
   SafeAreaView,
@@ -25,7 +26,7 @@ const Item = ({ item}) => {
     })
       .then(console.log("Putting..."))
       .then(setChecked(!isChecked))
-      .catch((error) => console.error("error"));
+      .catch((error) => console.error(error));
     
     };
 
@@ -39,7 +40,7 @@ const Item = ({ item}) => {
   )
 };
 
-const GroceryItemsScreen = ({ route }) => {
+const GroceryItemsScreen = ({ route, navigation }) => {
 
   const [groceryList, setGroceryList] = useState({
     groceryListID: 0,
@@ -76,7 +77,7 @@ const GroceryItemsScreen = ({ route }) => {
   const addItem = (foodID) => {
     console.log("Adding item: " + foodID);
 
-    fetch('http://192.168.0.158:5000/groceryItem/3', {
+    fetch('http://192.168.0.158:5000/groceryItem/' + route.params.ID, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -85,33 +86,34 @@ const GroceryItemsScreen = ({ route }) => {
       body: JSON.stringify(foodID)
     })
       .then(console.log("Posting..."))
-      .catch((error) => console.error("error"));
+      .catch((error) => console.error(error));
 
     };
 
-  return (
-  <>
-    {isLoading ? <ActivityIndicator /> : (
-      <SafeAreaView style={styles.container}>
-      
-      <FoodItemSearchBar selectItem={addItem} style={{zindex:1}}/>
-        <View style={styles.listContainer}>
-    
-          <SectionList
-            sections={formattedGroceryList}
-            keyExtractor={(item, index) => item + index}
-              renderItem={({ item }) => <Item item={item}/>}
-              renderSectionHeader={({ section: { title } }) => (<View style={styles.category}>
-                <Text style={styles.header}> {title.toUpperCase()}</Text>
-              </View>)}
-          
-          />
-        
-      
-        </View>
-        </SafeAreaView>)}
-  </>
-  )};
+
+    return (
+        <>
+          {isLoading ? <ActivityIndicator /> : (
+                <SafeAreaView style={styles.container}>
+                <View style={styles.screenHeader}>
+                    <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}><Icon name="chevron-left" size={30} color="#000" /></TouchableOpacity>
+                    <Text style={{fontSize: 25, marginLeft: 15}}>{route.params.title.toUpperCase()}</Text>
+                </View>
+                  <FoodItemSearchBar selectItem={addItem} style={{ zindex: 1 }} />
+                  <View style={styles.listContainer}>
+                      <SectionList
+                          sections={formattedGroceryList}
+                          keyExtractor={(item, index) => item + index}
+                          renderItem={({ item }) => <Item item={item} />}
+                          renderSectionHeader={({ section: { title } }) => (
+                              <View style={styles.category}>
+                                  <Text style={styles.categoryHeader}> {title.toUpperCase()}</Text>
+                              </View>)} />
+                  </View>
+                </SafeAreaView>)}
+        </>
+    )
+};
 
 const getColor = (category) => {
   switch (category) {
@@ -174,7 +176,7 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-thin',
     textDecorationLine: 'line-through'
   },
-  header: {
+  categoryHeader: {
     fontSize: 20,
     fontFamily: 'sans-serif-light',
   },
@@ -191,7 +193,11 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     marginHorizontal: 5,
-  },
+    },
+    screenHeader: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    }
 });
 
 export default GroceryItemsScreen;

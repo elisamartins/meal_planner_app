@@ -91,19 +91,20 @@ namespace backend.Controllers
         }
 
         [HttpPost("groceryList/{username}")]
-        public async Task<ActionResult> AddGroceryList(string username, [FromBody] string groceryListName)
+        public async Task<ActionResult<int>> AddGroceryList(string username)
         {
             if (username == null)
                 return BadRequest("Invalid client request");
 
-            _db.GroceryLists.Add(new GroceryList
+            GroceryList groceryList = new GroceryList()
             {
                 Username = username,
-                Name = groceryListName,
-            });
+                Name = "test",
+            };
+            _db.GroceryLists.Add(groceryList);
 
             await _db.SaveChangesAsync();
-            return Ok();
+            return groceryList.GroceryListID;
         }
 
         [HttpPost("groceryItem/{groceryListId}")]

@@ -74,7 +74,7 @@ namespace backend.Migrations
                         new
                         {
                             FoodGroupID = 1,
-                            Name = "Produits laitiers et d'oeufs\r\n"
+                            Name = "Produits laitiers et oeufs\n"
                         },
                         new
                         {

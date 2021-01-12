@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import { SearchBar } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome5'
 import {
     Dimensions,
     FlatList,
@@ -57,10 +56,6 @@ const FoodItemSearchBar = ({selectItem}) => {
 
     return (
         <SafeAreaView style={listIsOpened ? styles.openedList : {}}>
-            <View>
-                <Icon name="chevron-left" size={30} color="#000" />
-                <Text>Liste d'épicerie test</Text>
-            </View>
            
             <SearchBar lightTheme={true} style={styles.searchBar}
                 placeholder="Ajouter un article... "
