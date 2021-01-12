@@ -9,13 +9,11 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
   View
 } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Item = ({ item, navigation }) => {
+const Item = ({ item, navigation, getList }) => {
   const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
   const longPress = () => {
     setDeleteButtonVisible(!deleteButtonVisible);
@@ -27,10 +25,18 @@ const Item = ({ item, navigation }) => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
-        },
+      },
     })
+      .then((response) => {
+        if (response.ok) {
+          getList();
+          setDeleteButtonVisible(false);
+        }
+      })
       .then(console.log("Deleting list"))
       .catch((error) => console.error(error));
+    
+    
   }
   return (
     <View style={{flexDirection: 'row', alignItems:"center"}}>
@@ -55,6 +61,11 @@ const GroceryListScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("print");
+    getList()
+  }, []);
+  
+  const getList = () => {
     fetch('http://192.168.0.158:5000/groceryLists/jean')
     .then(console.log("Fetching grocery lists ..."))
     .then((response) => { return response.json(); })
@@ -62,10 +73,9 @@ const GroceryListScreen = ({navigation}) => {
       setGroceryList(json);
       console.log("Done fetching grocery lists.");
     })
+    .then(setLoading(false))
     .catch((error) => console.error(error))
-    .finally(() => setLoading(false))
-  }, []);
-  
+  }
   
   const createNewList = () => {
     fetch('http://192.168.0.158:5000/groceryList/jean', {
@@ -74,10 +84,16 @@ const GroceryListScreen = ({navigation}) => {
         Accept: 'application/json',
         'Content-Type': 'application/json'
         },
-      //body: JSON.stringify(foodID)
     })
       .then(console.log("Posting..."))
-      .then((response) => { return response.json(); })
+      .then((response) => {
+
+        if (response.ok) {
+          getList();
+        }
+
+        return response.json();
+      })
       .then((json) => {
         console.log(json);
         navigation.navigate('Grocery Items', { ID: json });
@@ -93,11 +109,11 @@ const GroceryListScreen = ({navigation}) => {
           <Text style={{fontSize: 25, fontWeight: 'bold'}}>LISTES D'ÉPICERIES</Text>
           <FlatList
             data={groceryList}
-            renderItem={({ item }) => <Item item={item} navigation={navigation}/>}
+            renderItem={({ item }) => <Item item={item} navigation={navigation} getList={getList}/>}
             keyExtractor={(item) => item.id}
             ItemSeparatorComponent={() => <View style={{
-          height: 0.5,
-          backgroundColor: "#D3D3D3",
+            height: 0.5,
+            backgroundColor: "#D3D3D3",
         }}
       />}
           />
