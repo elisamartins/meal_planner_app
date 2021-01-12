@@ -11,6 +11,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { TextInput } from 'react-native-gesture-handler';
 
 // Calculate window size
 const width = Dimensions.get('window').width
@@ -57,11 +58,12 @@ const FoodItemSearchBar = ({selectItem}) => {
     return (
         <SafeAreaView style={listIsOpened ? styles.openedList : {}}>
            
-            <SearchBar lightTheme={true} style={styles.searchBar}
-                placeholder="Ajouter un article... "
-                onChangeText={queryText => handleSearch(queryText)}
-                value={query}
-            />  
+            <View style={{padding: 10, margin: 5, backgroundColor:'#FFF'}}>
+                <TextInput style={styles.searchBar}
+                    placeholder="Ajouter un article... "
+                    onChangeText={queryText => handleSearch(queryText)}
+                    value={query} />  
+            </View>
             {
                 query === ""
                 ?

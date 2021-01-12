@@ -68,13 +68,13 @@ const LoginScreen = ({ navigation }) => {
           </View>
           
           <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical:20 }}>
-            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-            <View><Text style={{width: 50, textAlign: 'center'}}>ou</Text></View>
-            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+            <View style={{flex: 1, height: 1, backgroundColor: '#FFF'}} />
+            <View><Text style={{width: 50, textAlign: 'center', color: '#FFF'}}>ou</Text></View>
+            <View style={{flex: 1, height: 1, backgroundColor: '#FFF'}} />
           </View>
           
-          <SocialIcon title='Se connecter avec Facebook' button type='facebook' style={ {padding: 10}}/>
-          <SocialIcon title='Se connecter avec Google' button type='google' style={ {padding: 10}}/>
+          <SocialIcon title='Continuer avec Facebook' button type='facebook' style={ {padding: 10}}/>
+          <SocialIcon title='Continuer avec Google' button type='google' style={ {padding: 10}}/>
         </View>
         
       )}

@@ -90,6 +90,19 @@ namespace backend.Controllers
             return groceryListDTO;
         }
 
+        [HttpPut("groceryList/{groceryListId}")]
+        public async Task<ActionResult> CheckGroceryItem(int groceryListId, [FromBody] string title)
+        {
+            GroceryList groceryList = await _db.GroceryLists.Where(f => f.GroceryListID == groceryListId).FirstOrDefaultAsync();
+            if (groceryList == null)
+                return BadRequest("GroceryListID does not correspond to any list.");
+
+            groceryList.Name = title;
+
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
+
         [HttpPost("groceryList/{username}")]
         public async Task<ActionResult<int>> AddGroceryList(string username)
         {
@@ -105,6 +118,21 @@ namespace backend.Controllers
 
             await _db.SaveChangesAsync();
             return groceryList.GroceryListID;
+        }
+
+
+        [HttpDelete("groceryList/{groceryListId}")]
+        public async Task<ActionResult> DeleteGroceryList(int groceryListId)
+        {
+
+            GroceryList groceryList = await _db.GroceryLists.Where(f => f.GroceryListID == groceryListId).FirstOrDefaultAsync();
+            if (groceryList == null)
+                return BadRequest("GroceryListID does not correspond to any list.");
+
+            _db.GroceryLists.Remove(groceryList);
+            await _db.SaveChangesAsync();
+
+            return Ok();
         }
 
         [HttpPost("groceryItem/{groceryListId}")]

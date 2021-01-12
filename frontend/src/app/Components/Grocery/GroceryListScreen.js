@@ -4,23 +4,56 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import {
   ActivityIndicator,
   FlatList,
+  Modal,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
   View
 } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Item = ({ item, navigation }) => (
-  <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('Grocery Items', {ID: item.groceryListID, title: item.name})}>
-      <Text style={styles.title}>{item.name.toUpperCase()}</Text>
-  </TouchableOpacity>
-);
+const Item = ({ item, navigation }) => {
+  const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
+  const longPress = () => {
+    setDeleteButtonVisible(!deleteButtonVisible);
+  }
+
+  const deleteList = () => {
+    fetch('http://192.168.0.158:5000/groceryList/' + item.groceryListID, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+        },
+    })
+      .then(console.log("Deleting list"))
+      .catch((error) => console.error(error));
+  }
+  return (
+    <View style={{flexDirection: 'row', alignItems:"center"}}>
+
+    <Pressable style={styles.listItem} onLongPress={longPress} onPress={() => navigation.navigate('Grocery Items', { ID: item.groceryListID, title: item.name })}>
+        <TouchableOpacity><Text style={styles.title}>{item.name.toUpperCase()}</Text></TouchableOpacity>
+    </Pressable>
+        
+        {deleteButtonVisible ?
+          <TouchableOpacity onPress={deleteList} style={{alignSelf: 'flex-end'}}> 
+            <Icon name="trash" size={25} color="#000" />
+            </TouchableOpacity> 
+          : <></>
+        }
+      </View>
+  )
+};
 
 const GroceryListScreen = ({navigation}) => {
   
   const [groceryList, setGroceryList] = useState({});
-  
+  const [isLoading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch('http://192.168.0.158:5000/groceryLists/jean')
     .then(console.log("Fetching grocery lists ..."))
@@ -33,7 +66,6 @@ const GroceryListScreen = ({navigation}) => {
     .finally(() => setLoading(false))
   }, []);
   
-  const [isLoading, setLoading] = useState(true);
   
   const createNewList = () => {
     fetch('http://192.168.0.158:5000/groceryList/jean', {
@@ -48,10 +80,12 @@ const GroceryListScreen = ({navigation}) => {
       .then((response) => { return response.json(); })
       .then((json) => {
         console.log(json);
-    })
+        navigation.navigate('Grocery Items', { ID: json });
+      })
       .catch((error) => console.error(error));
+    
   };
-  
+
   return (
     <>
       {isLoading ? <ActivityIndicator /> : (
@@ -69,7 +103,7 @@ const GroceryListScreen = ({navigation}) => {
           />
           <TouchableOpacity style={styles.addButton} onPress={createNewList}>
             <Icon name="plus" size={12} color="#FFF" />
-            <Text style={styles.addButtonText} >CRÉER UNE NOUVELLE LISTE</Text>
+            <Text style={styles.addButtonText} >CRÉER UNE LISTE</Text>
           </TouchableOpacity>
         </SafeAreaView>)}
       </>
@@ -82,7 +116,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: '#32D9C5',
+    backgroundColor: '#8bd0f7',
     borderRadius: 50,
     padding: 10,
     marginBottom: 10,
@@ -94,12 +128,49 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif',
     marginLeft: 5
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
   container: {
     flex: 1,
     paddingHorizontal: 10,
   },
   listItem: {
     paddingVertical: 10,
+    flex: 1,
   },
   title: {
     fontSize: 20,

@@ -9,11 +9,12 @@ import {
   Text,
   SafeAreaView,
   SectionList,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 
-const Item = ({ item}) => {
+const Item = ({ item }) => {
   const [isChecked, setChecked] = useState(item.checked);
   const checkItem = () => {
     fetch('http://192.168.0.158:5000/checkGroceryItem/' + item.groceryItemID, {
@@ -88,7 +89,21 @@ const GroceryItemsScreen = ({ route, navigation }) => {
       .then(console.log("Posting..."))
       .catch((error) => console.error(error));
 
-    };
+  };
+  
+  const updateTitle = (title) => {
+    fetch('http://192.168.0.158:5000/groceryList/' + route.params.ID, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(title)
+    })
+      .then(console.log("Putting..."))
+      //.then(setChecked(!isChecked))
+      .catch((error) => console.error(error));
+  }
 
 
     return (
@@ -97,11 +112,13 @@ const GroceryItemsScreen = ({ route, navigation }) => {
                 <SafeAreaView style={styles.container}>
                 <View style={styles.screenHeader}>
                     <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}><Icon name="chevron-left" size={30} color="#000" /></TouchableOpacity>
-                    <Text style={{fontSize: 25, marginLeft: 15}}>{route.params.title.toUpperCase()}</Text>
+              <TextInput placeholder="Titre" onChangeText={title => updateTitle(title)} style={{ fontSize: 25, marginLeft: 15 }}>{groceryList.name.toUpperCase()}</TextInput>
                 </View>
                   <FoodItemSearchBar selectItem={addItem} style={{ zindex: 1 }} />
-                  <View style={styles.listContainer}>
-                      <SectionList
+            <View style={styles.listContainer}>
+              {groceryList.categories.length == 0 ? 
+                <View style={{alignSelf: 'center', justifyContent:'center', flex:1}}><Text>Aucun article</Text></View> : 
+                <SectionList
                           sections={formattedGroceryList}
                           keyExtractor={(item, index) => item + index}
                           renderItem={({ item }) => <Item item={item} />}
@@ -109,6 +126,8 @@ const GroceryItemsScreen = ({ route, navigation }) => {
                               <View style={styles.category}>
                                   <Text style={styles.categoryHeader}> {title.toUpperCase()}</Text>
                               </View>)} />
+              }
+         
                   </View>
                 </SafeAreaView>)}
         </>
@@ -157,46 +176,45 @@ const getColor = (category) => {
 }
 
 const styles = StyleSheet.create({
-  category: {
-    backgroundColor: "#D1A9F0",
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    marginTop: 10
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF'
-  },
+    category: {
+        backgroundColor: "#D1A9F0",
+        paddingHorizontal: 5,
+        paddingVertical: 5,
+        marginTop: 10
+    },
+    container: {
+        flex: 1,
+        //backgroundColor: '#FFF'
+    },
   checkedItem: {
-    fontSize: 16,
-    fontFamily: 'sans-serif',
-  },
-  uncheckedItem: {
-    fontSize: 16,
-    fontFamily: 'sans-serif-thin',
-    textDecorationLine: 'line-through'
-  },
-  categoryHeader: {
-    fontSize: 20,
-    fontFamily: 'sans-serif-light',
-  },
-  
-  item: {
-    flex: 1,
-    flexDirection: 'row',
-    marginLeft: 10,
-    marginRight: 10,
-    marginVertical: 2,
-    alignItems: 'center',
-    
-  },
-  listContainer: {
-    flex: 1,
-    marginHorizontal: 5,
+      fontSize: 16,
+      fontFamily: 'sans-serif',
+    },
+    uncheckedItem: {
+        fontSize: 16,
+        fontFamily: 'sans-serif-thin',
+        textDecorationLine: 'line-through'
+    },
+    categoryHeader: {
+        fontSize: 20,
+        fontFamily: 'sans-serif-light',
+    },
+    item: {
+        flex: 1,
+        flexDirection: 'row',
+        marginLeft: 10,
+        marginRight: 10,
+        marginVertical: 2,
+        alignItems: 'center',
+    },
+    listContainer: {
+        flex: 1,
+        marginHorizontal: 5,
     },
     screenHeader: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: 10,
     }
 });
 
