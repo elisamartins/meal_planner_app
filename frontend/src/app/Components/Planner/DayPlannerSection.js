@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import {
   SafeAreaView,
     SectionList,
@@ -77,12 +77,38 @@ const Item = ({ item }) => (
       
 const DayPlannerSection = () => {
 
-  const onPress = () => {
+  const addFood = () => {
     console.log("Adding food to journal")
   }
   
   return (
     <SafeAreaView>
+      
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+        <TouchableOpacity><Icon name="chevron-left" size={30} color="#000" /></TouchableOpacity>
+        <Text>Aujourd'hui</Text>
+        <TouchableOpacity><Icon name="chevron-right" size={30} color="#000" /></TouchableOpacity>
+      </View>
+
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{ backgroundColor: '#82DFFC', flex:1, alignItems:'center', padding: 5}}>
+          <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 10 }}>GLUCIDES</Text>
+          <Text style={{ color: '#000', fontWeight: 'bold'}}>178g</Text>
+        </View>
+        <View style={{ backgroundColor: '#ADD932', flex:1, alignItems:'center', padding: 5 }}>
+          <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 10 }}>LIPIDES</Text>
+          <Text style={{ color: '#000', fontWeight: 'bold'}}>34g</Text>
+        </View>
+        <View style={{ backgroundColor: '#FF5E71', flex:1, alignItems:'center', padding: 5 }}>
+          <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 10 }}>PROTÉINES</Text>
+          <Text style={{ color: '#000', fontWeight: 'bold'}}>62g</Text>
+        </View>
+        <View style={{ backgroundColor: '#000', flex:1, alignItems:'center', padding: 5 }} >
+          <Text style={{ color: '#FFF', fontWeight: 'bold', fontSize: 10 }}>CALORIES</Text>
+          <Text style={{ color: '#FFF', fontWeight: 'bold'}}>2140</Text>
+        </View>
+      </View>
+
       <SectionList
         sections={DUMMY_DATA}
         keyExtractor={(item, index) => item + index}
@@ -93,8 +119,8 @@ const DayPlannerSection = () => {
             
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Text style={styles.header}>{title.toUpperCase()}</Text>
-            <TouchableOpacity style={{marginRight: 15}} onPress={onPress}>
-              <Icon name="plus" size={12} color="#000" />
+            <TouchableOpacity style={{marginRight: 15}} onPress={addFood}>
+              <Icon name="plus" size={25} color="#000" />
             </TouchableOpacity>
           </View>
         )}

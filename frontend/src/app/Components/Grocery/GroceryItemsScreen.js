@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import FoodItemSearchBar from '../SearchBar'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import {
   ActivityIndicator,
   StyleSheet,
@@ -110,7 +110,7 @@ const GroceryItemsScreen = ({ route, navigation }) => {
           {isLoading ? <ActivityIndicator /> : (
                 <SafeAreaView style={styles.container}>
                 <View style={styles.screenHeader}>
-                    <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}><Icon name="chevron-left" size={30} color="#000" /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}><Icon name="arrow-left-circle" size={30} color="#000" /></TouchableOpacity>
               <TextInput placeholder="Titre" onChangeText={title => updateTitle(title)} style={{ fontSize: 25, marginLeft: 15 }}>{groceryList.name.toUpperCase()}</TextInput>
                 </View>
                   <FoodItemSearchBar selectItem={addItem} style={{ zindex: 1 }} />
