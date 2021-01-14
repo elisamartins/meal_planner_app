@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import React, { } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import {
+  SafeAreaView,
     SectionList,
     StyleSheet,
     Text,
@@ -64,60 +65,68 @@ const DUMMY_DATA =[
 },
 ]
 
-    const Item = ({ item }) => (
-        <View style={styles.item}>
-        <Text style={styles.title}>{item.foodName}</Text>
-        <Text style={styles.title}>{item.amount} {item.unit}</Text>
-        </View>
+const Item = ({ item }) => (
+  <View style={{ flexDirection: 'row', backgroundColor: '#FFF'}}>
+    <View style={styles.item}>
+      <Text style={styles.title}>{item.foodName}</Text>
+      <Text style={styles.amountText}>{item.amount} {item.unit}</Text>
+    </View>
+    <Text style={{alignSelf:'center', marginRight: 15}}>{item.calories}</Text>
+  </View>
 );
       
 const DayPlannerSection = () => {
 
-
+  const onPress = () => {
+    console.log("Adding food to journal")
+  }
   
   return (
-      <>
-          <SectionList
+    <SafeAreaView>
+      <SectionList
         sections={DUMMY_DATA}
+        keyExtractor={(item, index) => item + index}
+        
         renderItem={({ item }) => <Item item={item} />}
+        
         renderSectionHeader={({ section: { title } }) => (
-          <View>
+            
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Text style={styles.header}>{title.toUpperCase()}</Text>
-            <Divider />
-          </View>
-        )}
-        renderSectionFooter={({ item }) => (
-          <View style={{ paddingBottom: 5}}>
-            <TouchableOpacity style={{flexDirection:'row', flex:1, alignItems:'center'}}>
-              <Icon name="plus" size={16} color="#000" />
-              <Text>AJOUTER UN ALIMENT</Text>
+            <TouchableOpacity style={{marginRight: 15}} onPress={onPress}>
+              <Icon name="plus" size={12} color="#000" />
             </TouchableOpacity>
-            <Divider />
           </View>
         )}
-        ItemSeparatorComponent={() => <Divider/>}
-            />
-      </>
+        
+        renderSectionFooter={({ item }) => (
+          <View style={{ paddingBottom: 5}}/>
+        )}
+        
+        ItemSeparatorComponent={() => <Divider />}/>
+      </SafeAreaView>
   );
     
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginHorizontal: 16
-      },
-      item: {
-        backgroundColor: "#FFF",
-        padding: 10,
-      },
-      header: {
-        fontSize: 20,
-        backgroundColor: "#fff"
-      },
-      title: {
-        fontSize: 16
-      }
+  item: {
+    padding: 10,
+    flex: 1,
+  },
+  header: {
+    marginLeft: 15,
+    paddingVertical: 10,
+    flex: 1,
+    fontWeight: 'bold'
+  },
+  title: {
+    fontSize: 14
+  },
+  amountText: {
+    fontSize: 12,
+    color: 'gray'
+  }
 })
 
 export default DayPlannerSection;

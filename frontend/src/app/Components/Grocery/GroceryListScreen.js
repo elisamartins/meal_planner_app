@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import {
   ActivityIndicator,
   FlatList,
-  Modal,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -46,7 +45,7 @@ const Item = ({ item, navigation, getList }) => {
     </Pressable>
         
         {deleteButtonVisible ?
-          <TouchableOpacity onPress={deleteList} style={{alignSelf: 'flex-end'}}> 
+          <TouchableOpacity onPress={deleteList}> 
             <Icon name="trash" size={25} color="#000" />
             </TouchableOpacity> 
           : <></>
@@ -61,7 +60,6 @@ const GroceryListScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("print");
     getList()
   }, []);
   
@@ -143,27 +141,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'sans-serif',
     marginLeft: 5
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
   },
   openButton: {
     backgroundColor: "#F194FF",
