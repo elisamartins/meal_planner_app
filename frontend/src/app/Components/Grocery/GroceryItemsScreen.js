@@ -2,7 +2,6 @@ import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import FoodItemSearchBar from '../SearchBar'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { useNavigation } from '@react-navigation/native';
 import {
   ActivityIndicator,
   StyleSheet,

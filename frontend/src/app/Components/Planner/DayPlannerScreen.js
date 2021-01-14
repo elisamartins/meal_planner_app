@@ -1,14 +1,13 @@
 import 'react-native-gesture-handler';
 import React, {  } from 'react';
-import {
-  Text} from "react-native";
+import DayPlannerSection from './DayPlannerSection';
 
 
 const DayPlannerScreen = ({}) => {
   
   return (
       <>
-          <Text>This day planner screen</Text>
+          <DayPlannerSection/>
       </>
   );
     
