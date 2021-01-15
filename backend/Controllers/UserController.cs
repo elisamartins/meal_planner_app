@@ -20,31 +20,35 @@ namespace backend.Controllers
             _db = db;
         }
         // GET: api/<UsersController>
-        [HttpGet]
-        public async Task<ActionResult<List<User>>> GetUsers()
+        //[HttpGet]
+        //public async Task<ActionResult<List<User>>> GetUsers()
+        //{
+        //    Console.WriteLine("getting user");
+        //    List<User> users = await _db.Users.AsNoTracking().ToListAsync();
+
+        //    return users;
+        //}
+
+        [HttpPost("signin")]
+        public async Task<ActionResult> Login([FromBody] User user)
         {
-            Console.WriteLine("getting user");
-            List<User> users = await _db.Users.AsNoTracking().ToListAsync();
+            User foundUser = await _db.Users.Where(user => user.Username == user.Username).FirstOrDefaultAsync();
 
-            return users;
-        }
-
-        [HttpGet("{username}")]
-        public async Task<ActionResult<User>> GetUser(string username)
-        {
-            User user = await _db.Users.Where(user => user.Username == username).FirstOrDefaultAsync();
-
-            if (user == null)
+            if (foundUser == null)
                 return BadRequest("User does not exist");
 
-            return user;
+            if (foundUser.Password != user.Password)
+                return BadRequest("Wrong password or username");
+
+            else
+                return Ok();
         }
 
         // POST api/<UsersController>
-        [HttpPost]
-        public void Post([FromBody] string username)
+        [HttpPost("signup")]
+        public void Post([FromBody] User user)
         {
-            _db.Users.Add(new User(username, "1234"));
+            _db.Users.Add(new User(user.Username, user.Password));
             _db.SaveChanges();
         }
 
