@@ -3,7 +3,7 @@ import React, {  } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomIcon from '../../../CustomIcon'
 import RecipeScreen from './RecipeScreen'
-import PlannerScreen from './Planner/PlannerStackScreen'
+import PlannerStackScreen from './Planner/PlannerStackScreen'
 import GroceryStackScreen from './Grocery/GroceryStackScreen'
 import {
   Dimensions,
@@ -42,7 +42,6 @@ const HomeScreen = () => {
               iconName = "recipe";
           }
 
-          
           return <CustomIcon name={iconName} size={size} color={color} style={{fontSize: 40}}/>;
         },
         })}
@@ -69,7 +68,7 @@ const HomeScreen = () => {
         />
         <Tab.Screen
           name="Planner"
-          component={PlannerScreen}
+          component={PlannerStackScreen}
         options={{ title: 'PLAN' }}
         />
         <Tab.Screen

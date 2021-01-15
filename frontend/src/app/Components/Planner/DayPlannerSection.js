@@ -75,12 +75,7 @@ const Item = ({ item }) => (
   </View>
 );
       
-const DayPlannerSection = () => {
-
-  const addFood = () => {
-    console.log("Adding food to journal")
-  }
-  
+const DayPlannerSection = ({ navigation }) => {
   return (
     <SafeAreaView>
       
@@ -119,7 +114,7 @@ const DayPlannerSection = () => {
             
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Text style={styles.header}>{title.toUpperCase()}</Text>
-            <TouchableOpacity style={{marginRight: 15}} onPress={addFood}>
+            <TouchableOpacity style={{ marginRight: 15 }} onPress={() => { navigation.navigate('FoodPlannerSearchScreen',  {sectionName: title}) }}>
               <Icon name="plus" size={25} color="#000" />
             </TouchableOpacity>
           </View>
