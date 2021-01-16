@@ -10,7 +10,9 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    View} from 'react-native';
+    View
+} from 'react-native';
+import { Divider } from 'react-native-elements';
 
 const height = Dimensions.get('window').height
 
@@ -18,7 +20,11 @@ const Item = ({ item, sendItem }) => {
     const onPress = () => {
         sendItem();
     };
-    return (<TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>)
+    return (
+        <TouchableOpacity onPress={onPress} style={styles.item}>
+            <Text style={styles.title}>{item.name}</Text>
+        </TouchableOpacity>
+    )
 }
 
 const FoodPlannerSearchScreen = ({route, navigation}) => {
@@ -28,7 +34,7 @@ const FoodPlannerSearchScreen = ({route, navigation}) => {
     const handleSearch = (text) => {
         setFoodItems(
             text == "" ?
-            [] : global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 5)
+            [] : global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 50)
         );
         setQuery(text);
         
@@ -46,7 +52,7 @@ const FoodPlannerSearchScreen = ({route, navigation}) => {
       <SafeAreaView>
           <View style={styles.screenHeader}>
               <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('DayPlannerSection')}>
-                  <Icon name="arrow-left-circle" size={25} color="#000" />
+                  <Icon name="arrow-left-circle" size={25} color="#FFF" />
               </TouchableOpacity>
               <Text style={styles.headerTitle}>{route.params.sectionName}</Text>
           </View>
@@ -74,8 +80,9 @@ const FoodPlannerSearchScreen = ({route, navigation}) => {
                 <FlatList
                     keyExtractor={item => item.FoodID}
                     data={foodItems}
-                    renderItem={({ item }) => <Item sendItem={sendItem} item={item}/>
-                    } />
+                    renderItem={({ item }) => <Item sendItem={sendItem} item={item}/>} 
+                    ItemSeparatorComponent={() => <Divider/>}
+                    />
         }
 
 
@@ -92,7 +99,12 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         fontSize: 20,
         fontFamily: "SFUIDisplay-Bold",
+        color: 'white'
     },
+    item: {
+        padding: 10,
+        flex: 1,
+      },
     openedList: {
         position: 'relative',
         height: height,
@@ -104,9 +116,15 @@ const styles = StyleSheet.create({
     screenHeader: {
         flexDirection: 'row',
         padding: 10,
-        backgroundColor: '#BFE3F7',
-        borderBottomColor: '#000',
-        borderBottomWidth: 1
+        backgroundColor: '#40c5d1',
+        shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5
     },
     searchImage: {
         width: 150,
@@ -118,6 +136,9 @@ const styles = StyleSheet.create({
         color: 'gray',
         marginTop: 5
     },
+    title: {
+        fontSize: 14
+      },
     
 });
 

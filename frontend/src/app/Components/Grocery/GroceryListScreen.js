@@ -11,6 +11,7 @@ import {
   View
 } from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Divider } from 'react-native-elements';
 
 const Item = ({ item, navigation, getList }) => {
   const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
@@ -38,7 +39,7 @@ const Item = ({ item, navigation, getList }) => {
     
   }
   return (
-    <View style={{flexDirection: 'row', alignItems:"center"}}>
+    <View style={{flexDirection: 'row', alignItems:"center", marginLeft: 15}}>
 
     <Pressable style={styles.listItem} onLongPress={longPress} onPress={() => navigation.navigate('Grocery Items', { ID: item.groceryListID, title: item.name })}>
         <TouchableOpacity><Text style={styles.title}>{item.name.toUpperCase()}</Text></TouchableOpacity>
@@ -105,22 +106,17 @@ const GroceryListScreen = ({navigation}) => {
       {isLoading ? <ActivityIndicator /> : (
         <SafeAreaView style={styles.container}>
           <View style={styles.screenHeader}>
-          <Text style={styles.headerTitle}>Listes d'épicerie</Text>
+            <Text style={styles.headerTitle}>Listes d'épicerie</Text>
+            <TouchableOpacity onPress={createNewList}>
+              <Icon name="plus" color="#FFF" size={16} />
+            </TouchableOpacity>
           </View>
-          <FlatList style={{paddingHorizontal: 15}}
+          <FlatList
             data={groceryList}
             renderItem={({ item }) => <Item item={item} navigation={navigation} getList={getList}/>}
             keyExtractor={(item) => item.id}
-            ItemSeparatorComponent={() => <View style={{
-            height: 0.5,
-            backgroundColor: "#D3D3D3",
-        }}
-      />}
+            ItemSeparatorComponent={() => <Divider/>}
           />
-          <TouchableOpacity style={styles.addButton} onPress={createNewList}>
-            <Icon name="plus" size={12} color="#000" />
-            <Text style={styles.addButtonText} >CRÉER UNE LISTE</Text>
-          </TouchableOpacity>
         </SafeAreaView>)}
       </>
   );
@@ -172,14 +168,23 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 20,
-    fontFamily: "SFUIDisplay-Bold"
+    fontFamily: "SFUIDisplay-Bold",
+    color: '#FFF',
+    flex: 1,
 },
     screenHeader: {
       flexDirection: 'row',
+      alignItems: 'center',
       padding: 10,
-      backgroundColor: '#BFE3F7',
-      borderBottomColor: '#000',
-      borderBottomWidth: 1
+      backgroundColor: '#40c5d1',
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5
     }
 });
 

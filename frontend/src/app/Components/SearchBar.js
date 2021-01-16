@@ -23,7 +23,6 @@ const fullHeight = {
 
 const Item = ({ item, sendItem }) => {
     const onPress = () => {
-        console.log(item.foodID);
         sendItem(item.foodID);
     };
     return (<TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>)

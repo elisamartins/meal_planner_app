@@ -111,7 +111,7 @@ const GroceryItemsScreen = ({ route, navigation }) => {
                 <SafeAreaView style={styles.container}>
                 <View style={styles.screenHeader}>
               <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}>
-                <Icon name="arrow-left-circle" size={30} color="#000" />
+                <Icon name="arrow-left-circle" size={30} color="#FFF" />
               </TouchableOpacity>
               <Text style={styles.headerTitle}>{groceryList.name.toUpperCase()}</Text>
               {/* <TextInput style={styles.headerTitle} placeholder="Titre" onChangeText={title => updateTitle(title)}>{groceryList.name.toUpperCase()}</TextInput> */}
@@ -217,13 +217,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "SFUIDisplay-Bold",
     marginLeft: 15,
+    color: '#FFF'
 },
     screenHeader: {
       flexDirection: 'row',
       padding: 10,
-      backgroundColor: '#BFE3F7',
-      borderBottomColor: '#000',
-      borderBottomWidth: 1
+      backgroundColor: '#40c5d1',
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5
     }
 });
 
