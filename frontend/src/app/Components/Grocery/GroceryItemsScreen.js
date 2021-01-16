@@ -110,8 +110,11 @@ const GroceryItemsScreen = ({ route, navigation }) => {
           {isLoading ? <ActivityIndicator /> : (
                 <SafeAreaView style={styles.container}>
                 <View style={styles.screenHeader}>
-                    <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}><Icon name="arrow-left-circle" size={30} color="#000" /></TouchableOpacity>
-              <TextInput placeholder="Titre" onChangeText={title => updateTitle(title)} style={{ fontSize: 25, marginLeft: 15 }}>{groceryList.name.toUpperCase()}</TextInput>
+              <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}>
+                <Icon name="arrow-left-circle" size={30} color="#000" />
+              </TouchableOpacity>
+              <Text style={styles.headerTitle}>{groceryList.name.toUpperCase()}</Text>
+              {/* <TextInput style={styles.headerTitle} placeholder="Titre" onChangeText={title => updateTitle(title)}>{groceryList.name.toUpperCase()}</TextInput> */}
                 </View>
                   <FoodItemSearchBar selectItem={addItem} style={{ zindex: 1 }} />
             <View style={styles.listContainer}>
@@ -209,11 +212,18 @@ const styles = StyleSheet.create({
     listContainer: {
         flex: 1,
         marginHorizontal: 5,
-    },
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: "SFUIDisplay-Bold",
+    marginLeft: 15,
+},
     screenHeader: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginLeft: 10,
+      flexDirection: 'row',
+      padding: 10,
+      backgroundColor: '#BFE3F7',
+      borderBottomColor: '#000',
+      borderBottomWidth: 1
     }
 });
 

@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
 import { SocialIcon, Input } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import {
   ActivityIndicator,
   Button,
@@ -18,6 +19,9 @@ const SignUpModal = ({ modalVisible, setModalVisible }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const closeModal = () => {
+    setModalVisible(false);
+  }
   const createAccount = () => {
     fetch('http://192.168.0.158:5000/api/user/signup', {
       method: 'POST',
@@ -44,12 +48,10 @@ const SignUpModal = ({ modalVisible, setModalVisible }) => {
     animationType="slide"
     transparent={true}
     visible={modalVisible}
-    onRequestClose={() => {
-      Alert.alert("Modal has been closed.");
-    }}
   >
     <View style={styles.centeredView}>
       <View style={styles.modalView}>
+          <TouchableOpacity onPress={closeModal}><Icon name="close" size={30}/></TouchableOpacity>
           <Text style={styles.modalText}>Inscription</Text>
           <TextInput placeholder="Nom d'utilisateur" onChangeText={setUsername} value={username}/>
           <TextInput placeholder="Mot de passe" onChangeText={setPassword} value={password} />
@@ -75,7 +77,9 @@ const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  
+  // LOGIN BYPASS
+  navigation.navigate("Home");
+
   useEffect(() => {
     fetch('http://192.168.0.158:5000/fooditem')
     .then((response) => response.json())
@@ -114,14 +118,6 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.centeredView}>
             <SignUpModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
 
-      <TouchableOpacity
-        style={styles.openButton}
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </TouchableOpacity>
     </View>
           <View>
             <Image style={styles.logo} source={require('../assets/logo.png')} />
@@ -145,7 +141,9 @@ const LoginScreen = ({ navigation }) => {
           <SocialIcon title='Continuer avec Google' button type='google' style={{ padding: 10 }} />
           
           <View style={{alignSelf: 'center' }}>
-            <TouchableOpacity><Text>Créer un compte</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+          setModalVisible(true);
+        }}><Text>Créer un compte</Text></TouchableOpacity>
           </View>
         </View>
         

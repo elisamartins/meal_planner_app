@@ -10,6 +10,7 @@ import {
     View,
 } from "react-native";
 import { Divider } from 'react-native-elements';
+import MacrosComponent from './MacrosComponent';
 
 const DUMMY_DATA =[
     {
@@ -85,24 +86,7 @@ const DayPlannerSection = ({ navigation }) => {
         <TouchableOpacity><Icon name="chevron-right" size={30} color="#000" /></TouchableOpacity>
       </View>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-        <View style={{ backgroundColor: '#82DFFC', flex:1, alignItems:'center', padding: 5}}>
-          <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 10 }}>GLUCIDES</Text>
-          <Text style={{ color: '#000', fontWeight: 'bold'}}>178g</Text>
-        </View>
-        <View style={{ backgroundColor: '#ADD932', flex:1, alignItems:'center', padding: 5 }}>
-          <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 10 }}>LIPIDES</Text>
-          <Text style={{ color: '#000', fontWeight: 'bold'}}>34g</Text>
-        </View>
-        <View style={{ backgroundColor: '#FF5E71', flex:1, alignItems:'center', padding: 5 }}>
-          <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 10 }}>PROTÉINES</Text>
-          <Text style={{ color: '#000', fontWeight: 'bold'}}>62g</Text>
-        </View>
-        <View style={{ backgroundColor: '#000', flex:1, alignItems:'center', padding: 5 }} >
-          <Text style={{ color: '#FFF', fontWeight: 'bold', fontSize: 10 }}>CALORIES</Text>
-          <Text style={{ color: '#FFF', fontWeight: 'bold'}}>2140</Text>
-        </View>
-      </View>
+      <MacrosComponent/>
 
       <SectionList
         sections={DUMMY_DATA}

@@ -16,6 +16,7 @@ const height = Dimensions.get('window').height
 
 const Item = ({ item, sendItem }) => {
     const onPress = () => {
+        sendItem();
     };
     return (<TouchableOpacity onPress={onPress}><Text style={{ marginVertical: 10 }}>{item.name}</Text></TouchableOpacity>)
 }
@@ -37,16 +38,17 @@ const FoodPlannerSearchScreen = ({route, navigation}) => {
         return name.toLowerCase().startsWith(query) ? true : false;
     }
 
-    const sendItem = (foodID) => {
+    const sendItem = () => {
+        navigation.navigate('AddFoodScreen');
     };
     
   return (
       <SafeAreaView>
           <View style={styles.screenHeader}>
-              <TouchableOpacity onPress={() => navigation.navigate('DayPlannerSection')}>
-                  <Icon name="arrow-left-circle" size={30} color="#000" />
+              <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('DayPlannerSection')}>
+                  <Icon name="arrow-left-circle" size={25} color="#000" />
               </TouchableOpacity>
-              <Text style={{ fontSize: 25, marginLeft: 15 }}>{route.params.sectionName}</Text>
+              <Text style={styles.headerTitle}>{route.params.sectionName}</Text>
           </View>
           <View style={{ padding: 10, margin: 5, backgroundColor: '#FFF', flexDirection:'row', alignItems: 'center' }}>
               <Icon name="magnifier" size={20} style={{marginRight: 10}}/>
@@ -86,6 +88,11 @@ const styles = StyleSheet.create({
     closedList: {
 
     },
+    headerTitle: {
+        marginLeft: 15,
+        fontSize: 20,
+        fontFamily: "SFUIDisplay-Bold",
+    },
     openedList: {
         position: 'relative',
         height: height,
@@ -96,7 +103,10 @@ const styles = StyleSheet.create({
     },
     screenHeader: {
         flexDirection: 'row',
-        padding: 10
+        padding: 10,
+        backgroundColor: '#BFE3F7',
+        borderBottomColor: '#000',
+        borderBottomWidth: 1
     },
     searchImage: {
         width: 150,

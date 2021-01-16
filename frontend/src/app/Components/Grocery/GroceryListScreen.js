@@ -104,8 +104,10 @@ const GroceryListScreen = ({navigation}) => {
     <>
       {isLoading ? <ActivityIndicator /> : (
         <SafeAreaView style={styles.container}>
-          <Text style={{fontSize: 25, fontWeight: 'bold'}}>LISTES D'ÉPICERIES</Text>
-          <FlatList
+          <View style={styles.screenHeader}>
+          <Text style={styles.headerTitle}>Listes d'épicerie</Text>
+          </View>
+          <FlatList style={{paddingHorizontal: 15}}
             data={groceryList}
             renderItem={({ item }) => <Item item={item} navigation={navigation} getList={getList}/>}
             keyExtractor={(item) => item.id}
@@ -116,7 +118,7 @@ const GroceryListScreen = ({navigation}) => {
       />}
           />
           <TouchableOpacity style={styles.addButton} onPress={createNewList}>
-            <Icon name="plus" size={12} color="#FFF" />
+            <Icon name="plus" size={12} color="#000" />
             <Text style={styles.addButtonText} >CRÉER UNE LISTE</Text>
           </TouchableOpacity>
         </SafeAreaView>)}
@@ -130,14 +132,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: '#8bd0f7',
+    backgroundColor: '#BFE3F7',
     borderRadius: 50,
     padding: 10,
     marginBottom: 10,
+    borderWidth: 1,
     
   },
   addButtonText: {
-    color: '#FFF',
+    color: '#000',
     fontSize: 12,
     fontFamily: 'sans-serif',
     marginLeft: 5
@@ -159,7 +162,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingHorizontal: 10,
   },
   listItem: {
     paddingVertical: 10,
@@ -168,6 +170,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
   },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: "SFUIDisplay-Bold"
+},
+    screenHeader: {
+      flexDirection: 'row',
+      padding: 10,
+      backgroundColor: '#BFE3F7',
+      borderBottomColor: '#000',
+      borderBottomWidth: 1
+    }
 });
 
 
