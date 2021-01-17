@@ -7,7 +7,7 @@ namespace backend.DTO
 {
     public class MealPlanDTO
     {
-        public int GroceryListID { get; set; }
+        public int MealPlanID { get; set; }
         public string Name { get; set; }
         public List<FoodEntryDTO> Breakfast { get; set; }
         public List<FoodEntryDTO> Lunch { get; set; }

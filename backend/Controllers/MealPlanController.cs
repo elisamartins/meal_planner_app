@@ -34,9 +34,15 @@ namespace backend.Controllers
                     Date = new Date() { year = year, month = month, day = day }
                 };
                 _db.MealPlans.Add(mealPlan);
+                await _db.SaveChangesAsync();
             }
             
-            MealPlanDTO mealPlanDTO = new MealPlanDTO();
+            MealPlanDTO mealPlanDTO = new MealPlanDTO() {
+                MealPlanID = mealPlan.MealPlanID,
+                Date = mealPlan.Date,
+                Breakfast = new List<FoodEntryDTO>(),
+                Lunch = new List<FoodEntryDTO>(),
+                Dinner = new List<FoodEntryDTO>()};
             List<FoodEntry> foodEntries = await _db.FoodEntries.Where(f => f.MealPlanID == mealPlan.MealPlanID).ToListAsync();
 
             foreach (var entry in foodEntries)
@@ -56,21 +62,27 @@ namespace backend.Controllers
 
         // FoodEntry:
 
-        [HttpGet("foodentry")]
-        public async Task<ActionResult<List<FoodEntry>>> GetFoodEntries()
+        [HttpPost("foodentry/{mealPlanID}/{section}")]
+        public async Task<ActionResult> AddFoodEntry(int mealPlanID, string section, [FromBody] FoodEntryDTO foodEntryDTO)
         {
-            return await _db.FoodEntries.AsNoTracking().ToListAsync();
-        }
+            MealPlan mealPlan = await _db.MealPlans.Where(m => (m.MealPlanID == mealPlanID)).FirstOrDefaultAsync();
+            FoodItem foodItem = await _db.FoodItems.Where(f => f.FoodID == foodEntryDTO.FoodID).FirstOrDefaultAsync();
 
-        [HttpGet("foodentry/{id}")]
-        public async Task<ActionResult<FoodEntry>> GetFoodEntry(int id)
-        {
-            FoodEntry foodEntry = await _db.FoodEntries.Where(f => f.FoodEntryID == id).FirstOrDefaultAsync();
+            if (foodItem == null)
+                return BadRequest("FoodID does not correspond to any food item.");
 
-            if (foodEntry == null)
-                return BadRequest("Food entry does not exist");
+            _db.FoodEntries.Add(new FoodEntry()
+            {
+                FoodID = foodEntryDTO.FoodID,
+                MealPlanID = mealPlanID,
+                Section = section,
+                Amount = foodEntryDTO.Amount,
+                PortionName = foodEntryDTO.PortionName,
+            });
 
-            return foodEntry;
-        }
+            await _db.SaveChangesAsync();
+            return Ok();
+    }
+
     }
 }
