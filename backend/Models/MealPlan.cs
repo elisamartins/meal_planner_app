@@ -3,6 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
+    public class Date
+    {
+        public int year { get; set; }
+        public int month { get; set; }
+        public int day { get; set; }
+    }
+
     public class MealPlan
     {
         [Required]
@@ -14,7 +21,7 @@ namespace backend.Models
         public string Username { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public Date Date { get; set; }
     }
 
     public class FoodEntry
@@ -29,10 +36,10 @@ namespace backend.Models
         [Required]
         public int MealPlanID { get; set; }
 
-        public string Category { get; set; }
+        public string Section { get; set; }
 
         public float Amount { get; set; }
 
-        //public string Unit { get; set; }
+        public string PortionName { get; set; }
     }
 }
