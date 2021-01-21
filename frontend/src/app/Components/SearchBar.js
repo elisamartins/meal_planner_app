@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
-import { SearchBar } from 'react-native-elements'
+import { Divider, SearchBar } from 'react-native-elements'
 import {
     Dimensions,
     FlatList,
@@ -10,6 +10,7 @@ import {
     SafeAreaView,
     TouchableOpacity,
     View,
+    KeyboardAvoidingView,
 } from "react-native";
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -17,9 +18,6 @@ import { TextInput } from 'react-native-gesture-handler';
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
-const fullHeight = {
-
-}
 
 const Item = ({ item, sendItem }) => {
     const onPress = () => {
@@ -31,15 +29,12 @@ const Item = ({ item, sendItem }) => {
 const FoodItemSearchBar = ({selectItem}) => {
     const [query, setQuery] = useState('');
     const [foodItems, setFoodItems] = useState([global.foodItems]);
-    const [listIsOpened, setlistIsOpened] = useState(false);
-
     const handleSearch = text => {
         setFoodItems(
             text == "" ?
-            [] : global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, 5)
+            [] : global.foodItems.filter(item => { return contains(item, text.toLowerCase()); }).slice(0, )
         );
         setQuery(text);
-        setlistIsOpened(text == "" ? false : true);
         
     };
   
@@ -49,31 +44,26 @@ const FoodItemSearchBar = ({selectItem}) => {
 
     const sendItem = (foodID) => {
         selectItem(foodID);
-        setFoodItems([]);
-        setlistIsOpened(false);
+        setQuery('')
     };
     
 
     return (
-        <SafeAreaView style={listIsOpened ? styles.openedList : {}}>
+        <KeyboardAvoidingView>
+        <SafeAreaView style={{height: height*0.4, width: width*0.75}}>
            
             <View style={{padding: 10, margin: 5, backgroundColor:'#FFF'}}>
                 <TextInput style={styles.searchBar}
                     placeholder="Ajouter un article... "
                     onChangeText={queryText => handleSearch(queryText)}
-                    value={query} />  
+                        value={query} />  
+                    <Divider/>
             </View>
             {
                 query === ""
                 ?
-                  <View style={styles.image_placeholder_container}>
-                    {/* <Image  
-                      source={require('../assets/search.png')} 
-                      style={styles.searchImage}
-                    />
-                    <Text style={styles.searchText}>
-                      Entrer le nom de l'article à chercher{"\n"}
-                    </Text> */}
+                  <View style={styles.emptyList}>
+                    <Text>Aucun item correspondant</Text>
                   </View>
                 :
                 <FlatList
@@ -85,20 +75,15 @@ const FoodItemSearchBar = ({selectItem}) => {
                 
 
         
-        </SafeAreaView>
+            </SafeAreaView>
+            </KeyboardAvoidingView>
     )
 }
 const styles = StyleSheet.create({
-    openedList: {
-        position: 'relative',
-        height: height,
-        left: 0,
-        bottom: 0,
-        zIndex: 1000,
-        backgroundColor: '#FFF'
-    },
-    closedList: {
-
+    emptyList: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+      flex: 1,
     },
     groceryName: {
 

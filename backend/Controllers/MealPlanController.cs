@@ -25,21 +25,30 @@ namespace backend.Controllers
         [HttpGet("mealplan/{username}/{year}/{month}/{day}")]
         public async Task<ActionResult<MealPlanDTO>> GetMealPlan(string username, int year, int month, int day)
         {
-            MealPlan mealPlan = await _db.MealPlans.Where(m => (m.Username==username) && (m.Date.year == year) && (m.Date.month == month) && (m.Date.day == day)).FirstOrDefaultAsync();
-
-            if (mealPlan == null)
+            MealPlan mealPlan;
+            try
             {
-                mealPlan = new MealPlan() {
+                mealPlan = await _db.MealPlans.FirstOrDefaultAsync(m => (m.Username==username) && (m.Year == year) && (m.Month == month) && (m.Day == day));
+                Console.WriteLine("MARCHE TU LA");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("TTEEEEEEEEEEESSSSSTTTTT");
+                mealPlan = new MealPlan()
+                {
                     Username = username,
-                    Date = new Date() { year = year, month = month, day = day }
+                    Year = year,
+                    Month = month,
+                    Day = day
                 };
                 _db.MealPlans.Add(mealPlan);
                 await _db.SaveChangesAsync();
             }
-            
+           
+
             MealPlanDTO mealPlanDTO = new MealPlanDTO() {
                 MealPlanID = mealPlan.MealPlanID,
-                Date = mealPlan.Date,
+                Date = { year = mealPlan.Year, month = mealPlan.Month, day = mealPlan.Day },
                 Breakfast = new List<FoodEntryDTO>(),
                 Lunch = new List<FoodEntryDTO>(),
                 Dinner = new List<FoodEntryDTO>()};

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
-    public class Date
+    public interface Date
     {
         public int year { get; set; }
         public int month { get; set; }
@@ -21,7 +21,13 @@ namespace backend.Models
         public string Username { get; set; }
 
         [Required]
-        public Date Date { get; set; }
+        public int Year { get; set; }
+
+        [Required]
+        public int Month { get; set; }
+
+        [Required]
+        public int Day { get; set; }
     }
 
     public class FoodEntry

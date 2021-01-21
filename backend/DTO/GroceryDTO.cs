@@ -4,10 +4,6 @@ namespace backend.DTO
 {
     public class GroceryListDTO
     {
-        public GroceryListDTO()
-        {
-        }
-
         public int GroceryListID { get; set; }
         public string Name { get; set; }
         public List<GroceryCategoryDTO> Categories { get; set; }

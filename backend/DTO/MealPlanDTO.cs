@@ -1,4 +1,5 @@
-﻿using System;
+﻿using backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace backend.DTO
     public class MealPlanDTO
     {
         public int MealPlanID { get; set; }
-        public string Name { get; set; }
+        public Date Date { get; set; }
         public List<FoodEntryDTO> Breakfast { get; set; }
         public List<FoodEntryDTO> Lunch { get; set; }
         public List<FoodEntryDTO> Dinner { get; set; }

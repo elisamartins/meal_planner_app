@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import AddItemModal from './AddItemModal';
 
 const Item = ({ item }) => {
   const [isChecked, setChecked] = useState(item.checked);
@@ -47,6 +48,7 @@ const GroceryItemsScreen = ({ route, navigation }) => {
     name: "",
     categories: [],
   });
+  const [modalVisible, setModalVisible] = useState(false);
   
   useEffect(() => {
     fetch('http://192.168.0.158:5000/groceryList/' + route.params.ID)
@@ -108,18 +110,29 @@ const GroceryItemsScreen = ({ route, navigation }) => {
     return (
         <>
           {isLoading ? <ActivityIndicator /> : (
-                <SafeAreaView style={styles.container}>
+          <SafeAreaView style={styles.container}>
+            
+            <AddItemModal modalVisible={modalVisible} setModalVisible={setModalVisible} selectItem={addItem}/>
                 <View style={styles.screenHeader}>
+              
+              <View style={{flex: 1, flexDirection:'row'}}>
               <TouchableOpacity onPress={() => navigation.navigate('GroceryListScreen')}>
                 <Icon name="arrow-left-circle" size={30} color="#FFF" />
+                </TouchableOpacity>
+                <Text style={styles.headerTitle}>{groceryList.name.toUpperCase()}</Text>
+              </View>
+              <TouchableOpacity onPress={() => setModalVisible(true)}>
+                <Icon name="plus" size={30} color="#FFF" />
               </TouchableOpacity>
-              <Text style={styles.headerTitle}>{groceryList.name.toUpperCase()}</Text>
-              {/* <TextInput style={styles.headerTitle} placeholder="Titre" onChangeText={title => updateTitle(title)}>{groceryList.name.toUpperCase()}</TextInput> */}
+
+
+              
                 </View>
-                  <FoodItemSearchBar selectItem={addItem} style={{ zindex: 1 }} />
             <View style={styles.listContainer}>
               {groceryList.categories.length == 0 ? 
-                <View style={{alignSelf: 'center', justifyContent:'center', flex:1}}><Text>Aucun article</Text></View> : 
+                <View style={{ alignSelf: 'center', justifyContent: 'center', flex: 1 }}>
+                  <Text>Aucun article</Text>
+                </View> : 
                 <SectionList
                           sections={formattedGroceryList}
                           keyExtractor={(item, index) => item + index}

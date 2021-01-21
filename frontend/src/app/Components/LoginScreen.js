@@ -4,16 +4,16 @@ import { SocialIcon, Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import {
   ActivityIndicator,
-  Button,
   Image,
   Modal,
   StyleSheet,
   SafeAreaView,
   Text,
+  TextInput,
   TouchableOpacity,
   View
 } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { Button } from 'react-native-elements'
 
 const SignUpModal = ({ modalVisible, setModalVisible }) => {
   const [username, setUsername] = useState("");
@@ -77,9 +77,6 @@ const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // LOGIN BYPASS
-  navigation.navigate("Home");
-
   useEffect(() => {
     fetch('http://192.168.0.158:5000/fooditem')
     .then((response) => response.json())
@@ -91,59 +88,67 @@ const LoginScreen = ({ navigation }) => {
   global.foodItems = data;
 
   const signIn = () => {
-    fetch('http://192.168.0.158:5000/api/user/signin', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username: username, password: password })
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Login successful");
-          navigation.navigate("Home");
-        }
-      })
-      .catch((error) => console.error(error));
+      // LOGIN BYPASS
+      navigation.navigate("Home");
+
+    // fetch('http://192.168.0.158:5000/api/user/signin', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ username: username, password: password })
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       console.log("Login successful");
+    //       navigation.navigate("Home");
+    //     }
+    //   })
+    //   .catch((error) => console.error(error));
   }
   
-  //https://stackoverflow.com/questions/43380260/draw-horizontal-rule-in-react-native
   return (
     <SafeAreaView style={styles.container}>
       {isLoading ? <ActivityIndicator /> : (
         
         <View style={styles.form}>
           
-        <View style={styles.centeredView}>
-            <SignUpModal modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+          <View style={styles.centeredView}>
+            <SignUpModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+          </View>
 
-    </View>
           <View>
             <Image style={styles.logo} source={require('../assets/logo.png')} />
             <View>
-              <Input placeholder="Username" value={username} onChangeText={setUsername}/>
-              <Input placeholder="Password" value={password} onChangeText={setPassword}/>
+              <TextInput placeholder="nom d'utilisateur" value={username} onChangeText={setUsername} style={styles.input}/>
+              <TextInput placeholder="mot de passe" value={password} onChangeText={setPassword} style={styles.input}/>
             </View>
           
-            <View style={styles.buttonContainer}>
-              <Button title="Se connecter" onPress={signIn}/>
-            </View>
+            <TouchableOpacity style={styles.buttonContainer} onPress={signIn}>
+              <View style={styles.customButtom}>
+                <Text style={{ color: "white" }}>
+                  Se connecter
+                </Text>
+              </View>
+            </TouchableOpacity>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical:20 }}>
+            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+            <View><Text style={{paddingHorizontal: 10, textAlign: 'center', color: 'black'}}>ou continuer avec</Text></View>
+            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+          </View>
+          
+          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+            <SocialIcon button type='facebook' style={{ height: 50, width: 50 }}/>
+            <SocialIcon button type='google' style={{ height: 50, width: 50 }}/>
+          </View>
           </View>
 
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical:20 }}>
-            <View style={{flex: 1, height: 1, backgroundColor: '#FFF'}} />
-            <View><Text style={{width: 50, textAlign: 'center', color: '#FFF'}}>ou</Text></View>
-            <View style={{flex: 1, height: 1, backgroundColor: '#FFF'}} />
-          </View>
-          
-          <SocialIcon title='Continuer avec Facebook' button type='facebook' style={ {padding: 10}}/>
-          <SocialIcon title='Continuer avec Google' button type='google' style={{ padding: 10 }} />
-          
-          <View style={{alignSelf: 'center' }}>
+          <View style={{ alignSelf: 'center', flexDirection:'row', position:'absolute', bottom:0 }}>
+            <Text>Pas de compte? </Text>
             <TouchableOpacity onPress={() => {
           setModalVisible(true);
-        }}><Text>Créer un compte</Text></TouchableOpacity>
+        }}><Text style={{fontWeight: "bold"}}>Inscrivez-vous</Text></TouchableOpacity>
           </View>
         </View>
         
@@ -156,30 +161,45 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    margin: 10,
   },
   container: {
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center'
+  },
+  customButtom: {
+    backgroundColor: 'black',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 50,
+    elevation: 2,
   },
   logo: {
-    width: 175,
-    height: 175,
-    marginBottom: 20,
+    width: 200,
+    height: 200,
+    marginBottom: 30,
     alignSelf: 'center'
   },
   form: {
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    paddingHorizontal: 45,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+  },
+  input: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1.5,
+    padding: 0,
+    marginVertical: 10,
+    marginHorizontal: 20
   },
   modalView: {
     margin: 20,

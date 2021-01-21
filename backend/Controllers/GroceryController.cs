@@ -42,13 +42,10 @@ namespace backend.Controllers
             List<GroceryItem> groceryItems = await _db.GroceryItems.Where(g => g.GroceryListID == groceryListId).ToListAsync();
             List<GroceryCategoryDTO> groceryCategoriesDTO = new List<GroceryCategoryDTO>();
 
-
             foreach (var item in groceryItems)
             {
-                Console.WriteLine(item.FoodID);
                 FoodItem foodItem = await _db.FoodItems.Where(f => f.FoodID == item.FoodID).FirstOrDefaultAsync();
                 FoodGroup foodGroup = await _db.FoodGroups.Where(group => group.FoodGroupID == foodItem.FoodGroupID).FirstOrDefaultAsync();
-                Console.WriteLine(foodGroup);
                 GroceryItemDTO groceryItemDTO = new GroceryItemDTO()
                 {
                     GroceryItemID = item.GroceryItemID,
@@ -76,8 +73,6 @@ namespace backend.Controllers
                 }
              
             }
-            Console.WriteLine(groceryItems.ToString());
-
 
             GroceryListDTO groceryListDTO = new GroceryListDTO()
             {
@@ -138,7 +133,6 @@ namespace backend.Controllers
         [HttpPost("groceryItem/{groceryListId}")]
         public async Task<ActionResult> AddGroceryItem(int groceryListId, [FromBody] int FoodID)
         {
-
             FoodItem foodItem = await _db.FoodItems.Where(f => f.FoodID == FoodID).FirstOrDefaultAsync();
             if (foodItem == null)
                 return BadRequest("FoodID does not correspond to any food item.");
@@ -168,12 +162,6 @@ namespace backend.Controllers
         }
 
         // FoodEntry:
-
-        [HttpGet("groceryItem")]
-        public async Task<ActionResult<List<GroceryItem>>> GetFoodEntries()
-        {
-            return await _db.GroceryItems.AsNoTracking().ToListAsync();
-        }
 
         [HttpGet("groceryItem/{id}")]
         public async Task<ActionResult<GroceryItem>> GetFoodEntry(int id)

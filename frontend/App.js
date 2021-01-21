@@ -21,7 +21,7 @@ const App = () => {
       <Stack.Navigator
       
       screenOptions={{
-        cardStyle: { backgroundColor: '#40c5d1' }
+        cardStyle: { backgroundColor: '#96DFEE' }
     }}>
         <Stack.Screen 
           name="Login"
