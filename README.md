@@ -3,7 +3,7 @@
 Application mobile permettant aux utilisateurs de suivre leur apport alimentaire quotidien, de générer automatiquement une liste d’épicerie et de créer des recettes.
 
 ## Visuels
-![](images/journal.jpg)
+![](images/journal.jpg 100x30)
 
 ## Getting Started
 
