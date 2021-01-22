@@ -1,6 +1,9 @@
-# meal_planner_app
+# Le bol de riz
 
-One Paragraph of project description goes here
+Application mobile permettant aux utilisateurs de suivre leur apport alimentaire quotidien, de générer automatiquement une liste d’épicerie et de créer des recettes.
+
+## Visuels
+![](images/journal.jpg)
 
 ## Getting Started
 
