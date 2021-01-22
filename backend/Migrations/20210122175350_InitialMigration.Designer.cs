@@ -8,8 +8,8 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210117030439_update-meal-plan-columns")]
-    partial class updatemealplancolumns
+    [Migration("20210122175350_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -8,11 +8,139 @@ import {
   Text,
   SafeAreaView,
   SectionList,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import AddItemModal from './AddItemModal';
+
+const DUMMY_DATA = [
+  {
+    title: "JUS ET BOISSONS",
+    data: [
+      {
+        foodName: "Jus de pomme",
+        foodID: 1,
+        checked: false,
+        groceryItemID: 1
+      },
+    {
+      foodName: "Cola",
+      foodID: 2,
+      checked: true,
+      groceryItemID: 2
+      },
+    {
+      foodName: "Café infusé à froid",
+      foodID: 3,
+      checked: true,
+      groceryItemID: 3
+      }
+    ]
+  },
+  {
+    title: "GRIGNOTISES ET SUCRERIES",
+    data: [
+      {
+        foodName: "Chocolat",
+        foodID: 1,
+        checked: false,
+        groceryItemID: 1
+      },
+    {
+      foodName: "Croustilles ",
+      foodID: 2,
+      checked: true,
+      groceryItemID: 2
+      },
+    ]
+  },
+  {
+    title: "CÉRÉALES, GRAINS ET PÂTES",
+    data: [
+      {
+        foodName: "Spaghetti",
+        foodID: 1,
+        checked: false,
+        groceryItemID: 1
+      },
+    {
+      foodName: "Macaroni ",
+      foodID: 2,
+      checked: true,
+      groceryItemID: 2
+      },
+      {
+        foodName: "Granola ",
+        foodID: 2,
+        checked: true,
+        groceryItemID: 2
+        },
+    ]
+  },
+  {
+    title: "PRODUITS LAITIERS ET OEUFS",
+    data: [
+      {
+        foodName: "Oeufs",
+        foodID: 1,
+        checked: false,
+        groceryItemID: 1
+      },
+    {
+      foodName: "Lait 2%",
+      foodID: 2,
+      checked: true,
+      groceryItemID: 2
+      },
+    {
+      foodName: "Yogourt grec",
+      foodID: 3,
+      checked: true,
+      groceryItemID: 3
+      }
+    ]
+  },
+  {
+    title: "FRUITS ET LÉGUMES",
+    data: [
+      {
+        foodName: "Ananas",
+        foodID: 1,
+        checked: false,
+        groceryItemID: 1
+      },
+    {
+      foodName: "Concombre",
+      foodID: 2,
+      checked: true,
+      groceryItemID: 2
+      },
+    {
+      foodName: "Pomme",
+      foodID: 3,
+      checked: true,
+      groceryItemID: 3
+      }
+    ]
+  },
+  {
+    title: "BOULANGERIE",
+    data: [
+      {
+        foodName: "Pain à l'ail",
+        foodID: 1,
+        checked: false,
+        groceryItemID: 1
+      },
+    {
+      foodName: "Pain baguette",
+      foodID: 2,
+      checked: true,
+      groceryItemID: 2
+      },
+    ]
+  }
+]
 
 const Item = ({ item }) => {
   const [isChecked, setChecked] = useState(item.checked);
@@ -24,11 +152,9 @@ const Item = ({ item }) => {
         'Content-Type': 'application/json'
         },
       body: JSON.stringify(!item.checked)
-    })
-      .then(console.log("Putting..."))
+      })
       .then(setChecked(!isChecked))
       .catch((error) => console.error(error));
-    
     };
 
   return (
@@ -36,7 +162,6 @@ const Item = ({ item }) => {
       <TouchableOpacity onPress={checkItem}>
         <Text style={isChecked ? styles.checkedItem : styles.uncheckedItem}>{item.foodName}</Text>
       </TouchableOpacity>
-      
     </View>
   )
 };
@@ -55,7 +180,8 @@ const GroceryItemsScreen = ({ route, navigation }) => {
     .then(console.log("Fetching grocery list items ..."))
     .then((response) => { return response.json(); })
     .then((json) => {
-        setGroceryList(json);
+      setGroceryList(json);
+      console.log(json);
       console.log("Done fetching.")
     })
     .catch((error) => console.error(error))
@@ -91,21 +217,6 @@ const GroceryItemsScreen = ({ route, navigation }) => {
       .catch((error) => console.error(error));
 
   };
-  
-  const updateTitle = (title) => {
-    fetch('http://192.168.0.158:5000/groceryList/' + route.params.ID, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-        },
-      body: JSON.stringify(title)
-    })
-      .then(console.log("Putting..."))
-      //.then(setChecked(!isChecked))
-      .catch((error) => console.error(error));
-  }
-
 
     return (
         <>
@@ -134,11 +245,11 @@ const GroceryItemsScreen = ({ route, navigation }) => {
                   <Text>Aucun article</Text>
                 </View> : 
                 <SectionList
-                          sections={formattedGroceryList}
+                          sections={DUMMY_DATA}
                           keyExtractor={(item, index) => item + index}
                           renderItem={({ item }) => <Item item={item} />}
                           renderSectionHeader={({ section: { title } }) => (
-                              <View style={styles.category}>
+                              <View style={getCategoryStyle(title)}>
                                   <Text style={styles.categoryHeader}> {title.toUpperCase()}</Text>
                               </View>)} />
               }
@@ -148,7 +259,6 @@ const GroceryItemsScreen = ({ route, navigation }) => {
         </>
     )
 };
-
 const getColor = (category) => {
   switch (category) {
     case 'FRUITS ET LÉGUMES':
@@ -164,13 +274,13 @@ const getColor = (category) => {
       return "#FF5E71"
     
     case 'CÉRÉALES, GRAINS ET PÂTES':
-      return "#FD5618"
+      return "#FD8A5F"
     
     case 'BOULANGERIE':
-      return "#E7D681"
+      return "#DFC956"
     
     case 'JUS ET BOISSONS':
-      return "#FF3DD4"
+      return "#F09BDD"
     
     case 'PRÊTS-À-MANGER':
       return "#75A1CA"
@@ -190,6 +300,15 @@ const getColor = (category) => {
   }
 }
 
+const getCategoryStyle = (category) => {
+  return {
+    backgroundColor: getColor(category),
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+    marginTop: 1,
+  }
+}
+
 const styles = StyleSheet.create({
     category: {
         backgroundColor: "#D1A9F0",
@@ -199,7 +318,6 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        //backgroundColor: '#FFF'
     },
   checkedItem: {
       fontSize: 16,
@@ -211,8 +329,9 @@ const styles = StyleSheet.create({
         textDecorationLine: 'line-through'
     },
     categoryHeader: {
-        fontSize: 20,
-        fontFamily: 'sans-serif-light',
+        fontSize: 14,
+      fontFamily: 'sans-serif',
+        color: 'white'
     },
     item: {
         flex: 1,
@@ -224,7 +343,6 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         flex: 1,
-        marginHorizontal: 5,
   },
   headerTitle: {
     fontSize: 20,

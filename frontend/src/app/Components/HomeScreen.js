@@ -29,7 +29,7 @@ const HomeScreen = () => {
 
   return (
     
-      <Tab.Navigator
+    <Tab.Navigator
       screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName;
@@ -64,7 +64,8 @@ const HomeScreen = () => {
         <Tab.Screen 
           name="GroceryList"
         component={GroceryStackScreen}
-          options={{ title: 'ÉPICERIE'}}
+        options={{ title: 'ÉPICERIE' }}
+        
         />
         <Tab.Screen
           name="Planner"

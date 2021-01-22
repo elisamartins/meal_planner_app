@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace backend.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,8 +14,9 @@ namespace backend.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FoodID = table.Column<int>(type: "INTEGER", nullable: false),
                     MealPlanID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Category = table.Column<string>(type: "TEXT", nullable: true),
-                    Amount = table.Column<float>(type: "REAL", nullable: false)
+                    Section = table.Column<string>(type: "TEXT", nullable: true),
+                    Amount = table.Column<float>(type: "REAL", nullable: false),
+                    PortionName = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,7 +86,9 @@ namespace backend.Migrations
                     MealPlanID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Year = table.Column<int>(type: "INTEGER", nullable: false),
+                    Month = table.Column<int>(type: "INTEGER", nullable: false),
+                    Day = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
