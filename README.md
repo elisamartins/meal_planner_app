@@ -1,4 +1,4 @@
-# Le bol de riz
+<img src="images/logo2.png" width="350">
 
 Application mobile permettant aux utilisateurs de suivre leur apport alimentaire quotidien, de générer automatiquement une liste d’épicerie et de créer des recettes.
 
