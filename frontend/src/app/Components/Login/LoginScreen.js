@@ -33,21 +33,22 @@ const LoginScreen = ({navigation}) => {
   global.foodItems = data;
 
   const signIn = () => {
-    fetch('http://192.168.0.158:5000/api/user/signin', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({username: username, password: password}),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Login successful');
-          navigation.navigate('Home');
-        }
-      })
-      .catch((error) => console.error(error));
+    navigation.navigate('Home');
+    // fetch('http://192.168.0.158:5000/api/user/signin', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({username: username, password: password}),
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       console.log('Login successful');
+    //       navigation.navigate('Home');
+    //     }
+    //   })
+    //   .catch((error) => console.error(error));
   };
 
   return (

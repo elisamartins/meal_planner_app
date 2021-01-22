@@ -12,135 +12,7 @@ import {
   View,
 } from "react-native";
 import AddItemModal from './AddItemModal';
-
-const DUMMY_DATA = [
-  {
-    title: "JUS ET BOISSONS",
-    data: [
-      {
-        foodName: "Jus de pomme",
-        foodID: 1,
-        checked: false,
-        groceryItemID: 1
-      },
-    {
-      foodName: "Cola",
-      foodID: 2,
-      checked: true,
-      groceryItemID: 2
-      },
-    {
-      foodName: "Café infusé à froid",
-      foodID: 3,
-      checked: true,
-      groceryItemID: 3
-      }
-    ]
-  },
-  {
-    title: "GRIGNOTISES ET SUCRERIES",
-    data: [
-      {
-        foodName: "Chocolat",
-        foodID: 1,
-        checked: false,
-        groceryItemID: 1
-      },
-    {
-      foodName: "Croustilles ",
-      foodID: 2,
-      checked: true,
-      groceryItemID: 2
-      },
-    ]
-  },
-  {
-    title: "CÉRÉALES, GRAINS ET PÂTES",
-    data: [
-      {
-        foodName: "Spaghetti",
-        foodID: 1,
-        checked: false,
-        groceryItemID: 1
-      },
-    {
-      foodName: "Macaroni ",
-      foodID: 2,
-      checked: true,
-      groceryItemID: 2
-      },
-      {
-        foodName: "Granola ",
-        foodID: 2,
-        checked: true,
-        groceryItemID: 2
-        },
-    ]
-  },
-  {
-    title: "PRODUITS LAITIERS ET OEUFS",
-    data: [
-      {
-        foodName: "Oeufs",
-        foodID: 1,
-        checked: false,
-        groceryItemID: 1
-      },
-    {
-      foodName: "Lait 2%",
-      foodID: 2,
-      checked: true,
-      groceryItemID: 2
-      },
-    {
-      foodName: "Yogourt grec",
-      foodID: 3,
-      checked: true,
-      groceryItemID: 3
-      }
-    ]
-  },
-  {
-    title: "FRUITS ET LÉGUMES",
-    data: [
-      {
-        foodName: "Ananas",
-        foodID: 1,
-        checked: false,
-        groceryItemID: 1
-      },
-    {
-      foodName: "Concombre",
-      foodID: 2,
-      checked: true,
-      groceryItemID: 2
-      },
-    {
-      foodName: "Pomme",
-      foodID: 3,
-      checked: true,
-      groceryItemID: 3
-      }
-    ]
-  },
-  {
-    title: "BOULANGERIE",
-    data: [
-      {
-        foodName: "Pain à l'ail",
-        foodID: 1,
-        checked: false,
-        groceryItemID: 1
-      },
-    {
-      foodName: "Pain baguette",
-      foodID: 2,
-      checked: true,
-      groceryItemID: 2
-      },
-    ]
-  }
-]
+import { DUMMY_GROCERY_LIST } from './Data/DUMMY_GROCERY_LIST';
 
 const Item = ({ item }) => {
   const [isChecked, setChecked] = useState(item.checked);
@@ -245,7 +117,7 @@ const GroceryItemsScreen = ({ route, navigation }) => {
                   <Text>Aucun article</Text>
                 </View> : 
                 <SectionList
-                          sections={DUMMY_DATA}
+                          sections={DUMMY_GROCERY_LIST}
                           keyExtractor={(item, index) => item + index}
                           renderItem={({ item }) => <Item item={item} />}
                           renderSectionHeader={({ section: { title } }) => (
