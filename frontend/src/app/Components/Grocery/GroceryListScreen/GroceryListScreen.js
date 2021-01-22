@@ -43,21 +43,20 @@ const Item = ({item, navigation, getList}) => {
     navigation.navigate('Grocery Items', {
       ID: item.groceryListID,
       title: item.name,
-    })
-  }
+    });
+  };
   return (
     <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 15}}>
       <Pressable
         style={styles.listItem}
         onPress={() => navigateToGroceryItems(item)}
-        onLongPress={longPress}
-        >
-          <Text style={styles.title}>{item.name}</Text>
+        onLongPress={longPress}>
+        <Text style={styles.title}>{item.name}</Text>
       </Pressable>
 
       {deleteButtonVisible ? (
         <TouchableOpacity onPress={deleteList}>
-          <Icon name='trash' size={20} color='#000' />
+          <Icon name="trash" size={20} color="#000" />
         </TouchableOpacity>
       ) : (
         <></>
@@ -109,7 +108,7 @@ const GroceryListScreen = ({navigation}) => {
               onPress={() => {
                 setModalVisible(true);
               }}>
-              <Icon name='plus' color='#FFF' size={25} />
+              <Icon name="plus" color="#FFF" size={25} />
             </TouchableOpacity>
           </View>
           <FlatList

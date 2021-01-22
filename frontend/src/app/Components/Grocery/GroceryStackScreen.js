@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import GroceryItemsScreen from './GroceryItemsScreen';
-import GroceryListScreen from './GroceryListScreen';
+import GroceryItemsScreen from './GroceryItemsScreen/GroceryItemsScreen';
+import GroceryListScreen from './GroceryListScreen/GroceryListScreen';
 
 const Stack = createStackNavigator();
 
