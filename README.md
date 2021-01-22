@@ -1,19 +1,28 @@
-<img src="images/logo2.png" width="350">
+<img src="images/logo2.png" width="400">
 
 Application mobile permettant aux utilisateurs de suivre leur apport alimentaire quotidien, de générer automatiquement une liste d’épicerie et de créer des recettes.
 
+## Table des matières
+1. [Visuels](#visuels)
+2. [Statut du projet](#statut-du-projet)
+    * [Liste des fonctionnalités implémentées](#liste-des-fonctionnalités-implémentées)
+    * [Liste des fonctionnalités implémentées](#liste-des-fonctionnalités-futures)
+3. [Provenance des données](#provenance-des-données)
+4. [Rouler le code localement](#rouler-le-code-localement)
+5. [Auteur](#auteur)
+6. [Inspiration et crédits](#inspiration-et-crédits)
 ## Visuels
 <div>
-<img src="images/login_page.jpg" width="250" style="margin-right: 30px">
+<img src="images/login_page.jpg" width="250">
 <img src="images/journal.jpg" width="250">
 <img src="images/search_page.jpg" width="250">
 </div>
 
 ## Statut du projet
 
-Le projet en cours de développement.
+Le projet en cours de développement. La dernière mise à jour a été effectuée en janvier 2021.
 
-#### Liste des fonctionnalités implémentées:
+#### Liste des fonctionnalités implémentées
 - Inscription et connexion de base
 
 ##### Liste d'épicerie:
@@ -38,7 +47,7 @@ Le projet en cours de développement.
 - Amélioration de la barre de recherche des items d'épicerie (retrait des caractéristiques superflues et meilleure de la catégorisation des articles)
 - Suppression d'items dans une liste
 - Possibilité d'ajouter automatiquement les articles provenant du planificateur dans une liste d'épicerie
-- Affichage du ration d'item restant à marquer pour chaque liste
+- Affichage du ratio d'items restants à marquer pour chaque liste
 
 ##### Planificateur:
 - Ajout de tableau des micronutriments
@@ -49,7 +58,11 @@ Le projet en cours de développement.
 ##### Recettes:
 - Sauvegarde de recettes dans la base de données
 
-## Pour rouler le code localement
+## Provenance des données
+
+Les données nutritionnelles proviennent du [Fichier canadien sur les éléments nutritifs (FCÉN)](https://www.canada.ca/fr/sante-canada/services/aliments-nutrition/saine-alimentation/donnees-nutritionnelles.html). Les données ont été traitées pour répondre aux besoins du projet.
+
+## Rouler le code localement
 
 ### Serveur
 
@@ -57,9 +70,9 @@ Le projet en cours de développement.
 
 ## Auteur
 
-* **Élisa Correia-Martins**
+* **Élisa Correia-Martins**, étudiante de quatrième année en Génie Logiciel à Polytechnique Montréal
 
 ## Inspiration et crédits
 
-* Applications MyFitnessPal et Cronometer
-* Les icônes du logo et des onglets de navigation proviennent de Flaticon.com 
+* Applications [MyFitnessPal](https://www.myfitnesspal.com/fr/) et [Cronometer](https://cronometer.com/)
+* Les icônes du logo et des onglets de navigation proviennent de [Flaticon](https://www.flaticon.com/)
