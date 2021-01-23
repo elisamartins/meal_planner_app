@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import AddItemModal from './AddItemModal';
-import {DUMMY_GROCERY_LIST} from '../Data/DUMMY_GROCERY_LIST';
+import {DUMMY_GROCERY_LIST} from '../../Data/DUMMY_GROCERY_LIST';
 import GroceryItemListElement from './GroceryItemListElement';
 
 const GroceryItemsScreen = ({route, navigation}) => {

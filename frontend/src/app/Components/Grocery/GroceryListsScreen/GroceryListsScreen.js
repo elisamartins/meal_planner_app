@@ -65,7 +65,7 @@ const Item = ({item, navigation, getList}) => {
   );
 };
 
-const GroceryListScreen = ({navigation}) => {
+const GroceryListsScreen = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [groceryList, setGroceryList] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -183,4 +183,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GroceryListScreen;
+export default GroceryListsScreen;

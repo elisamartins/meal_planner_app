@@ -27,7 +27,7 @@ const MacrosComponent = ({}) => {
     </View>
   </View>
   );
-    
+  
 };
 
 export default MacrosComponent;

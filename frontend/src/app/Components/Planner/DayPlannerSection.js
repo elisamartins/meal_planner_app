@@ -11,60 +11,7 @@ import {
 } from "react-native";
 import { Divider } from 'react-native-elements';
 import MacrosComponent from './MacrosComponent';
-
-const DUMMY_DATA =[
-    {
-        title: "Petit déjeûner",
-        data: [
-            {
-                foodName: "Carottes",
-                amount: 150,
-                unit: "g",
-                calories: "20"
-            },
-            {
-                foodName: "Gruau",
-                amount: 300,
-                unit: "g",
-                calories: "259"
-            },
-            {
-                foodName: "Sirop d'érable",
-                amount: 30,
-                unit: "ml",
-                calories: "125"
-            },
-            ]
-  },
-  {
-    title: "Déjeûner",
-    data: [
-        {
-            foodName: "Spaghetti",
-            amount: 200,
-            unit: "g",
-            calories: "450"
-        },
-        {
-            foodName: "Patate douce",
-            amount: 1,
-            unit: "",
-            calories: "259"
-        },
-        ]
-  },
-  {
-    title: "Dîner",
-    data: [
-        {
-            foodName: "Soupe",
-            amount: 500,
-            unit: "ml",
-            calories: "500"
-        },
-        ]
-},
-]
+import { DUMMY_PLANNER } from '../Data/DUMMY_PLANNER';
 
 const Item = ({ item }) => (
   <View style={{ flexDirection: 'row', backgroundColor: '#FFF'}}>
@@ -89,7 +36,7 @@ const DayPlannerSection = ({ navigation }) => {
       <MacrosComponent/>
 
       <SectionList
-        sections={DUMMY_DATA}
+        sections={DUMMY_PLANNER}
         keyExtractor={(item, index) => item + index}
         
         renderItem={({ item }) => <Item item={item} />}
