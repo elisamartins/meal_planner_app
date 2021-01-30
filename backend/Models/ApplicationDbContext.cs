@@ -19,6 +19,7 @@ namespace backend.Models
         public DbSet<FoodItem> FoodItems { get; set; }
         public DbSet<FoodGroup> FoodGroups { get; set; }
         public DbSet<GroceryList> GroceryLists { get; set; }
+        public DbSet<GroceryListCategory> GroceryListCategories { get; set; }
         public DbSet<GroceryItem> GroceryItems { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipeItem> RecipeItems { get; set; }
@@ -33,6 +34,11 @@ namespace backend.Models
         {
             List<FoodItem> foodItems = _csvImporter.ImportFoodItems();
             List<FoodGroup> foodGroups = _csvImporter.ImportFoodGroups();
+
+            modelBuilder.Entity<FoodGroup>().HasMany(g => g.FoodItems);
+            modelBuilder.Entity<GroceryList>().HasMany(l => l.GroceryListCategories);
+            modelBuilder.Entity<GroceryListCategory>().HasMany(c => c.GroceryItems);
+            modelBuilder.Entity<GroceryItem>().HasOne(i => i.FoodItem);
 
             modelBuilder.Entity<FoodItem>().HasData(foodItems);
             modelBuilder.Entity<FoodGroup>().HasData(foodGroups);

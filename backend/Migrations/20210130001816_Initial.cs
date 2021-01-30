@@ -172,8 +172,8 @@ namespace backend.Migrations
                 {
                     GroceryListCategoryID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GroceryListID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Category = table.Column<string>(type: "TEXT", nullable: false)
+                    Category = table.Column<string>(type: "TEXT", nullable: false),
+                    GroceryListID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,9 +192,10 @@ namespace backend.Migrations
                 {
                     GroceryItemID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GroceryListCategoryID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Checked = table.Column<bool>(type: "INTEGER", nullable: false),
+                    GroceryCategoryID = table.Column<int>(type: "INTEGER", nullable: false),
                     FoodItemFoodID = table.Column<int>(type: "INTEGER", nullable: true),
-                    Checked = table.Column<bool>(type: "INTEGER", nullable: false)
+                    GroceryListCategoryID = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -210,7 +211,7 @@ namespace backend.Migrations
                         column: x => x.GroceryListCategoryID,
                         principalTable: "GroceryListCategories",
                         principalColumn: "GroceryListCategoryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(

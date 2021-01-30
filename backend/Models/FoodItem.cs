@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models
 {
@@ -11,12 +13,10 @@ namespace backend.Models
 
         [Required]
         [StringLength(100)]
-        public int FoodGroupID { get; set; }
-
-        [Required]
-        [StringLength(100)]
         public string Name { get; set; }
 
+        [ForeignKey("FoodGroup")]
+        public int FoodGroupID { get; set; }
     }
 
     public class FoodGroup
@@ -28,6 +28,9 @@ namespace backend.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
+
+        public ICollection<FoodItem> FoodItems { get; set; }
+
     }
 
     public class NutrientName
