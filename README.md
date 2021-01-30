@@ -14,6 +14,8 @@ Application mobile permettant aux utilisateurs de suivre leur apport alimentaire
 ## Visuels
 <div>
 <img src="images/login_page.jpg" width="250">
+<img src="images/recipe.jpg" width="250">
+<img src="images/recipe_list.jpg" width="250">
 <img src="images/journal.jpg" width="250">
 <img src="images/search_page.jpg" width="250">
 <img src="images/grocery_items.jpg" width="250">
