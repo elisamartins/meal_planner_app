@@ -71,7 +71,7 @@ Une fois le répertoire cloné:
 
 ### Serveur (.NET Core)
 
-#### [Prérequis]
+#### Prérequis
 .NET Core SDK
 
 1. dotnet build
