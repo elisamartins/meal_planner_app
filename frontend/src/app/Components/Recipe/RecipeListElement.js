@@ -1,46 +1,48 @@
 import 'react-native-gesture-handler';
-import React, {useState} from 'react';
+import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const RecipeListElement = ({ item }) => {
+const RecipeListElement = ({item, navigation}) => {
+  const navigateToRecipeComponent = () => {
+    console.log(item.recipeName);
+    navigation.navigate('RecipeComponent', {
+      item: item,
+    });
+  };
 
   return (
-    <View style={{backgroundColor: 'white', padding: 10, marginHorizontal: 10, marginVertical: 5, flexDirection:'row', alignItems:'center'}}>
-
-      <Image source={item.image} style={{width: 100, height: 100, borderRadius: 100/ 2, marginRight: 10}} />
-      <Text style={styles.title}>{item.recipeName}</Text>
-      <Text style={styles.title}>{item.imageName}</Text>
-    </View>
+    <TouchableOpacity onPress={navigateToRecipeComponent}>
+      <View style={styles.container}>
+        <Image source={item.image} style={styles.image} />
+        <Text style={styles.recipeName}>{item.recipeName}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  checkedItem: {
-    fontSize: 16,
-    fontFamily: 'sans-serif',
-  },
-  item: {
-    flex: 1,
+  container: {
+    backgroundColor: 'white',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginHorizontal: 10,
+    marginVertical: 5,
     flexDirection: 'row',
-    marginLeft: 10,
-    marginRight: 10,
-    marginVertical: 2,
     alignItems: 'center',
   },
-  uncheckedItem: {
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginRight: 15,
+  },
+  recipeName: {
     fontSize: 16,
-    fontFamily: 'sans-serif-thin',
-    textDecorationLine: 'line-through',
-    },
-      header: {
-        marginLeft: 15,
-        paddingVertical: 10,
-        flex: 1,
-        fontWeight: 'bold'
-      },
-      title: {
-        fontSize: 14
-      },
+    fontFamily: 'SFUIDisplay-Light',
+    flexShrink: 1,
+    flex: 1,
+    textAlign: 'center',
+  },
 });
 
 export default RecipeListElement;

@@ -13,6 +13,8 @@ import {
 import AddItemModal from './AddItemModal';
 import {DUMMY_GROCERY_LIST} from '../../Data/DUMMY_GROCERY_LIST';
 import GroceryItemListElement from './GroceryItemListElement';
+import { headerColor } from '../../../../Constants';
+import { Divider } from 'react-native-elements';
 
 const GroceryItemsScreen = ({route, navigation}) => {
   const [groceryList, setGroceryList] = useState({
@@ -87,8 +89,8 @@ const GroceryItemsScreen = ({route, navigation}) => {
           <View style={styles.screenHeader}>
             <View style={{flex: 1, flexDirection: 'row'}}>
               <TouchableOpacity
-                onPress={() => navigation.navigate('GroceryListScreen')}>
-                <Icon name="arrow-left-circle" size={30} color="#FFF" />
+                onPress={() => navigation.navigate('GroceryListsScreen')}>
+                <Icon name="arrow-left-circle" size={25} color="#FFF" />
               </TouchableOpacity>
               <Text style={styles.headerTitle}>
                 {groceryList.name.toUpperCase()}
@@ -114,13 +116,14 @@ const GroceryItemsScreen = ({route, navigation}) => {
                 keyExtractor={(item, index) => item + index}
                 renderItem={({item}) => <GroceryItemListElement item={item} />}
                 renderSectionHeader={({section: {title}}) => (
-                  <View style={getCategoryStyle(title)}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={styles.categoryHeader}>
                       {' '}
                       {title.toUpperCase()}
                     </Text>
                   </View>
-                )}
+                    )}
+                    ItemSeparatorComponent={() => <Divider/>}
               />
             )}
           </View>
@@ -171,7 +174,7 @@ const getColor = (category) => {
 
 const getCategoryStyle = (category) => {
   return {
-    backgroundColor: getColor(category),
+    // backgroundColor: getColor(category),
     paddingHorizontal: 10,
     paddingVertical: 5,
     marginTop: 1,
@@ -186,9 +189,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   categoryHeader: {
-    fontSize: 14,
-    fontFamily: 'sans-serif',
-    color: 'white',
+    marginLeft: 15,
+    paddingVertical: 10,
+    flex: 1,
+    fontWeight: 'bold',
+    color: 'black'
   },
   container: {
     flex: 1,
@@ -205,7 +210,7 @@ const styles = StyleSheet.create({
   screenHeader: {
     flexDirection: 'row',
     padding: 10,
-    backgroundColor: '#40c5d1',
+    backgroundColor: headerColor,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

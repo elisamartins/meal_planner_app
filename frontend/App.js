@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/app/Components/HomeScreen';
 import LoginScreen from './src/app/Components/Login/LoginScreen';
+import { headerColor } from './src/Constants';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +13,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          cardStyle: {backgroundColor: '#96DFEE'},
+          cardStyle: { backgroundColor: headerColor }
         }}>
         <Stack.Screen
           name="Login"

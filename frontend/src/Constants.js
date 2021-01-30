@@ -1,0 +1,1 @@
+export const headerColor = "#40c5d1"

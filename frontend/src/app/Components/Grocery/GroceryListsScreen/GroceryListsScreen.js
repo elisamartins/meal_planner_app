@@ -13,6 +13,7 @@ import {
   View,
 } from 'react-native';
 import {Divider} from 'react-native-elements';
+import { headerColor } from '../../../../Constants';
 
 const Item = ({item, navigation, getList}) => {
   const [deleteButtonVisible, setDeleteButtonVisible] = useState(false);
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#40c5d1',
+    backgroundColor: headerColor,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

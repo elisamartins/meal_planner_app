@@ -12,6 +12,7 @@ import {
 import { Divider } from 'react-native-elements';
 import MacrosComponent from './MacrosComponent';
 import { DUMMY_PLANNER } from '../Data/DUMMY_PLANNER';
+import { headerColor } from '../../../Constants';
 
 const Item = ({ item }) => (
   <View style={{ flexDirection: 'row', backgroundColor: '#FFF'}}>
@@ -27,10 +28,10 @@ const DayPlannerSection = ({ navigation }) => {
   return (
     <SafeAreaView>
       
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-        <TouchableOpacity><Icon name="chevron-left" size={30} color="#000" /></TouchableOpacity>
-        <Text>Aujourd'hui</Text>
-        <TouchableOpacity><Icon name="chevron-right" size={30} color="#000" /></TouchableOpacity>
+      <View style={styles.screenHeader}>
+        <TouchableOpacity><Icon name="chevron-left" size={30} color='white' /></TouchableOpacity>
+        <Text style={styles.headerTitle}>Aujourd'hui</Text>
+        <TouchableOpacity><Icon name="chevron-right" size={30} color='white'/></TouchableOpacity>
       </View>
 
       <MacrosComponent/>
@@ -78,7 +79,21 @@ const styles = StyleSheet.create({
   amountText: {
     fontSize: 12,
     color: 'gray'
-  }
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: 'SFUIDisplay-Bold',
+    color: '#FFF',
+  },
+  screenHeader: {
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: headerColor,
+    shadowColor: '#000',
+    elevation: 5,
+  },
 })
 
 export default DayPlannerSection;

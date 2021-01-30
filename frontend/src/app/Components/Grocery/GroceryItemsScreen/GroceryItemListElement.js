@@ -30,20 +30,19 @@ const GroceryItemListElement = ({item}) => {
 
 const styles = StyleSheet.create({
   checkedItem: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'sans-serif',
+    color: 'black'
   },
   item: {
+    padding: 15,
     flex: 1,
-    flexDirection: 'row',
-    marginLeft: 10,
-    marginRight: 10,
-    marginVertical: 2,
-    alignItems: 'center',
+    backgroundColor: '#FFF'
   },
   uncheckedItem: {
-    fontSize: 16,
-    fontFamily: 'sans-serif-thin',
+    fontSize: 14,
+    fontFamily: 'sans-serif',
+    color: 'lightgray',
     textDecorationLine: 'line-through',
   },
 });

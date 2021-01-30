@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { DUMMY_RECIPE_LIST } from '../Data/DUMMY_RECIPE_LIST';
 import RecipeListElement from './RecipeListElement';
+import { headerColor } from '../../../Constants';
 
 const RecipeListScreen = ({navigation}) => {
   const [recipeList, setRecipeList] = useState({});
@@ -31,13 +32,14 @@ const RecipeListScreen = ({navigation}) => {
             <View style={styles.screenHeader}>
             <Text style={styles.headerTitle}>Recettes</Text>
             <TouchableOpacity>
-              <Icon name="plus" size={30} color="#FFF" />
+              <Icon name="plus" size={25} color="#FFF" />
             </TouchableOpacity>
           </View>
           <View style={styles.listContainer}>
             <SectionList
                 sections={recipeList}
-                renderItem={({ item }) => <RecipeListElement item={item}/>}
+                keyExtractor={(item, index) => item + index}
+                renderItem={({ item }) => <RecipeListElement item={item} navigation={navigation}/>}
                 renderSectionHeader={({ section: { title } }) => (
                   <View style={{marginVertical: 10}}>
                     <Text style={styles.categoryHeader}>
@@ -77,11 +79,13 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 1,
+    paddingTop: 5
   },
   screenHeader: {
     flexDirection: 'row',
+    alignItems: 'center',
     padding: 10,
-    backgroundColor: '#40c5d1',
+    backgroundColor: headerColor,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
