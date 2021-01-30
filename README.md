@@ -67,9 +67,31 @@ Les données nutritionnelles proviennent du [Fichier canadien sur les éléments
 
 ## Rouler le code localement
 
-### Serveur
+Une fois le répertoire cloné:
 
-### Application mobile
+### Serveur (.NET Core)
+
+#### [Prérequis]
+.NET Core SDK
+
+1. dotnet build
+2. dotnet run
+
+### Application mobile (React Native)
+
+#### [Prérequis](reactnative.dev/docs/environment-setup)
+- Émulateur ou appareil mobile Android à disposition
+- Android Studio (Android 10 SDK)
+- JDK (Java Development Kit)
+- Node.js + NPM
+- React Native CLI
+
+À partir du dossier ./frontend
+1. npm install
+2. npx react-native start
+
+Pour rouler sur Android:
+3. npx react-native run-android
 
 ## Auteur
 
