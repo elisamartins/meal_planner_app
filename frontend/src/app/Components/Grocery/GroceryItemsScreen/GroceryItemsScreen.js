@@ -93,15 +93,15 @@ const GroceryItemsScreen = ({route, navigation}) => {
                 <Icon name="arrow-left-circle" size={25} color="#FFF" />
               </TouchableOpacity>
               <Text style={styles.headerTitle}>
-                {groceryList.name.toUpperCase()}
+                {groceryList.name}
               </Text>
             </View>
             <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Icon name="plus" size={30} color="#FFF" />
+              <Icon name="plus" size={25} color="#FFF" />
             </TouchableOpacity>
           </View>
           <View style={styles.listContainer}>
-            {groceryList.categories.length == 0 ? (
+            {groceryList.categories.length == 1 ? (
               <View
                 style={{
                   alignSelf: 'center',
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   screenHeader: {
+    alignItems: 'center',
     flexDirection: 'row',
     padding: 10,
     backgroundColor: headerColor,
