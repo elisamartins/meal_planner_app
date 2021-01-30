@@ -72,8 +72,9 @@ Une fois le répertoire cloné:
 ### Serveur (.NET Core)
 
 #### Prérequis
-.NET Core SDK
+- .NET Core SDK
 
+##### À partir du dossier backend:
 1. dotnet build
 2. dotnet run
 
@@ -86,12 +87,12 @@ Une fois le répertoire cloné:
 - Node.js + NPM
 - React Native CLI
 
-À partir du dossier ./frontend
+##### À partir du dossier frontend:
 1. npm install
 2. npx react-native start
 
-Pour rouler sur Android:
-3. npx react-native run-android
+##### Pour rouler sur Android
+npx react-native run-android
 
 ## Auteur
 
