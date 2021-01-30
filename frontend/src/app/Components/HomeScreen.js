@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, {  } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomIcon from '../../../CustomIcon'
-import RecipeScreen from './RecipeScreen'
+import RecipeStackScreen from './Recipe/RecipeStackScreen'
 import PlannerStackScreen from './Planner/PlannerStackScreen'
 import GroceryStackScreen from './Grocery/GroceryStackScreen'
 import {
@@ -74,7 +74,7 @@ const HomeScreen = () => {
         />
         <Tab.Screen
           name="Recipe"
-          component={RecipeScreen}
+          component={RecipeStackScreen}
           options={{ title: 'RECETTES' }}
         />
       </Tab.Navigator>

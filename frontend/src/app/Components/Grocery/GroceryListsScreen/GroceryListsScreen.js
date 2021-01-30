@@ -126,22 +126,6 @@ const GroceryListsScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  addButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#BFE3F7',
-    borderRadius: 50,
-    padding: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-  },
-  addButtonText: {
-    color: '#000',
-    fontSize: 12,
-    fontFamily: 'sans-serif',
-    marginLeft: 5,
-  },
   container: {
     flex: 1,
   },
